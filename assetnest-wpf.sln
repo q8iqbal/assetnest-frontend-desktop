@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "assetnest-wpf", "assetnest-wpf\assetnest-wpf.csproj", "{4C2B0D29-2B55-4F73-B144-37AEC471C1DF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4C2B0D29-2B55-4F73-B144-37AEC471C1DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C2B0D29-2B55-4F73-B144-37AEC471C1DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C2B0D29-2B55-4F73-B144-37AEC471C1DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C2B0D29-2B55-4F73-B144-37AEC471C1DF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0E11130D-6C9E-44DB-856C-082642FBB134}
+	EndGlobalSection
+EndGlobal
