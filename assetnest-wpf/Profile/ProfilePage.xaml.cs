@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -12,22 +13,18 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Velacro.DataStructures;
+using Velacro.Basic;
 using Velacro.UIElements.Basic;
 using assetnest_wpf.Profile;
 
-namespace assetnest_wpf
+namespace assetnest_wpf.Profile
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : MyWindow
+    public partial class ProfilePage : MyPage
     {
-        private MyPage profilePage;
-        public MainWindow()
+        public ProfilePage()
         {
             InitializeComponent();
-            profilePage = new ProfilePage();
+            this.KeepAlive = true;
         }
     }
 }
