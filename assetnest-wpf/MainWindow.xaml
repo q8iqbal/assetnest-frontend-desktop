@@ -9,6 +9,7 @@
         ResizeMode="NoResize"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Frame Name="mainFrame" NavigationUIVisibility="Hidden" Margin="130,0,-0.333,0"/>
+        <Button Name="profileButton_btn" Click="profileButton_btn_Click" Content="Profile" HorizontalAlignment="Left" Margin="34,51,0,0" VerticalAlignment="Top" Width="75"/>
     </Grid>
 </basic1:MyWindow>

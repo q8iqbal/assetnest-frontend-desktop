@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Net.Http;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -18,9 +19,6 @@ using assetnest_wpf.Profile;
 
 namespace assetnest_wpf
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : MyWindow
     {
         private MyPage profilePage;
@@ -28,6 +26,11 @@ namespace assetnest_wpf
         {
             InitializeComponent();
             profilePage = new ProfilePage();
+        }
+
+        private void profileButton_btn_Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Navigate(profilePage);
         }
     }
 }
