@@ -6,10 +6,7 @@
         xmlns:local="clr-namespace:assetnest_wpf"
         xmlns:basic1="clr-namespace:Velacro.UIElements.Basic;assembly=Velacro"
         mc:Ignorable="d"
-        ResizeMode="NoResize"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Frame Name="mainFrame" NavigationUIVisibility="Hidden" Margin="130,0,-0.333,0"/>
-        <Button Name="profileButton_btn" Click="profileButton_btn_Click" Content="Profile" HorizontalAlignment="Left" Margin="34,51,0,0" VerticalAlignment="Top" Width="75"/>
-    </Grid>
+        Title="MainWindow" Height="450" Width="796" ResizeMode="CanMinimize">
+    <Frame x:Name="mainFrame" Content="Frame" Margin="0,0,-5.667,-1.333"/>
+
 </basic1:MyWindow>
