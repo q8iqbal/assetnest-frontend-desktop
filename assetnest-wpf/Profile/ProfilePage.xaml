@@ -10,25 +10,24 @@
       Title="ProfilePage">
 
     <basic:MyGrid>
-        <Rectangle Fill="WhiteSmoke" HorizontalAlignment="Left" Height="140" Margin="220,142,0,0" VerticalAlignment="Top" Width="537" RadiusY="15" RadiusX="15"/>
-        <Button x:Name="btn_logout" Content="Logout" Background="#F85E5E" FontFamily="Poppins-Medium" FontSize="20" Foreground="White" HorizontalAlignment="Left" Margin="650,237,0,0" VerticalAlignment="Top" Width="75"/>
-        <Image x:Name="user_img" Source="profile.png" HorizontalAlignment="Left" Height="137" Margin="60,142,0,0" VerticalAlignment="Top" Width="137"/>
+        <Rectangle Fill="WhiteSmoke" HorizontalAlignment="Left" Height="166" Margin="220,136,0,0" VerticalAlignment="Top" Width="537" RadiusY="15" RadiusX="15"/>
+        <Button x:Name="btn_logout" Content="Logout" Background="#F85E5E" FontFamily="Poppins-Medium" FontSize="20" Foreground="White" HorizontalAlignment="Left" Margin="666,255,0,0" VerticalAlignment="Top" Width="75"/>
+        <Image x:Name="user_img" Source="profile.png" HorizontalAlignment="Left" Height="137" Margin="45,136,0,0" VerticalAlignment="Top" Width="137"/>
 
-        <Label x:Name="roleAtas_txt" Content="" Foreground="#FF7B4B" FontFamily="Poppins-Medium" FontSize="38" HorizontalAlignment="Left" Margin="60,36,0,0" VerticalAlignment="Top" Width="122"/>
-        <Label x:Name="slice" Content="|" Foreground="Black" FontFamily="Poppins-Medium" FontSize="38" HorizontalAlignment="Left" Margin="187,34,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="nameAtas_txt" Content="" Foreground="Black" FontFamily="Poppins-Medium" FontSize="38" HorizontalAlignment="Left" Margin="211,34,0,0" VerticalAlignment="Top" Width="113"/>
+        <TextBlock x:Name="roleAtas_txt" Foreground="#FF7B4B" FontFamily="Poppins-Medium" FontSize="38" HorizontalAlignment="Left" Margin="65,44,0,0" TextWrapping="Wrap" Text="Owner" VerticalAlignment="Top" Width="117"/>
+        <TextBlock x:Name="slice" Text="|" Foreground="Black" FontFamily="Poppins-Medium" FontSize="38" HorizontalAlignment="Left" Margin="187,46,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="nameAtas_txt" Text="Maulida Lumina" Foreground="Black" FontFamily="Poppins-Medium" FontSize="38" HorizontalAlignment="Left" Margin="201,44,0,0" VerticalAlignment="Top" Width="282"/>
 
-        <Label x:Name="name_txt" Content="Full Name" FontFamily="Montserrat-Medium" FontSize="20" HorizontalAlignment="Left" Margin="237,150,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="nameValue_txt" Content="" FontFamily="Montserrat-Medium" FontSize="20" HorizontalAlignment="Left" Margin="427,150,0,0" VerticalAlignment="Top" Width="159"/>
+        <TextBlock x:Name="name_txt" Text="Full Name" FontFamily="Montserrat-Medium" FontSize="20" HorizontalAlignment="Left" Margin="237,150,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="nameValue_txt" Text="Maulida Lumina" FontFamily="Montserrat-Medium" FontSize="20" HorizontalAlignment="Left" Margin="427,150,0,0" VerticalAlignment="Top" Width="159"/>
 
-        <Label x:Name="role_txt" Content="Role" FontFamily="Montserrat-Medium" FontSize="20" HorizontalAlignment="Left" Margin="237,181,0,0" VerticalAlignment="Top" Width="137"/>
-        <Label x:Name="roleValue_txt" Content="" FontFamily="Montserrat-Medium" FontSize="20" HorizontalAlignment="Left" Margin="427,177,0,0" VerticalAlignment="Top" Width="159"/>
+        <TextBlock x:Name="role_txt" Text="Role" FontFamily="Montserrat-Medium" FontSize="20" HorizontalAlignment="Left" Margin="237,181,0,0" VerticalAlignment="Top" Width="137"/>
+        <TextBlock x:Name="roleValue_txt" Text="Owner" FontFamily="Montserrat-Medium" FontSize="20" HorizontalAlignment="Left" Margin="427,177,0,0" VerticalAlignment="Top" Width="159"/>
 
-        <Label x:Name="email_txt" Content="Email" FontFamily="Montserrat-Medium" FontSize="20" HorizontalAlignment="Left" Margin="237,212,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="emailValue_txt" Content="" FontFamily="Montserrat-Medium" FontSize="20" HorizontalAlignment="Left" Margin="427,216,0,0" VerticalAlignment="Top" Width="159"/>
+        <TextBlock x:Name="email_txt" Text="Email" FontFamily="Montserrat-Medium" FontSize="20" HorizontalAlignment="Left" Margin="237,212,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="emailValue_txt" Text="trickstar@rocketmail.com" FontFamily="Montserrat-Medium" FontSize="20" HorizontalAlignment="Left" Margin="427,216,0,0" VerticalAlignment="Top" Width="249"/>
 
-        <Label x:Name="slogan_txt" Content="Fixed Assets Management System Powered by" FontSize="18" HorizontalAlignment="Left" Margin="309,406,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="assetnest_txt" Content="AssetNest" Foreground="#FF7B4B" FontFamily="Poppins-Regular" FontSize="18" HorizontalAlignment="Left" Margin="688,409,0,0" VerticalAlignment="Top"/>
-
+        <TextBlock x:Name="slogan_txt" Text="Fixed Assets Management System Powered by" FontSize="18" HorizontalAlignment="Left" Margin="309,406,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="assetnest_txt" Text="AssetNest" Foreground="#FF7B4B" FontFamily="Poppins-Regular" FontSize="18" HorizontalAlignment="Left" Margin="688,409,0,0" VerticalAlignment="Top"/>
     </basic:MyGrid>
 </basic:MyPage>

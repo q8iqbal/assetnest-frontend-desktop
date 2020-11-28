@@ -13,12 +13,13 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Velacro.UIElements.Basic;
+using Velacro.UIElements.TextBlock;
 
 namespace assetnest_wpf.Profile
 {
     public partial class ProfilePage : MyPage
     {
-        //private IMyLabel userLabel;
+        //private IMyTexBlock userTextBlock;
         //private IMyLabel fullnameLabel;
         public ProfilePage()
         {
