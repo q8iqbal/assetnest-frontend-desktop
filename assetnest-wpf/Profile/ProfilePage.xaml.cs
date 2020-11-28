@@ -37,11 +37,13 @@ namespace assetnest_wpf.Profile
             //profileButton = buttonBuilder
                 //.activate(this, "profileButton_btn")
                 //.addOnClick(this, "onProfileButtonClick");
-            //emailTxtBox = txtBoxBuilder.activate(this, "email_txt");
+            //nameTxtBox = txtBoxBuilder.activate(this, "nameValue_txt");
+            //roleTxtBox = txtBoxBuilder.activate(this, "roleValue_txt");
+            //emailTxtBox = txtBoxBuilder.activate(this, "emailValue_txt");
         }
         public void onProfileButtonClick()
         {
-            //getController().callMethod("profile", email_txt.Text, password_txt.Text);
+            //getController().callMethod("profile", nameValue_txt.Text, roleValue_txt.Text, emailValue_txt.Text);
         }
     }
 }

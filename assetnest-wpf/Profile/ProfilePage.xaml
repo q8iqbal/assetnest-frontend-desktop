@@ -9,14 +9,22 @@
       d:DesignHeight="450" d:DesignWidth="600"
       Title="ProfilePage">
     <basic:MyGrid>
-        <Button Content="Logout" Background="#F85E5E" FontFamily="Poppins-Medium" FontSize="20" Foreground="White" HorizontalAlignment="Left" Margin="461,342,0,0" VerticalAlignment="Top" Width="75"/>
-        <Image HorizontalAlignment="Left" Height="100" Margin="47,146,0,0" VerticalAlignment="Top" Width="100"/>
-        <Label Content="" Foreground="#FF7B4B" FontFamily="Poppins-Medium" FontSize="38" HorizontalAlignment="Left" Margin="60,36,0,0" VerticalAlignment="Top"/>
-        <Label Content="| " Foreground="Black" FontFamily="Poppins-Medium" FontSize="38" HorizontalAlignment="Left" Margin="187,34,0,0" VerticalAlignment="Top"/>
-        <Label Content="Full Name" FontFamily="Montserrat-Medium" FontSize="20" HorizontalAlignment="Left" Margin="187,146,0,0" VerticalAlignment="Top"/>
-        <Label Content="Role" FontFamily="Montserrat-Medium" FontSize="20" HorizontalAlignment="Left" Margin="187,177,0,0" VerticalAlignment="Top" Width="137"/>
-        <Label Content="Email" FontFamily="Montserrat-Medium" FontSize="20" HorizontalAlignment="Left" Margin="187,208,0,0" VerticalAlignment="Top"/>
-        <Label Content="Fixed Assets Management System Powered by" FontSize="18" HorizontalAlignment="Left" Margin="122,406,0,0" VerticalAlignment="Top"/>
-        <Label Content="AssetNest" Foreground="#FF7B4B" FontFamily="Poppins-Regular" FontSize="18" HorizontalAlignment="Left" Margin="501,409,0,0" VerticalAlignment="Top"/>
+        <Button Name="btn_logout" Content="Logout" Background="#F85E5E" FontFamily="Poppins-Medium" FontSize="20" Foreground="White" HorizontalAlignment="Left" Margin="461,342,0,0" VerticalAlignment="Top" Width="75"/>
+        <Image Name="user_img" HorizontalAlignment="Left" Height="100" Margin="47,146,0,0" VerticalAlignment="Top" Width="100"/>
+        
+        <Label Name="roleAtas_txt" Content="" Foreground="#FF7B4B" FontFamily="Poppins-Medium" FontSize="38" HorizontalAlignment="Left" Margin="60,36,0,0" VerticalAlignment="Top"/>
+        <Label Name="nameAtas_txt" Content="| " Foreground="Black" FontFamily="Poppins-Medium" FontSize="38" HorizontalAlignment="Left" Margin="187,34,0,0" VerticalAlignment="Top"/>
+
+        <Label Name="name_txt" Content="Full Name" FontFamily="Montserrat-Medium" FontSize="20" HorizontalAlignment="Left" Margin="187,146,0,0" VerticalAlignment="Top"/>
+        <Label Name="nameValue_txt" Content="" FontFamily="Montserrat-Medium" FontSize="20" HorizontalAlignment="Left" Margin="377,146,0,0" VerticalAlignment="Top"/>
+
+        <Label Name="role_txt" Content="Role" FontFamily="Montserrat-Medium" FontSize="20" HorizontalAlignment="Left" Margin="187,177,0,0" VerticalAlignment="Top" Width="137"/>
+        <Label Name="roleValue_txt" Content="" FontFamily="Montserrat-Medium" FontSize="20" HorizontalAlignment="Left" Margin="377,173,0,0" VerticalAlignment="Top"/>
+
+        <Label Name="email_txt" Content="Email" FontFamily="Montserrat-Medium" FontSize="20" HorizontalAlignment="Left" Margin="187,208,0,0" VerticalAlignment="Top"/>
+        <Label Name="emailValue_txt" Content="" FontFamily="Montserrat-Medium" FontSize="20" HorizontalAlignment="Left" Margin="377,212,0,0" VerticalAlignment="Top"/>
+
+        <Label Name="slogan_txt" Content="Fixed Assets Management System Powered by" FontSize="18" HorizontalAlignment="Left" Margin="122,406,0,0" VerticalAlignment="Top"/>
+        <Label Name="assetnest_txt" Content="AssetNest" Foreground="#FF7B4B" FontFamily="Poppins-Regular" FontSize="18" HorizontalAlignment="Left" Margin="501,409,0,0" VerticalAlignment="Top"/>
     </basic:MyGrid>
 </basic:MyPage>
