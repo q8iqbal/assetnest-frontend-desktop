@@ -10,7 +10,7 @@
       Title="ProfilePage">
 
     <basic:MyGrid>
-        <Rectangle Fill="WhiteSmoke" HorizontalAlignment="Left" Height="166" Margin="220,136,0,0" VerticalAlignment="Top" Width="537" RadiusY="15" RadiusX="15"/>
+        <Rectangle Name="profileList" Fill="WhiteSmoke" HorizontalAlignment="Left" Height="166" Margin="220,136,0,0" VerticalAlignment="Top" Width="537" RadiusY="15" RadiusX="15"/>
         <Button x:Name="btn_logout" Content="Logout" Background="#F85E5E" FontFamily="Poppins-Medium" FontSize="20" Foreground="White" HorizontalAlignment="Left" Margin="666,255,0,0" VerticalAlignment="Top" Width="75"/>
         <Image x:Name="user_img" Source="profile.png" HorizontalAlignment="Left" Height="137" Margin="45,136,0,0" VerticalAlignment="Top" Width="137"/>
 
@@ -22,7 +22,7 @@
         <TextBlock x:Name="nameValue_txt" Text="Maulida Lumina" FontFamily="Montserrat-Medium" FontSize="20" HorizontalAlignment="Left" Margin="427,150,0,0" VerticalAlignment="Top" Width="159"/>
 
         <TextBlock x:Name="role_txt" Text="Role" FontFamily="Montserrat-Medium" FontSize="20" HorizontalAlignment="Left" Margin="237,181,0,0" VerticalAlignment="Top" Width="137"/>
-        <TextBlock x:Name="roleValue_txt" Text="Owner" FontFamily="Montserrat-Medium" FontSize="20" HorizontalAlignment="Left" Margin="427,177,0,0" VerticalAlignment="Top" Width="159"/>
+        <TextBlock x:Name="roleValue_txt" Text="Owner" FontFamily="Montserrat-Medium" FontSize="20" HorizontalAlignment="Left" Margin="427,181,0,0" VerticalAlignment="Top" Width="159"/>
 
         <TextBlock x:Name="email_txt" Text="Email" FontFamily="Montserrat-Medium" FontSize="20" HorizontalAlignment="Left" Margin="237,212,0,0" VerticalAlignment="Top"/>
         <TextBlock x:Name="emailValue_txt" Text="trickstar@rocketmail.com" FontFamily="Montserrat-Medium" FontSize="20" HorizontalAlignment="Left" Margin="427,216,0,0" VerticalAlignment="Top" Width="249"/>

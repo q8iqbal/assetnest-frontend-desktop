@@ -14,14 +14,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Velacro.UIElements.Basic;
+using assetnest_wpf.Model;
 using Velacro.UIElements.TextBlock;
 
 namespace assetnest_wpf.Profile
 {
     public partial class ProfilePage : MyPage
     {
-        //private IMyTexBlock userTextBlock;
-        //private IMyLabel fullnameLabel;
+        private IMyTextBlock roleTxtBlock;
+        private IMyTextBlock nameTxtBlock;
+        private IMyTextBlock emailTxtBlock;
+        private IMyTextBlock passwordTxtBlock;
+        private BuilderTextBlock txtBlockBuilder;
+        private String token;
+        int counter = 0;
+
         public ProfilePage()
         {
             InitializeComponent();
@@ -29,24 +36,30 @@ namespace assetnest_wpf.Profile
             setController(new ProfileController(this));
             initUIBuilders();
             initUIElements();
+            getProfile();
         }
+        
+        public void setProfile(List<ModelProfile> profiles)
+        {
+            this.Dispatcher.Invoke(() =>
+            {
+                profileData.ItemsSource = profiles;
+            });
+        }
+        
         private void initUIBuilders()
         {
-
+            txtBlockBuilder = new BuilderTextBlock();
         }
+        
         private void initUIElements()
         {
-         
+            roleTxtBlock = txtBlockBuilder.activate(this, "role");
         }
-        public void onProfileButtonClick()
-        {
-            //getController().callMethod("profile", nameValue_txt.Text, roleValue_txt.Text, emailValue_txt.Text);
-        }
-
-        public getProfile()
+        private void getProfile()
         {
             String token = File.ReadAllText(@"userToken.txt");
-            //getController.callMethod("profile", token);
+            getController().callMethod("profile", token);
         }
     }
 }
