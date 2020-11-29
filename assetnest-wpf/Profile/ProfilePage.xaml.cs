@@ -15,19 +15,11 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Velacro.UIElements.Basic;
 using assetnest_wpf.Model;
-using Velacro.UIElements.TextBlock;
 
 namespace assetnest_wpf.Profile
 {
     public partial class ProfilePage : MyPage
     {
-        private IMyTextBlock roleTxtBlock;
-        private IMyTextBlock nameTxtBlock;
-        private IMyTextBlock emailTxtBlock;
-        private IMyTextBlock passwordTxtBlock;
-        private BuilderTextBlock txtBlockBuilder;
-        private String token;
-        int counter = 0;
 
         public ProfilePage()
         {
@@ -49,12 +41,12 @@ namespace assetnest_wpf.Profile
         
         private void initUIBuilders()
         {
-            txtBlockBuilder = new BuilderTextBlock();
+            
         }
         
         private void initUIElements()
         {
-            roleTxtBlock = txtBlockBuilder.activate(this, "role");
+            
         }
         private void getProfile()
         {
