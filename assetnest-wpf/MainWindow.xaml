@@ -6,7 +6,10 @@
         xmlns:local="clr-namespace:assetnest_wpf"
         xmlns:basic1="clr-namespace:Velacro.UIElements.Basic;assembly=Velacro"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="796" ResizeMode="CanMinimize">
-    <Frame x:Name="mainFrame" Content="Frame" Margin="0,0,-5.667,-1.333"/>
-
+        Title="MainWindow" Height="500" Width="800" ResizeMode="CanMinimize">
+    <Grid>
+        <Frame x:Name="mainFrame" Content="Frame" Margin="0,0,-5.667,-1.333"/>
+        <Button x:Name="btnProfile" Content="Profile" Click="profileButton_btn_Click" HorizontalAlignment="Left" Margin="0,22,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnDashboard" Content="Dashboard" Click="dashboardButton_btn_Click" HorizontalAlignment="Left" Margin="0,61,0,0" VerticalAlignment="Top" Width="75"/>
+    </Grid>
 </basic1:MyWindow>

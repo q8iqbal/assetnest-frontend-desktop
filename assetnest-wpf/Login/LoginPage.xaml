@@ -15,7 +15,7 @@
     <basic:MyGrid>
         <Image HorizontalAlignment="Center" Height="71" Margin="0,-240,0,0" VerticalAlignment="Center" Width="291" Source="Group 22@2x.png"/>
         <TextBox HorizontalAlignment="Center" Height="34" Margin="0,-47,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="292"/>
-        <TextBox HorizontalAlignment="Center" Height="28" Margin="0,0,0,-51" TextWrapping="Wrap" VerticalAlignment="Center" Width="291" TextChanged="TextBox_TextChanged"/>
+        <TextBox HorizontalAlignment="Center" Height="28" Margin="0,0,0,-51" TextWrapping="Wrap" VerticalAlignment="Center" Width="291"/>
         <Button Content="Sign In" HorizontalAlignment="Center" Margin="254,288,254,138" VerticalAlignment="Center" Width="292" Height="24"/>
         <TextBlock HorizontalAlignment="Left" Margin="286,336,0,0" TextWrapping="Wrap" Text="Doesn't have account yet?" VerticalAlignment="Top" Width="142"/>
         <TextBlock x:Name="t_register" HorizontalAlignment="Left" Margin="428,336,0,0" TextWrapping="Wrap" Text="Register now" VerticalAlignment="Top" Width="96" Cursor=""/>
