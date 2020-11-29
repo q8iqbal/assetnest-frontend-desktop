@@ -16,22 +16,31 @@ namespace assetnest_wpf.Profile
 
         }
 
-        public async void profile(string role, string name, string email)
+        public object ApiConstant { get; private set; }
+
+        public async void profile(String token)
         {
-            var client = new ApiClient("http://api.assetnest.me/");
+            var client = new ApiClient(ApiConstant.BASE_URL);
             var request = new ApiRequestBuilder();
 
             var req = request
                 .buildHttpRequest()
-                .addParameters("role", role)
-                .addParameters("name", name)
-                .addParameters("email", email)
                 .setEndpoint("api/users/")
-                .setRequestMethod(HttpMethod.Post);
-            //client.setOnSuccessRequest(setViewLoginStatus);
+                .setRequestMethod(HttpMethod.Get);
+            client.setAuthorizationToken(token);
+            client.setOnSuccessRequest(setUser);
             var response = await client.sendRequest(request.getApiRequestBundle());
-            Console.WriteLine(response.getJObject()["access_token"]);
-            client.setAuthorizationToken(response.getJObject()["access_token"].ToString());
+        }
+
+        private void setUser(HttpResponseBundle _response)
+        {
+            if (_response.getHttpResponseMessage().Content != null)
+            {
+                String status = _response.getHttpResponseMessage().ReasonPhrase;
+                Console.WriteLine("BAWAH");
+                Console.WriteLine(_response.getHttpResponseMessage<Root>().profile);
+                getView().callMethod("setUser", _response.getParsedObject<Root>().profile);
+            }
         }
     }
 }

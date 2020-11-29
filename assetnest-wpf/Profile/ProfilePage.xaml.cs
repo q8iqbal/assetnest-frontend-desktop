@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,20 +32,21 @@ namespace assetnest_wpf.Profile
         }
         private void initUIBuilders()
         {
-            //buttonBuilder = new BuilderButton();
+
         }
         private void initUIElements()
         {
-            //profileButton = buttonBuilder
-                //.activate(this, "profileButton_btn")
-                //.addOnClick(this, "onProfileButtonClick");
-            //nameTxtBox = txtBoxBuilder.activate(this, "nameValue_txt");
-            //roleTxtBox = txtBoxBuilder.activate(this, "roleValue_txt");
-            //emailTxtBox = txtBoxBuilder.activate(this, "emailValue_txt");
+         
         }
         public void onProfileButtonClick()
         {
             //getController().callMethod("profile", nameValue_txt.Text, roleValue_txt.Text, emailValue_txt.Text);
+        }
+
+        public getProfile()
+        {
+            String token = File.ReadAllText(@"userToken.txt");
+            //getController.callMethod("profile", token);
         }
     }
 }
