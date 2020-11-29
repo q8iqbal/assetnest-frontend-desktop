@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Velacro.Api;
 using Velacro.Basic;
+using assetnest_wpf.Model;
 
 namespace assetnest_wpf.Profile
 {
@@ -20,12 +21,12 @@ namespace assetnest_wpf.Profile
 
         public async void profile(String token)
         {
-            var client = new ApiClient(ApiConstant.BASE_URL);
+            var client = new ApiClient("http://api.assetnest.me/");
             var request = new ApiRequestBuilder();
 
             var req = request
                 .buildHttpRequest()
-                .setEndpoint("api/users/")
+                .setEndpoint("api.assetnest.me/users")
                 .setRequestMethod(HttpMethod.Get);
             client.setAuthorizationToken(token);
             client.setOnSuccessRequest(setUser);
@@ -38,8 +39,8 @@ namespace assetnest_wpf.Profile
             {
                 String status = _response.getHttpResponseMessage().ReasonPhrase;
                 Console.WriteLine("BAWAH");
-                Console.WriteLine(_response.getHttpResponseMessage<Root>().profile);
-                getView().callMethod("setUser", _response.getParsedObject<Root>().profile);
+                Console.WriteLine(_response.getParsedObject<Root>().profile);
+                getView().callMethod("setProfile", _response.getParsedObject<Root>().profile);
             }
         }
     }
