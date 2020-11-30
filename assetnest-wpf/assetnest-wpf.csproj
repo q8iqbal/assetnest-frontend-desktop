@@ -47,6 +47,7 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>Framework\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="RestSharp">
       <HintPath>Framework\RestSharp.dll</HintPath>
     </Reference>
@@ -84,6 +85,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="EditStaff\EditStaffPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Login\LoginPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -98,6 +103,9 @@
     </Compile>
     <Compile Include="EditProfile\EditProfilePage.xaml.cs">
       <DependentUpon>EditProfilePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditStaff\EditStaffPage.xaml.cs">
+      <DependentUpon>EditStaffPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Login\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
@@ -142,7 +150,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Assets\" />
     <Folder Include="Register\" />
   </ItemGroup>
   <ItemGroup>
@@ -152,7 +159,7 @@
     <Resource Include="Login\Group 22%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="EditProfile\Group 22%402x.png" />
+    <Resource Include="Assets\profile.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
