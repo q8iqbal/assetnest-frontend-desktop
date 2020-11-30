@@ -35,8 +35,8 @@ namespace assetnest_wpf.Profile
         private void initUIElements()
         {
             //profileButton = buttonBuilder
-                //.activate(this, "profileButton_btn")
-                //.addOnClick(this, "onProfileButtonClick");
+            //.activate(this, "profileButton_btn")
+            //.addOnClick(this, "onProfileButtonClick");
             //emailTxtBox = txtBoxBuilder.activate(this, "email_txt");
         }
         public void onProfileButtonClick()
