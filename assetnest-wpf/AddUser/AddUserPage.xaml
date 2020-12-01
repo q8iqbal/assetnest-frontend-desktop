@@ -1,0 +1,24 @@
+﻿<Window x:Class="assetnest_wpf.AddUser.AddUserPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:assetnest_wpf.AddUser"
+        mc:Ignorable="d"
+        Title="AddUserPage" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBox Name="staffName_txt" Grid.Row="0" HorizontalAlignment="Center" Grid.Column="0" Height="23" TextWrapping="Wrap" Text="Staff Name" Width="176" Margin="212,96,212,-95"/>
+        <TextBox Name="email_txt" Grid.Row="0" Grid.Column="0" Height="23" TextWrapping="Wrap" Text="Email" Width="176" Margin="212,124,212,-123"/>
+        <Button Name="addUser_btn"  Grid.Row="0" Grid.Column="0" Content="Add User" Width="176" Margin="309,196,308.333,-196.333"/>
+        <ListBox Name="role_lb" HorizontalAlignment="Left" Height="25" Margin="309,156,0,-153" VerticalAlignment="Top" Width="176">
+            <ListBoxItem Content="Employee"/>
+            <ListBoxItem Content="Owner"/>
+        </ListBox>
+    </Grid>
+</Window>
