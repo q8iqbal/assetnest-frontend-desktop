@@ -1,0 +1,22 @@
+﻿<basic:MyPage  x:Class="assetnest_wpf.View.Profile.ProfilePage"
+      xmlns:basic="clr-namespace:Velacro.UIElements.Basic;assembly=Velacro" 
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:assetnest_wpf.View.Profile"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="600"
+      Title="ProfilePage">
+    <basic:MyGrid>
+        <Button Content="Logout" Background="#F85E5E" FontFamily="Poppins-Medium" FontSize="20" Foreground="White" HorizontalAlignment="Left" Margin="461,342,0,0" VerticalAlignment="Top" Width="75"/>
+        <Image HorizontalAlignment="Left" Height="100" Margin="47,146,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Content="" Foreground="#FF7B4B" FontFamily="Poppins-Medium" FontSize="38" HorizontalAlignment="Left" Margin="60,36,0,0" VerticalAlignment="Top"/>
+        <Label Content="| " Foreground="Black" FontFamily="Poppins-Medium" FontSize="38" HorizontalAlignment="Left" Margin="187,34,0,0" VerticalAlignment="Top"/>
+        <Label Content="Full Name" FontFamily="Montserrat-Medium" FontSize="20" HorizontalAlignment="Left" Margin="187,146,0,0" VerticalAlignment="Top"/>
+        <Label Content="Role" FontFamily="Montserrat-Medium" FontSize="20" HorizontalAlignment="Left" Margin="187,177,0,0" VerticalAlignment="Top" Width="137"/>
+        <Label Content="Email" FontFamily="Montserrat-Medium" FontSize="20" HorizontalAlignment="Left" Margin="187,208,0,0" VerticalAlignment="Top"/>
+        <Label Content="Fixed Assets Management System Powered by" FontSize="18" HorizontalAlignment="Left" Margin="122,406,0,0" VerticalAlignment="Top"/>
+        <Label Content="AssetNest" Foreground="#FF7B4B" FontFamily="Poppins-Regular" FontSize="18" HorizontalAlignment="Left" Margin="501,409,0,0" VerticalAlignment="Top"/>
+    </basic:MyGrid>
+</basic:MyPage>
