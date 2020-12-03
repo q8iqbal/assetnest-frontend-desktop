@@ -1,5 +1,4 @@
-﻿using assetnest_wpf.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -17,16 +16,14 @@ namespace assetnest_wpf.Profile
 
         }
 
-        public object ApiConstant { get; private set; }
-
         public async void profile(String token)
         {
-            var client = new ApiClient("http://api.assetnest.me/");
+            var client = new ApiClient("http://api.assetnest.me");
             var request = new ApiRequestBuilder();
 
             var req = request
                 .buildHttpRequest()
-                .setEndpoint("api.assetnest.me/users")
+                .setEndpoint("/users/6")
                 .setRequestMethod(HttpMethod.Get);
             client.setAuthorizationToken(token);
             client.setOnSuccessRequest(setUser);
@@ -38,9 +35,8 @@ namespace assetnest_wpf.Profile
             if (_response.getHttpResponseMessage().Content != null)
             {
                 String status = _response.getHttpResponseMessage().ReasonPhrase;
-                Console.WriteLine("BAWAH");
-                Console.WriteLine(_response.getParsedObject<Root>().profile);
-                getView().callMethod("setProfile", _response.getParsedObject<Root>().profile);
+                Console.WriteLine(_response.getParsedObject<RootModelProfile>().data);
+                getView().callMethod("setProfile", _response.getParsedObject<RootModelProfile>().data);
             }
         }
     }

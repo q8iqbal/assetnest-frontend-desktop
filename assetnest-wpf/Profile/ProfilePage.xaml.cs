@@ -1,25 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Velacro.UIElements.Basic;
-using assetnest_wpf.Model;
+using Velacro.UIElements.TextBlock;
 
 namespace assetnest_wpf.Profile
 {
     public partial class ProfilePage : MyPage
     {
+        private IMyTextBlock roleTxtBlock;
+        private IMyTextBlock nameTxtBlock;
+        private IMyTextBlock nameValueTxtBlock; 
+        private IMyTextBlock roleValueTxtBlock;
+        private IMyTextBlock emailTxtBlock; 
+        private BuilderTextBlock txtBlockBuilder;
 
         public ProfilePage()
         {
@@ -30,24 +23,32 @@ namespace assetnest_wpf.Profile
             initUIElements();
             getProfile();
         }
-        
-        public void setProfile(List<ModelProfile> profiles)
+
+        public void setProfile(ModelProfile profiles)
         {
-            this.Dispatcher.Invoke(() =>
-            {
-                profileData.ItemsSource = profiles;
+            this.Dispatcher.Invoke(() => {
+                roleTxtBlock.setText(profiles.role);
+                nameTxtBlock.setText(profiles.name);
+                nameValueTxtBlock.setText(profiles.name);
+                roleValueTxtBlock.setText(profiles.role);
+                emailTxtBlock.setText(profiles.email);
             });
         }
-        
+
         private void initUIBuilders()
         {
-            
+            txtBlockBuilder = new BuilderTextBlock();
         }
-        
+
         private void initUIElements()
         {
-            
+            roleTxtBlock = txtBlockBuilder.activate(this, "roleText");
+            nameTxtBlock = txtBlockBuilder.activate(this, "nameText");
+            nameValueTxtBlock = txtBlockBuilder.activate(this, "nameValueText");
+            roleValueTxtBlock = txtBlockBuilder.activate(this, "roleValueText");
+            emailTxtBlock = txtBlockBuilder.activate(this, "emailValueText");
         }
+
         private void getProfile()
         {
             String token = File.ReadAllText(@"userToken.txt");
