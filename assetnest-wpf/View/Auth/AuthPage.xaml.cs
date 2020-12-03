@@ -93,9 +93,9 @@ namespace assetnest_wpf.View.Auth
 
         public void onSuccessLogin()
         {
-            ProfilePage page = new ProfilePage();
-            NavigationService.Navigate(page);
-            //this.onFailedLogin(StorageUtil.Instance.company.name);
+            //ProfilePage page = new ProfilePage();
+            //NavigationService.Navigate(page);
+            this.onFailedLogin(StorageUtil.Instance.company.name);
         }
 
         public void onFailedLogin(string message)

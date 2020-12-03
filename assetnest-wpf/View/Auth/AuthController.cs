@@ -35,6 +35,7 @@ namespace assetnest_wpf.View.Auth
             {
                 ApiUtil.Instance.setToken(response.Data.token);
                 StorageUtil.Instance.user = response.Data.user;
+                StorageUtil.Instance.token = response.Data.token;
                 var req = new RestRequest("companies", Method.GET);
                 var respons = await client.ExecuteAsync<GetCompanyResponse>(req);
                 if (respons.IsSuccessful)
