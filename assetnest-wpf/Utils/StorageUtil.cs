@@ -10,8 +10,8 @@ namespace assetnest_wpf.Utils
     public sealed class StorageUtil
     {
         private static readonly StorageUtil instance = new StorageUtil();
-        private User user { get; set; } 
-        private Company company { get; set; }
+        public User user { get; set; } 
+        public Company company { get; set; }
 
         static StorageUtil(){}
         private StorageUtil(){}

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using assetnest_wpf.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -13,7 +14,7 @@ namespace assetnest_wpf.Profile
     {
         public ProfileController(IMyView _myView) : base(_myView)
         {
-
+            Console.WriteLine(StorageUtil.Instance.company.name);
         }
 
         public async void profile(string role, string name, string email)

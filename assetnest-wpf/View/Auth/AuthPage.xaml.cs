@@ -14,6 +14,13 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Velacro.UIElements.Basic;
 
+using ToastNotifications;
+using ToastNotifications.Lifetime;
+using ToastNotifications.Position;
+using ToastNotifications.Messages;
+using assetnest_wpf.Utils;
+using assetnest_wpf.Profile;
+
 namespace assetnest_wpf.View.Auth
 {
     /// <summary>
@@ -22,6 +29,21 @@ namespace assetnest_wpf.View.Auth
     public partial class AuthPage : Page
     {
         private AuthController controller;
+        private Notifier notifier = new Notifier(cfg =>
+        {
+            cfg.PositionProvider = new WindowPositionProvider(
+                parentWindow: Application.Current.MainWindow,
+                corner: Corner.TopRight,
+                offsetX: 10,
+                offsetY: 10);
+
+            cfg.LifetimeSupervisor = new TimeAndCountBasedLifetimeSupervisor(
+                notificationLifetime: TimeSpan.FromSeconds(2),
+                maximumNotificationCount: MaximumNotificationCount.FromCount(3));
+
+            cfg.Dispatcher = Application.Current.Dispatcher;
+        });
+
         public AuthPage()
         {
             InitializeComponent();
@@ -56,9 +78,6 @@ namespace assetnest_wpf.View.Auth
 
         private void bt_sign_in_Click(object sender, RoutedEventArgs e)
         {
-            //ProfilePage page = new ProfilePage();
-            //NavigationService.Navigate(page);
-            //getController().callMethod("sendLoginRequest", tb_email.Text, tb_password.Password.ToString());
             controller.sendLoginRequest(tb_email.Text, tb_password.Password.ToString());
         }
 
@@ -70,6 +89,18 @@ namespace assetnest_wpf.View.Auth
         public void endLoading()
         {
             pb_loading.Visibility = Visibility.Hidden;
+        }
+
+        public void onSuccessLogin()
+        {
+            ProfilePage page = new ProfilePage();
+            NavigationService.Navigate(page);
+            //this.onFailedLogin(StorageUtil.Instance.company.name);
+        }
+
+        public void onFailedLogin(string message)
+        {
+            notifier.ShowError(message);
         }
     }
 }
