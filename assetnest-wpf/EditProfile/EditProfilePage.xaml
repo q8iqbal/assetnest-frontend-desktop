@@ -10,9 +10,15 @@
       Title="EditProfilePage" Background="#f9f9f9">
 
     <Border Padding="20">
-        <StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Label  
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" Grid.Row="0">
+                <Label 
+                    Name="role_label"
                     Content="Owner" 
                     BorderBrush="#3E4243"
                     BorderThickness="0 0 1.5 0"
@@ -22,7 +28,8 @@
                     Padding="0 0 10 0"
                     VerticalAlignment="Center" />
 
-                <Label  
+                <Label 
+                    Name="name_label"
                     Content="Maulida Lumina" 
                     BorderBrush="#3E4243"
                     BorderThickness="1.5 0 0 0" 
@@ -33,20 +40,48 @@
                     VerticalAlignment="Center" />
 
             </StackPanel>
-            
-            <Grid Margin="0 20">
+
+            <Grid Margin="0 20" Grid.Row="1">
                 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                
-                <Image 
-                    Grid.Column="0" 
-                    Margin="10 0 20 0" 
-                    Source="../Assets/profile.png" 
-                    Width="150" />
-                
+
+                <Grid Grid.Column="0">
+
+                        <Ellipse
+                            Margin="10 0 20 0" 
+                            Name ="profileimage_ellipse"
+                             Height="150" Width="150">
+                            <Ellipse.ToolTip>
+                                <Image 
+                                    Name="profileimage_tooltip_image"
+                                    Source="../Assets/profile.png"/>
+                            </Ellipse.ToolTip>
+                            <Ellipse.Fill>
+                                <ImageBrush 
+                                    x:Name="profileimage_imagebrush"
+                                    ImageSource="../Assets/profile.png"
+                                    Stretch="UniformToFill"/>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                    <Button 
+                        Name="loadimage_button"
+                        Background="{x:Null}"
+                        BorderBrush="{x:Null}"
+                        Margin="35 5" 
+                        Padding="0"
+                        Width="Auto"
+                        Height="Auto"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom">
+                        <Image 
+                            Source="../Assets/camera.png" 
+                            Width="35" />
+                    </Button>
+                </Grid>
+
                 <Border 
                     Grid.Column="1" 
                     Background="#FFFFFF" 
@@ -59,145 +94,164 @@
                     </Border.Effect>
                     
                     <Grid Grid.Column="1">
-                    
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="0.75*"/>
-                            <ColumnDefinition Width="1.25*" />
+                            <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="1*" />
                         </Grid.ColumnDefinitions>
-                        
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        
-                        <Label
-                            Grid.Column="0" Grid.Row="0"
-                            Content="_Full Name"
-                            Foreground="#FF3E4243" 
-                            Margin="30 20 0 10"
-                            Padding="0 2"
-                            Target="{Binding ElementName=fullNameTextBox}"
-                            VerticalAlignment="Center" />
 
-                        <TextBox 
-                            Grid.Row="0" Grid.Column="1"
-                            x:Name="fullNameTextBox"
-                            Background="{x:Null}"
-                            BorderThickness="0 0 0 1" 
-                            FontWeight="Bold" 
-                            Foreground="#FF3E4243"
-                            Margin="10 20 30 10" 
-                            Padding="0 2" 
-                            Text="Maulida Lumina" />
+                        <Grid Grid.Column="0" Margin="30 20">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.75*"/>
+                                <ColumnDefinition Width="1.25*" />
+                            </Grid.ColumnDefinitions>
 
-                        <Label
-                            Grid.Row="1" Grid.Column="0"
-                            Content="_Role" 
-                            Foreground="#FF3E4243" 
-                            Margin="30 0 0 10"  
-                            Padding="0 2"
-                            Target="{Binding ElementName=roleTextBox}"
-                            VerticalAlignment="Center" />
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
 
-                        <TextBox 
-                            Grid.Column="1" Grid.Row="1"
-                            x:Name="roleTextBox"
-                            Background="{x:Null}"
-                            BorderBrush="{x:Null}"
-                            FontWeight="Bold" 
-                            Foreground="#FF3E4243" 
-                            IsReadOnly="True" 
-                            Margin="10 0 30 10" 
-                            Padding="0 2" 
-                            Text="Owner"  />
+                            <Label
+                                Grid.Column="0" Grid.Row="0"
+                                Content="_Full Name"
+                                FontWeight="Bold"
+                                Foreground="#FF3E4243"
+                                Padding="0 2"
+                                Target="{Binding ElementName=fullname_textbox}"
+                                VerticalAlignment="Center" />
 
-                        <Label
-                            Grid.Row="2" Grid.Column="0"
-                            Content="_Email"  
-                            Foreground="#FF3E4243" 
-                            Margin="30 0 0 10"
-                            Padding="0 2"
-                            Target="{Binding ElementName=emailTextBox}"
-                            VerticalAlignment="Center" />
+                            <TextBox 
+                                Grid.Row="0" Grid.Column="1"
+                                Name="fullname_textbox"
+                                Background="{x:Null}"
+                                BorderThickness="0 0 0 1" 
+                                FontWeight="Bold" 
+                                Foreground="#FF3E4243"
+                                Padding="0 2" 
+                                Text="Maulida Lumina" />
 
-                        <TextBox 
-                            Grid.Column="1" Grid.Row="2" 
-                            x:Name="emailTextBox"
-                            Background="{x:Null}"
-                            BorderThickness="0 0 0 1"
-                            FontWeight="Bold" 
-                            Foreground="#FF3E4243" 
-                            Margin="10 0 30 10" 
-                            Padding="0 2" 
-                            Text="maulida@gmail.com" />
+                            <Label
+                                Grid.Row="1" Grid.Column="0"
+                                Content="_Role" 
+                                FontWeight="Bold"
+                                Foreground="#FF3E4243"
+                                Padding="0 2"
+                                Target="{Binding ElementName=role_textbox}"
+                                VerticalAlignment="Center" />
 
-                        <Label 
-                            Grid.Row="3" Grid.Column="0" 
-                            Content="Password"
-                            Foreground="#FF3E4243" 
-                            Margin="30 0 0 20" 
-                            Padding="0 2"
-                            Target="{Binding ElementName=passwordPasswordBox}"
-                            VerticalAlignment="Center" />
-                        
-                        <PasswordBox 
-                            Grid.Column="1" Grid.Row="3"
-                            x:Name="passwordPasswordBox"
-                            Background="{x:Null}"
-                            BorderThickness="0 0 0 1"
-                            Foreground="#FF3E4243" 
-                            FontWeight="Bold" 
-                            Margin="10 0 30 20" 
-                            Padding="0 2" 
-                            Password="maulida" />
-                        
-                        <Border 
-                            Grid.Column="2" Grid.Row="3" 
-                            Padding="0 10 10 10">
+                            <TextBox 
+                                Grid.Column="1" Grid.Row="1"
+                                Name="role_textbox"
+                                Background="{x:Null}"
+                                BorderBrush="{x:Null}"  
+                                Focusable="False"
+                                FontWeight="Bold"
+                                Foreground="#FF3E4243" 
+                                IsReadOnly="True"
+                                Padding="0 2" 
+                                Text="Owner" />
 
+                            <Label
+                                Grid.Row="2" Grid.Column="0"
+                                Content="_Email" 
+                                FontWeight="Bold" 
+                                Foreground="#FF3E4243"
+                                Padding="0 2"
+                                Target="{Binding ElementName=email_textbox}"
+                                VerticalAlignment="Center" />
+
+                            <TextBox 
+                                Grid.Column="1" Grid.Row="2" 
+                                Name="email_textbox"
+                                Background="{x:Null}"
+                                BorderThickness="0 0 0 1"
+                                FontWeight="Bold" 
+                                Foreground="#FF3E4243" 
+                                Padding="0 2" 
+                                Text="maulida@gmail.com" />
+
+                            <Label 
+                                Grid.Row="3" Grid.Column="0"
+                                Content="_Password"
+                                FontWeight="Bold" 
+                                Foreground="#FF3E4243"
+                                Padding="0 2"
+                                Target="{Binding ElementName=password_passwordbox}"
+                                VerticalAlignment="Center" />
+
+                            <PasswordBox 
+                                Grid.Column="1" Grid.Row="3"
+                                Name="password_passwordbox"
+                                Background="{x:Null}"
+                                BorderThickness="0 0 0 1"
+                                Foreground="#FF3E4243" 
+                                FontWeight="Bold" 
+                                Padding="0 2" 
+                                Password="maulida" />
+                        </Grid>
+
+                        <Grid Grid.Column="1" Margin="0 0 10 10">
                             <StackPanel 
                                 HorizontalAlignment="Right"
-                                Orientation="Horizontal" >
+                                Orientation="Horizontal" 
+                                VerticalAlignment="Bottom">
 
                                 <Border 
                                     Background="#E2E2E2" 
                                     CornerRadius="7" 
-                                    Margin="5 0" 
-                                    Padding="5">
+                                    Margin="0 0 5 0">
                                     
                                     <Button 
+                                        Name="cancel_button"
                                         BorderThickness="0"
                                         Background="{x:Null}" 
                                         Content="Cancel" 
                                         FontWeight="Bold"
-                                        Foreground="#FF3E4243"
-                                        Padding="15 0" />
+                                        Foreground="#3E4243"
+                                        Width="80"/>
                                     
                                 </Border>
-                                
+
                                 <Border 
                                     Background="#FF7B4B" 
                                     CornerRadius="7" 
-                                    Margin="5 0" 
-                                    Padding="5">
+                                    Margin="5 0 0 0">
 
                                     <Button 
+                                        Name="save_button"
                                         BorderThickness="0" 
                                         Background="{x:Null}" 
                                         Content="Save" 
                                         FontWeight="Bold"
                                         Foreground="#FFFFFF" 
-                                        Padding="15 0" />
+                                        Width="80"/>
                                 
                                 </Border>
                             </StackPanel>
-                        </Border>
+                        </Grid>
                     </Grid>
                 </Border>
             </Grid>
-        </StackPanel>
+            <Grid Grid.Row="2">
+                <StackPanel 
+                    HorizontalAlignment="Right" 
+                    Orientation="Horizontal" 
+                    VerticalAlignment="Bottom">
+                    
+                    <TextBlock 
+                        Text="Fixed Assets Management System Powered by " 
+                        FontWeight="Bold" 
+                        FontSize="14"
+                        Foreground="#3E4243" />
+                    
+                    <TextBlock 
+                        Text="AssetNest" 
+                        FontWeight="Bold"
+                        FontSize="14"
+                        Foreground="#FF7B4B" />
+                </StackPanel>
+            </Grid>
+        </Grid>
     </Border>
 </basic:MyPage>

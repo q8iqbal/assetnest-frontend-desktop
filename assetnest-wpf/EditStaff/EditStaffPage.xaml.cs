@@ -12,13 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Velacro.UIElements.Basic;
 
 namespace assetnest_wpf.EditStaff
 {
     /// <summary>
     /// Interaction logic for EditStaffPage.xaml
     /// </summary>
-    public partial class EditStaffPage : Page
+    public partial class EditStaffPage : MyPage
     {
         public EditStaffPage()
         {
