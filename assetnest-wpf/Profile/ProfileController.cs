@@ -36,6 +36,7 @@ namespace assetnest_wpf.Profile
             {
                 String status = _response.getHttpResponseMessage().ReasonPhrase;
                 Console.WriteLine(_response.getParsedObject<RootModelProfile>().data);
+                //Console.WriteLine(_response.getJObject().ToString());
                 getView().callMethod("setProfile", _response.getParsedObject<RootModelProfile>().data);
             }
         }
