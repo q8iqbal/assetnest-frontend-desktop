@@ -20,7 +20,6 @@ namespace assetnest_wpf.ListUser
 
             var req = request
                 .buildHttpRequest()
-                //.addParameters("page","2")
                 .setEndpoint("/users?page=2")
                 .setRequestMethod(HttpMethod.Get);
             //Console.WriteLine(req.getApiRequestBundle().ToString());
@@ -35,7 +34,7 @@ namespace assetnest_wpf.ListUser
             {
                 String status = _response.getHttpResponseMessage().ReasonPhrase;
                 Console.WriteLine(_response.getParsedObject<Root>().data.current_page);
-                //Console.WriteLine(_response.getJObject().ToString());
+                Console.WriteLine(_response.getJObject().ToString());
                 //getView().callMethod("setProfile", _response.getParsedObject<RootModelProfile>().data);
             }
         }
