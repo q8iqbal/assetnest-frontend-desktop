@@ -29,6 +29,9 @@ namespace assetnest_wpf.View.Auth
     public partial class AuthPage : Page
     {
         private AuthController controller;
+        public string email{ get; set; }
+        public string password { get; set; }
+
         private Notifier notifier = new Notifier(cfg =>
         {
             cfg.PositionProvider = new WindowPositionProvider(
@@ -78,7 +81,12 @@ namespace assetnest_wpf.View.Auth
 
         private void bt_sign_in_Click(object sender, RoutedEventArgs e)
         {
-            controller.sendLoginRequest(tb_email.Text, tb_password.Password.ToString());
+            loginValidate();
+            if(!Validation.GetHasError(tb_email) && !Validation.GetHasError(tb_password))
+            {
+                Console.WriteLine("oppai");
+            }
+            //controller.sendLoginRequest(tb_email.Text, tb_password.Password.ToString());
         }
 
         public void startLoading()
@@ -101,6 +109,12 @@ namespace assetnest_wpf.View.Auth
         public void onFailedLogin(string message)
         {
             notifier.ShowError(message);
+        }
+
+        private void loginValidate()
+        {
+            tb_email.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            tb_password.GetBindingExpression(PasswordBoxAssistant.BoundPassword).UpdateSource();
         }
     }
 }

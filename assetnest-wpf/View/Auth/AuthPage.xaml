@@ -1,11 +1,14 @@
-﻿<Page  xmlns:basic="clr-namespace:Velacro.UIElements.Basic;assembly=Velacro"
-               x:Class="assetnest_wpf.View.Auth.AuthPage"
+﻿<Page 
+      x:Class="assetnest_wpf.View.Auth.AuthPage"
+      x:Name="This"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:assetnest_wpf.View.Auth"
+      xmlns:ff="clr-namespace:assetnest_wpf.View"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:validate="clr-namespace:assetnest_wpf.Utils.Validations"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AuthPage">
@@ -25,18 +28,50 @@
                 <RowDefinition Height="40*"/>
                 <RowDefinition Height="40*"/>
             </Grid.RowDefinitions>
-            <TextBox x:Name="tb_email" Margin="0,10,0,0" 
+            <TextBox x:Name="tb_email" 
+                     Margin="0,10,0,0" 
                      TextWrapping="Wrap"
                      Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" 
                      materialDesign:HintAssist.Hint="Email"
-                     Grid.Row="0" AutomationProperties.IsRequiredForForm="True" 
-                     />
+                     materialDesign:ValidationAssist.UsePopup="True"
+                     materialDesign:ValidationAssist.PopupPlacement="Right" 
+                     Grid.Row="0" 
+                     AutomationProperties.IsRequiredForForm="True" 
+                     Padding="0" 
+                     >
+                <TextBox.Text>
+                    <Binding
+                        ElementName="This"
+                        Path="email"
+                        UpdateSourceTrigger="Explicit">
+                        <Binding.ValidationRules>
+                            <validate:NotEmptyValidationRule ValidationStep="RawProposedValue"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
             <PasswordBox x:Name="tb_password" 
                      Style="{StaticResource MaterialDesignOutlinedPasswordFieldPasswordBox}" 
                      Margin="0,10,0,0" 
                      Grid.Row="1" 
-                     materialDesign:HintAssist.Hint="Password" Padding="0" AutomationProperties.IsRequiredForForm="True"
-                     />
+                     materialDesign:HintAssist.Hint="Password" Padding="0" 
+                     AutomationProperties.IsRequiredForForm="True"
+                     materialDesign:ValidationAssist.UsePopup="True"
+                     materialDesign:ValidationAssist.PopupPlacement="Right" 
+                     ff:PasswordBoxAssistant.BindPassword="True"
+                     >
+                <ff:PasswordBoxAssistant.BoundPassword>
+                    <Binding 
+                        ElementName="This"
+                        Path="password"
+                        Mode="TwoWay"
+                        UpdateSourceTrigger="Explicit">
+                        <Binding.ValidationRules>
+                            <validate:NotEmptyValidationRule ValidationStep="RawProposedValue"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </ff:PasswordBoxAssistant.BoundPassword>
+            </PasswordBox>
             <Button x:Name="bt_sign_in" 
                     Content="Sign In"
                     Margin="0,20,0,0" 
