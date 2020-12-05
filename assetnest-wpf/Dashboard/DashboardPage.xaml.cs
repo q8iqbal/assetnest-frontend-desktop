@@ -24,22 +24,17 @@ namespace assetnest_wpf.Dashboard
     /// </summary>
     ///
     ///
-    public class TodoItem : INotifyPropertyChanged
-    {
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-    }
+    
     public partial class DashboardPage : MyPage
     {
         private IMyTextBlock totalTxtBlock;
         private IMyTextBlock adminTxtBlock;
         private IMyTextBlock employeeTxtBlock;
+        private int adminTotal;
+        private int userTotal;
         private BuilderTextBlock txtBlockBuilder;
-        private String token;
+
+        public ModelDashboard dashboardobj { get;set; }
         public DashboardPage()
         {
             InitializeComponent();
@@ -47,11 +42,14 @@ namespace assetnest_wpf.Dashboard
             setController(new DashboardController(this));
             initUIBuilders();
             initUIElements();
+            initDashboard();
         }
 
         private void initUIBuilders()
         {
             txtBlockBuilder = new BuilderTextBlock();
+            dashboardobj = new ModelDashboard { AdminValue_txt  = 105, EmployeeValue_txt = 3109 };
+            this.DataContext = dashboardobj;
         }
 
         private void initUIElements()
@@ -61,5 +59,35 @@ namespace assetnest_wpf.Dashboard
             employeeTxtBlock = txtBlockBuilder.activate(this, "employeeValue_txt");
         }
 
+        private void initDashboard()
+        {
+            getController().callMethod("getUserTotal", "admin");
+            getController().callMethod("getUserTotal", "user");
+            setTotal();
+        }
+
+        public void setAdminTotal(int adminTotal)
+        {
+            this.Dispatcher.Invoke(() => {
+                this.adminTotal = adminTotal;
+                adminTxtBlock.setText(adminTotal.ToString());
+            });
+        }
+
+        public void setUserTotal(int userTotal)
+        {
+            this.Dispatcher.Invoke(() => {
+                this.userTotal = userTotal;
+                employeeTxtBlock.setText(userTotal.ToString());
+            });
+        }
+
+        //noted buat ditanyakan 
+        private void setTotal()
+        {
+            this.Dispatcher.Invoke(() => {
+                totalTxtBlock.setText((adminTotal + userTotal).ToString());
+            });
+        }
     }
 }

@@ -1,32 +1,59 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace assetnest_wpf.Dashboard
 {
-    class ModelDashboard
+    public class ModelDashboard : INotifyPropertyChanged
     {
-        public class ModelDasboard
+        private int totalValue_txt;
+        private int adminValue_txt;
+        private int employeeValue_txt;
+
+        public int AdminValue_txt
         {
-            public int id { get; set; }
-            public int company_id { get; set; }
-            public int staff_id { get; set; }
-            public int employee_id { get; set; }
-            public int admin_id { get; set; }
+            get { return adminValue_txt; }
+            set
+            {
+                if(adminValue_txt != value)
+                {
+                    adminValue_txt = value;
+                    OnPropertyChanged();
+                }
+            }
         }
 
-        public class Dashboard
+        public int EmployeeValue_txt
         {
-            public int current_page { get; set; }
-            public ModelDashboard dashboard { get; set; }
+            get { return employeeValue_txt; }
+            set
+            {
+                if(employeeValue_txt != value)
+                {
+                    employeeValue_txt = value;
+                    OnPropertyChanged();
+                }
+            }
         }
 
-        public class Root
+        public int TotalValue_txt
         {
-            public string status { get; set; }
-            public Dashboard dashboard { get; set; }
+            get { return totalValue_txt = adminValue_txt + employeeValue_txt; }
         }
+
+        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            if(PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
     }
 }
