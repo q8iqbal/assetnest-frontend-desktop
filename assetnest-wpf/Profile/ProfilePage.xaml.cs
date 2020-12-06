@@ -2,6 +2,10 @@
 using System.IO;
 using Velacro.UIElements.Basic;
 using Velacro.UIElements.TextBlock;
+using Velacro.UIElements.Button;
+using System.Windows.Controls;
+using System.Windows.Media.Imaging;
+using assetnest_wpf.Login;
 
 namespace assetnest_wpf.Profile
 {
@@ -11,8 +15,11 @@ namespace assetnest_wpf.Profile
         private IMyTextBlock nameTxtBlock;
         private IMyTextBlock nameValueTxtBlock; 
         private IMyTextBlock roleValueTxtBlock;
-        private IMyTextBlock emailTxtBlock; 
+        private IMyTextBlock emailTxtBlock;
+        private IMyButton buttonLogout;
+        private Image image;
         private BuilderTextBlock txtBlockBuilder;
+        private BuilderButton buttonBuilder;
 
         public ProfilePage()
         {
@@ -32,12 +39,17 @@ namespace assetnest_wpf.Profile
                 nameValueTxtBlock.setText(profiles.name);
                 roleValueTxtBlock.setText(profiles.role);
                 emailTxtBlock.setText(profiles.email);
+
+                if(profiles.image != null)
+                    image.Source = new BitmapImage(new Uri("http://api.assetnest.me" + profiles.image));
             });
         }
 
         private void initUIBuilders()
         {
             txtBlockBuilder = new BuilderTextBlock();
+            buttonBuilder = new BuilderButton();
+            image = new Image();
         }
 
         private void initUIElements()
@@ -47,12 +59,28 @@ namespace assetnest_wpf.Profile
             nameValueTxtBlock = txtBlockBuilder.activate(this, "nameValueText");
             roleValueTxtBlock = txtBlockBuilder.activate(this, "roleValueText");
             emailTxtBlock = txtBlockBuilder.activate(this, "emailValueText");
+            image = this.FindName("user_img") as Image;
+            buttonLogout = this.buttonBuilder.activate(this, "btn_logout").addOnClick(this, "onLogoutClick");
         }
 
         private void getProfile()
         {
             String token = File.ReadAllText(@"userToken.txt");
             getController().callMethod("profile", token);
+        }
+
+        public void onLogoutClick()
+        {
+            String token = File.ReadAllText(@"userToken.txt");
+            getController().callMethod("logout", token);
+        }
+
+        public void navigateToLogin()
+        {
+            this.Dispatcher.Invoke(() =>
+            {
+                this.NavigationService.Navigate(new LoginPage());
+            });
         }
     }
 }

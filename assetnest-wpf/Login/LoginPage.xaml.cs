@@ -26,6 +26,5 @@ namespace assetnest_wpf.Login
         {
             InitializeComponent();
         }
-
     }
 }

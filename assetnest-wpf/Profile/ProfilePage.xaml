@@ -11,7 +11,9 @@
 
     <Grid>
         <Rectangle x:Name="profileList" Fill="WhiteSmoke" HorizontalAlignment="Left" Height="166" Margin="220,136,0,0" VerticalAlignment="Top" Width="537" RadiusY="15" RadiusX="15"/>
-        <Button x:Name="btn_logout" Content="Logout" Background="#F85E5E" FontFamily="Poppins-Medium" FontSize="20" Foreground="White" HorizontalAlignment="Left" Margin="666,255,0,0" VerticalAlignment="Top" Width="75"/>
+        <Border Background="#F85E5E" BorderThickness="0" Height="auto" Width="auto" Margin="624,250,76,167" CornerRadius="10" Padding="2 0">
+            <Button x:Name="btn_logout" BorderThickness="0" Background="#F85E5E" FontFamily="Poppins-Medium" Content="Logout" FontSize="20" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto" Height="auto"/>
+        </Border>
         <Image x:Name="user_img" Source="profile.png" HorizontalAlignment="Left" Height="137" Margin="45,136,0,0" VerticalAlignment="Top" Width="137"/>
 
         <TextBlock x:Name="roleText" Foreground="#FF7B4B" FontFamily="Poppins-Medium" FontSize="38" HorizontalAlignment="Left" Margin="65,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="117"/>
