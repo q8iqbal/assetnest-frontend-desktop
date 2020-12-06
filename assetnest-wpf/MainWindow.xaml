@@ -8,5 +8,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="796" ResizeMode="CanMinimize">
     <Frame x:Name="mainFrame" Content="Frame" Margin="0,0,-5.667,-1.333"/>
+    
 
 </basic1:MyWindow>

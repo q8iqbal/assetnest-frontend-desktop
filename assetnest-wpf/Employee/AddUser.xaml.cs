@@ -7,11 +7,12 @@ using Velacro.UIElements.Basic;
 using Velacro.UIElements.Button;
 using Velacro.UIElements.TextBlock;
 using Velacro.UIElements.TextBox;
+//using Velacro.UIElements.ComboBox;
 
 namespace assetnest_wpf.Employee
 {
     /// <summary>
-    /// Interaction logic for RegisterPage.xaml
+    /// Interaction logic for AddUser.xaml
     /// </summary>
     public partial class AddUser : MyPage
     {
@@ -26,12 +27,15 @@ namespace assetnest_wpf.Employee
 
         private BuilderButton buttonBuilder;
         private BuilderTextBox txtBoxBuilder;
+        private ComboBox comboBox;
+        //private BuilderComboBox comboBoxBuilder;
         private BuilderTextBlock txtBlockBuilder;
 
         private void initUIBuilders()
         {
             buttonBuilder = new BuilderButton();
             txtBoxBuilder = new BuilderTextBox();
+            //comboBoxBuilder = new BuilderComboBox();
             txtBlockBuilder = new BuilderTextBlock();
         }
 
@@ -39,6 +43,7 @@ namespace assetnest_wpf.Employee
         private IMyButton cancelButton;
         private IMyTextBox emailTxtBox;
         private IMyTextBox nameTxtBox;
+        //private IMyComboBox roleComboBox;
         private IMyTextBlock saveStatusTxtBlock;
 
         private void initUIElements()
@@ -47,16 +52,18 @@ namespace assetnest_wpf.Employee
                 .addOnClick(this, "onSaveButtonClick");
             nameTxtBox = txtBoxBuilder.activate(this, "name_txt");
             emailTxtBox = txtBoxBuilder.activate(this, "email_txt");
+            //roleComboBox = comboBoxBuilder.activate(this, "role_cb");
+            comboBox = this.FindName("role_cb") as ComboBox;
             saveStatusTxtBlock = txtBlockBuilder.activate(this, "saveStatus");
         }
 
         public void onSaveButtonClick()
         {
-            String token = File.ReadAllText(@"userToken.txt");
+            //String token = File.ReadAllText(@"userToken.txt");
             getController().callMethod("save",
                 nameTxtBox.getText(),
                 emailTxtBox.getText(),
-                token);
+                comboBox.SelectedValue.ToString());
         }
 
         public void setAddUserStatus(string _status)

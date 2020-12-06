@@ -22,19 +22,20 @@ namespace assetnest_wpf
 {
     public partial class MainWindow : MyWindow
     {
-        private MyPage profilePage;
+        //private MyPage profilePage;
         private MyPage addUser;
         public MainWindow()
         {
             InitializeComponent();
-            profilePage = new ProfilePage();
+            //profilePage = new ProfilePage();
             addUser = new AddUser();
+            mainFrame.Navigate(addUser);
         }
 
-        private void profileButton_btn_Click(object sender, RoutedEventArgs e)
+        /*private void profileButton_btn_Click(object sender, RoutedEventArgs e)
         {
             mainFrame.Navigate(profilePage);
-        }
+        }*/
 
         private void saveButton_btn_Click(object sender, RoutedEventArgs e)
         {

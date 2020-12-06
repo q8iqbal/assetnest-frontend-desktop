@@ -1,10 +1,10 @@
-﻿<basic:MyPage  x:Class="assetnest_wpf.Employee.AddUser"
-      xmlns:basic="clr-namespace:Velacro.UIElements.Basic;assembly=Velacro" 
+﻿<basic:MyPage  x:Class="assetnest_wpf.Employee.AddUser" 
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:assetnest_wpf.Employee"
+      xmlns:basic="clr-namespace:Velacro.UIElements.Basic;assembly=Velacro"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="600"
       Title="AddUser"
@@ -76,20 +76,6 @@
             Text="Email" 
             VerticalAlignment="Top" 
             Width="216"/>
-        <ListBox 
-            Name="role_lb"
-            HorizontalAlignment="Left" 
-            Height="35" 
-            Margin="203,214,0,-127" 
-            VerticalAlignment="Top" 
-            Width="216"
-            Background="#ffff"
-            Foreground="#e2e2e2"
-            FontFamily="Montserrat Medium"
-            FontSize="20">
-            <ListBoxItem Content="Employee"/>
-            <ListBoxItem Content="Admin"/>
-        </ListBox>
         <Button 
             Name="save_btn"
             Background="#ff7b4b"
@@ -109,11 +95,29 @@
             Foreground="#3e4243"
             FontFamily="Montserrat Medium"
             FontSize="20"
-            Content="Save" 
+            Content="Cancel" 
             HorizontalAlignment="Left" 
             Margin="241,276,0,-129.333" 
             VerticalAlignment="Top" 
             Width="82" Height="40"/>
+        <ComboBox 
+            Name="role_cb"
+            SelectedValuePath="Content"
+            HorizontalAlignment="Left" 
+            Margin="203,219,0,-35" 
+            VerticalAlignment="Top" 
+            Width="216" 
+            RenderTransformOrigin="1.428,-4.97" 
+            Height="28">
+            <ComboBoxItem 
+                Content="User" 
+                HorizontalAlignment="Left" 
+                Width="213.333333333333"/>
+            <ComboBoxItem 
+                Content="Admin" 
+                HorizontalAlignment="Left" 
+                Width="213.333333333333"/>
+        </ComboBox>
 
 
 
