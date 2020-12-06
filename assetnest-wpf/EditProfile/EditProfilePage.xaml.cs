@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,7 @@ using Velacro.UIElements.TextBox;
 using Velacro.UIElements.PasswordBox;
 //using assetnest_wpf.Model;
 using assetnest_wpf.Profile;
+using Newtonsoft.Json.Linq;
 
 namespace assetnest_wpf.EditProfile
 {
@@ -28,7 +30,8 @@ namespace assetnest_wpf.EditProfile
     /// </summary>
     public partial class EditProfilePage : MyPage
     {
-        int userId;
+        private int userId;
+        private MyList<MyFile> profileImage;
         private BuilderButton builderButton;
         private BuilderTextBox builderTextBox;
         private BuilderPasswordBox builderPasswordBox;
@@ -79,7 +82,10 @@ namespace assetnest_wpf.EditProfile
         }
 
         private void initProfile()
-        {/*
+        {
+            profileImage = new MyList<MyFile>();
+            profileImage.Add(null);
+            /*
             User user = new User()
             {
                 id = 1,
@@ -106,24 +112,32 @@ namespace assetnest_wpf.EditProfile
         }
 
         public void saveButton_Click()
-        {/*
-            string newName = fullNameTextBox.getText();
-            string newEmail = emailTextBox.getText();
-            string newPassword = passwordPasswordBox.getPassword();
-            string newImage = null;
+        {
+            string name = fullNameTextBox.getText();
+            string email = emailTextBox.getText();
+            string password = passwordPasswordBox.getPassword();
 
-            getController().callMethod("updateUser", userId, newName, newEmail, newImage);
-            getController().callMethod("updateUserPassword", userId, newPassword);
-            this.NavigationService.Navigate(new ProfilePage()); */
+            getController().callMethod("putUser", 1, name, email, password, profileImage[0]);
+//            getController().callMethod("updateUserPassword", userId, newPassword);
+//            this.NavigationService.Navigate(new ProfilePage()); 
         }
 
         public void loadImageButton_Click()
         {
-            MyList<BitmapImage> images = new OpenFile().openImageFile(false);
+            MyList<MyFile> imageChosen = new OpenFile().openFile(false);
 
-            if (images != null) { 
-                profileImageImageBrush.ImageSource = images[0];
-                profileImageTooltipImage.Source = images[0];
+            if (imageChosen[0] != null) 
+            {
+                if (imageChosen[0].extension.ToUpper().Equals(".PNG") ||
+                    imageChosen[0].extension.ToUpper().Equals(".JPEG") ||
+                    imageChosen[0].extension.ToUpper().Equals(".JPG"))
+                {
+                    profileImage.Clear();
+                    profileImage.Add(imageChosen[0]);
+                    
+                    profileImageImageBrush.ImageSource = new BitmapImage(new Uri(profileImage[0].fullPath));
+                    profileImageTooltipImage.Source = new BitmapImage(new Uri(profileImage[0].fullPath));
+                }
             }
         }
     }

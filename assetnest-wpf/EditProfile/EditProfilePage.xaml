@@ -19,7 +19,7 @@
             <StackPanel Orientation="Horizontal" Grid.Row="0">
                 <Label 
                     Name="role_label"
-                    Content="Owner" 
+                    Content="Role" 
                     BorderBrush="#3E4243"
                     BorderThickness="0 0 1.5 0"
                     FontSize="20"  
@@ -30,7 +30,7 @@
 
                 <Label 
                     Name="name_label"
-                    Content="Maulida Lumina" 
+                    Content="Name" 
                     BorderBrush="#3E4243"
                     BorderThickness="1.5 0 0 0" 
                     FontSize="20"  
@@ -49,23 +49,24 @@
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Column="0">
-
-                        <Ellipse
-                            Margin="10 0 20 0" 
-                            Name ="profileimage_ellipse"
-                             Height="150" Width="150">
-                            <Ellipse.ToolTip>
+                    <Ellipse
+                        Margin="10 0 20 0" 
+                        Name ="profileimage_ellipse"
+                        Height="150" Width="150">
+                        <Ellipse.ToolTip>
+                            <ToolTip Placement="Right">
                                 <Image 
                                     Name="profileimage_tooltip_image"
                                     Source="../Assets/profile.png"/>
-                            </Ellipse.ToolTip>
-                            <Ellipse.Fill>
-                                <ImageBrush 
-                                    x:Name="profileimage_imagebrush"
-                                    ImageSource="../Assets/profile.png"
-                                    Stretch="UniformToFill"/>
-                            </Ellipse.Fill>
-                        </Ellipse>
+                            </ToolTip>
+                        </Ellipse.ToolTip>
+                        <Ellipse.Fill>
+                            <ImageBrush 
+                                x:Name="profileimage_imagebrush"
+                                ImageSource="../Assets/profile.png"
+                                Stretch="UniformToFill"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
                     <Button 
                         Name="loadimage_button"
                         Background="{x:Null}"
@@ -129,7 +130,7 @@
                                 FontWeight="Bold" 
                                 Foreground="#FF3E4243"
                                 Padding="0 2" 
-                                Text="Maulida Lumina" />
+                                Text="" />
 
                             <Label
                                 Grid.Row="1" Grid.Column="0"
@@ -150,7 +151,7 @@
                                 Foreground="#FF3E4243" 
                                 IsReadOnly="True"
                                 Padding="0 2" 
-                                Text="Owner" />
+                                Text="" />
 
                             <Label
                                 Grid.Row="2" Grid.Column="0"
@@ -169,7 +170,7 @@
                                 FontWeight="Bold" 
                                 Foreground="#FF3E4243" 
                                 Padding="0 2" 
-                                Text="maulida@gmail.com" />
+                                Text="" />
 
                             <Label 
                                 Grid.Row="3" Grid.Column="0"
@@ -188,7 +189,7 @@
                                 Foreground="#FF3E4243" 
                                 FontWeight="Bold" 
                                 Padding="0 2" 
-                                Password="maulida" />
+                                Password="" />
                         </Grid>
 
                         <Grid Grid.Column="1" Margin="0 0 10 10">

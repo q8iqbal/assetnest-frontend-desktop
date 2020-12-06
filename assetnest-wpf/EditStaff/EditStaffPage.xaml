@@ -53,9 +53,11 @@
                         Name ="staffimage_ellipse"
                         Height="130" Width="130">
                         <Ellipse.ToolTip>
-                            <Image 
-                                Name="staffimage_tooltip_image"
-                                Source="../Assets/profile.png"/>
+                            <ToolTip Placement="Right">
+                                <Image 
+                                    Name="staffimage_tooltip_image"
+                                    Source="../Assets/profile.png"/>
+                            </ToolTip>
                         </Ellipse.ToolTip>
                         <Ellipse.Fill>
                             <ImageBrush 
@@ -114,7 +116,7 @@
                                 Content="_Full Name"
                                 FontWeight="Bold"
                                 Foreground="#FF3E4243"
-                                Margin="0 0 0 10"
+                                Margin="0 0 0 5"
                                 Padding="0 2"
                                 Target="{Binding ElementName=fullname_textbox}"
                                 VerticalAlignment="Center" />
@@ -126,7 +128,7 @@
                                 BorderThickness="0 0 0 1" 
                                 FontWeight="Bold" 
                                 Foreground="#FF3E4243"
-                                Margin="0 0 0 10"
+                                Margin="0 0 0 5"
                                 Padding="0 2" 
                                 Text="Tiara Candina" />
 
@@ -135,7 +137,7 @@
                                 Content="_Role" 
                                 FontWeight="Bold"
                                 Foreground="#FF3E4243"
-                                Margin="0 0 0 10"
+                                Margin="0 0 0 5"
                                 Padding="0 2"
                                 Target="{Binding ElementName=role_combobox}"
                                 VerticalAlignment="Center" />
@@ -148,7 +150,7 @@
                                 Focusable="False"
                                 FontWeight="Bold"
                                 Foreground="#FF3E4243"
-                                Margin="0 0 0 10" 
+                                Margin="0 0 0 5" 
                                 Padding="2 5" 
                                 Text="Owner">
                                 <ComboBoxItem>User</ComboBoxItem>
