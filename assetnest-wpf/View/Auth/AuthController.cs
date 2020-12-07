@@ -1,4 +1,5 @@
 ﻿using assetnest_wpf.ApiResponse;
+using assetnest_wpf.Model;
 using assetnest_wpf.Utils;
 using Newtonsoft.Json.Linq;
 using RestSharp;
@@ -26,8 +27,19 @@ namespace assetnest_wpf.View.Auth
         public async void sendLoginRequest(String email, String password)
         {
             view.startLoading();
+            //JObject json=  JObject.FromObject(new { email=email, password=password });
+            //var req = new ApiRequestBuilder();
+            //req
+            //    .buildHttpRequest()
+            //    .addParameters("user", json.ToString())
+            //    .setEndpoint("login/mobile")
+            //    .setRequestMethod(HttpMethod.Post);
+
+            //var response = await ApiUtil.Instance.vClient.sendRequest(req.getApiRequestBundle());
+            //Console.WriteLine(response.getJObject()["token"]);
+
             var client = ApiUtil.Instance.client;
-            var request = new RestRequest("login/mobile",Method.POST);
+            var request = new RestRequest("login/mobile", Method.POST);
             request.AddJsonBody(new { user = new { email = email, password = password } });
             var response = await client.ExecuteAsync<LoginResponse>(request);
             view.endLoading();
@@ -46,7 +58,27 @@ namespace assetnest_wpf.View.Auth
             }
             else
             {
-                view.onFailedLogin("Invalid Credential");
+                view.showMessage("Invalid Credential");
+            }
+        }
+
+        public async void sendRegisterRequest(object user, object company)
+        {
+            view.startLoading();
+            var request = new RestRequest("register/", Method.POST);
+            request.AddJsonBody(new { user = user, company = company });
+            Console.WriteLine(new { user = user, company = company });
+            var client = ApiUtil.Instance.client;
+            var response = await client.ExecuteAsync(request);   
+            view.endLoading();
+
+            if (response.IsSuccessful)
+            {
+                view.onSuccessRegister();
+            }
+            else
+            {
+                view.showMessage("ga masok");
             }
         }
     }

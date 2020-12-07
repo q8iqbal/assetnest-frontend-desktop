@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Velacro.Api;
 
 namespace assetnest_wpf.Utils
 {
@@ -11,6 +12,7 @@ namespace assetnest_wpf.Utils
     {
         private static readonly ApiUtil instance = new ApiUtil();
         public RestClient client { get; }
+        public ApiClient vClient { get; }
 
         // Explicit static constructor to tell C# compiler
         // not to mark type as beforefieldinit
@@ -21,6 +23,7 @@ namespace assetnest_wpf.Utils
         private ApiUtil()
         {
             client = new RestClient(Constants.BASE_URL);
+            vClient = new ApiClient(Constants.BASE_URL);
         }
 
         public void setToken(String token)
