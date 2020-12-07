@@ -17,7 +17,6 @@ namespace assetnest_wpf.EditProfile
     {
         public EditProfileController(IMyView _myView) : base(_myView)
         {
-
         }
 
 
@@ -36,22 +35,38 @@ namespace assetnest_wpf.EditProfile
                 .setRequestMethod(HttpMethod.Post)
                 .setEndpoint("users/image");
             string token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9hcGkuYXNzZXRuZXN0Lm1lXC9sb2dpblwvbW9iaWxlIiwiaWF0IjoxNjA3MTM4MDA1LCJuYmYiOjE2MDcxMzgwMDUsImp0aSI6Im5pdWtZaW1iRnFKa2I5OEgiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.k91eXqRRdmihSbq3k-93BJZUeJmqS3Dmpun3sw2efbg";
+            HttpResponseBundle response = null;
 
             client.setAuthorizationToken(token);
 
-            var response = await client.sendRequest(request.getApiRequestBundle());
-
-            Trace.WriteLine(response.getJObject().ToString());
-
-            if (response.getHttpResponseMessage().IsSuccessStatusCode)
+            try
             {
-                if (response.getHttpResponseMessage().Content != null)
-                {
-                    JObject responseJSON = response.getJObject();
-                    JObject dataJSON = (JObject)responseJSON["data"];
-                    string imagePath = (string)dataJSON["path"];
+                response = await client.sendRequest(request.getApiRequestBundle());
+            }
+            catch(Exception e)
+            {
+                getView().callMethod("showErrorMessage", "Error uploading image. " + e.Message);
+            }
 
-                    return imagePath;
+            if (response != null)
+            {
+                Trace.WriteLine(response.getJObject().ToString());
+                if (response.getHttpResponseMessage().IsSuccessStatusCode)
+                {
+                    if (response.getHttpResponseMessage().Content != null)
+                    {
+                        JObject responseJSON = response.getJObject();
+                        JObject dataJSON = (JObject)responseJSON["data"];
+                        string imagePath = (string)dataJSON["path"];
+
+                        return imagePath;
+                    }
+                } 
+                else
+                {
+                    string reasonPhrase = response.getHttpResponseMessage().ReasonPhrase;
+                    getView().callMethod("showErrorMessage", 
+                                         "Error uploading image. Reason Phrase: " + reasonPhrase);
                 }
             }
 
@@ -81,11 +96,45 @@ namespace assetnest_wpf.EditProfile
                 .addJSON<JObject>(user);
             var requestBundle = request.getApiRequestBundle();
             string token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9hcGkuYXNzZXRuZXN0Lm1lXC9sb2dpblwvbW9iaWxlIiwiaWF0IjoxNjA3MTM4MDA1LCJuYmYiOjE2MDcxMzgwMDUsImp0aSI6Im5pdWtZaW1iRnFKa2I5OEgiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.k91eXqRRdmihSbq3k-93BJZUeJmqS3Dmpun3sw2efbg";
+            HttpResponseBundle response = null;
 
             Trace.WriteLine("Request : " + requestBundle.getJSON());
             client.setAuthorizationToken(token);
-            
-            var response = await client.sendRequest(request.getApiRequestBundle());
+            client.setOnSuccessRequest(onSuccessPutUser);
+            client.setOnFailedRequest(onFailedPutUser);
+
+            try
+            {
+                response = await client.sendRequest(request.getApiRequestBundle());
+            } 
+            catch(Exception e)
+            {
+                getView().callMethod("showErrorMessage", "Error updating profile. " + e.Message);
+            }
+        }
+
+        private async void onSuccessPutUser(HttpResponseBundle _response)
+        {
+            string reasonPhrase = "";
+
+            if (_response.getHttpResponseMessage().Content != null)
+            {
+                Trace.WriteLine(await _response.getHttpResponseMessage().Content.ReadAsStringAsync());
+                reasonPhrase = "Reason Phrase: " + _response.getHttpResponseMessage().ReasonPhrase;
+            }
+            getView().callMethod("showSuccessMessage", "Profile updated successfully. " + reasonPhrase);
+        }
+
+        private async void onFailedPutUser(HttpResponseBundle _response)
+        {
+            string reasonPhrase = "";
+
+            if (_response.getHttpResponseMessage().Content != null)
+            {
+                Trace.WriteLine(await _response.getHttpResponseMessage().Content.ReadAsStringAsync());
+                reasonPhrase = "Reason Phrase: " + _response.getHttpResponseMessage().ReasonPhrase;
+            }
+            getView().callMethod("showSuccessMessage", "Profile updated successfully. " + reasonPhrase);
         }
 
         public async Task<JObject> getUser(int user_id)

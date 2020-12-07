@@ -21,6 +21,7 @@ using Velacro.UIElements.TextBox;
 using Velacro.UIElements.PasswordBox;
 //using assetnest_wpf.Model;
 using assetnest_wpf.Profile;
+using assetnest_wpf.Model;
 using Newtonsoft.Json.Linq;
 
 namespace assetnest_wpf.EditProfile
@@ -85,7 +86,7 @@ namespace assetnest_wpf.EditProfile
         {
             profileImage = new MyList<MyFile>();
             profileImage.Add(null);
-            /*
+            
             User user = new User()
             {
                 id = 1,
@@ -93,7 +94,6 @@ namespace assetnest_wpf.EditProfile
                 company_id = 1,
                 email = "andizain@gmail.com",
                 image = null,
-                password = "andizain",
                 role = "Owner"
             };
 
@@ -103,42 +103,89 @@ namespace assetnest_wpf.EditProfile
             fullNameTextBox.setText(user.name);
             roleTextBox.setText(user.role);
             emailTextBox.setText(user.email);
-            passwordPasswordBox.setPassword(user.password);*/
         }
 
         public void cancelButton_Click() 
-        {/*
-            this.NavigationService.Navigate(new ProfilePage()); */
+        {
+            redirectToProfilePage();
         }
 
         public void saveButton_Click()
         {
+            string confirmationMessage = "Proceed update profile?";
             string name = fullNameTextBox.getText();
             string email = emailTextBox.getText();
             string password = passwordPasswordBox.getPassword();
-
-            getController().callMethod("putUser", 1, name, email, password, profileImage[0]);
+            MessageBoxResult confirmationResult = showConfirmationMessage(confirmationMessage);
+            
+            switch (confirmationResult)
+            {
+                case MessageBoxResult.Yes:
+                    getController().callMethod("putUser", 1, name, email, password, profileImage[0]);
+                    break;
+                case MessageBoxResult.No:
+                    break;
+                default:
+                    break;
+            }
 //            getController().callMethod("updateUserPassword", userId, newPassword);
 //            this.NavigationService.Navigate(new ProfilePage()); 
         }
 
         public void loadImageButton_Click()
         {
-            MyList<MyFile> imageChosen = new OpenFile().openFile(false);
+            MyList<MyFile> chosenImage = new OpenFile().openFile(false);
 
-            if (imageChosen[0] != null) 
+            if (chosenImage[0] != null) 
             {
-                if (imageChosen[0].extension.ToUpper().Equals(".PNG") ||
-                    imageChosen[0].extension.ToUpper().Equals(".JPEG") ||
-                    imageChosen[0].extension.ToUpper().Equals(".JPG"))
+                if (chosenImage[0].extension.ToUpper().Equals(".PNG") ||
+                    chosenImage[0].extension.ToUpper().Equals(".JPEG") ||
+                    chosenImage[0].extension.ToUpper().Equals(".JPG"))
                 {
                     profileImage.Clear();
-                    profileImage.Add(imageChosen[0]);
+                    profileImage.Add(chosenImage[0]);
                     
                     profileImageImageBrush.ImageSource = new BitmapImage(new Uri(profileImage[0].fullPath));
                     profileImageTooltipImage.Source = new BitmapImage(new Uri(profileImage[0].fullPath));
                 }
             }
+        }
+
+        public void redirectToProfilePage()
+        {
+            this.NavigationService.Navigate(new ProfilePage());
+        }
+
+        public void redirectToLogin()
+        {
+            
+        }
+
+        public void showErrorMessage(string message)
+        {
+            showMessage(message, MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+
+        public void showSuccessMessage(string message)
+        {
+            showMessage(message, MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        public MessageBoxResult showConfirmationMessage(string message)
+        {
+            return showMessage(message, MessageBoxButton.YesNo, MessageBoxImage.Question);
+        }
+
+        private MessageBoxResult showMessage(string message, MessageBoxButton buttons, MessageBoxImage icon)
+        {
+            MessageBoxResult messageResult = MessageBoxResult.OK;
+
+            this.Dispatcher.Invoke(() =>
+            {
+                messageResult = MessageBox.Show(message, Application.Current.MainWindow.Title, buttons, icon);
+            });
+
+            return messageResult;
         }
     }
 }

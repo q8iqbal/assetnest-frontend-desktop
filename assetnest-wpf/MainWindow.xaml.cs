@@ -26,6 +26,7 @@ namespace assetnest_wpf
         public MainWindow()
         {
             InitializeComponent();
+//            AuthPage = /*new AuthPage(); */ new assetnest_wpf.EditStaff.EditStaffPage(null);
             AuthPage = /*new AuthPage(); */ new assetnest_wpf.EditProfile.EditProfilePage();
             mainFrame.Navigate(AuthPage);
         }

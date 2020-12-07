@@ -18,7 +18,7 @@
             </Grid.RowDefinitions>
             <StackPanel Orientation="Horizontal" Grid.Row="0">
                 <Label 
-                    Name="role_label"
+                    Name="staffrole_label"
                     Content="User" 
                     BorderBrush="#3E4243"
                     BorderThickness="0 0 1.5 0"
@@ -29,7 +29,7 @@
                     VerticalAlignment="Center" />
 
                 <Label 
-                    Name="name_label"
+                    Name="staffname_label"
                     Content="Tiara Candina" 
                     BorderBrush="#3E4243"
                     BorderThickness="1.5 0 0 0" 
@@ -66,20 +66,6 @@
                                 Stretch="UniformToFill"/>
                         </Ellipse.Fill>
                     </Ellipse>
-                    <Button 
-                        Name="loadimage_button"
-                        Background="{x:Null}"
-                        BorderBrush="{x:Null}"
-                        Margin="30 5" 
-                        Padding="0"
-                        Width="Auto"
-                        Height="Auto"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Bottom">
-                        <Image 
-                            Source="../Assets/camera.png" 
-                            Width="35" />
-                    </Button>
                 </Grid>
 
                 <Border 
@@ -152,7 +138,7 @@
                                 Foreground="#FF3E4243"
                                 Margin="0 0 0 5" 
                                 Padding="2 5" 
-                                Text="Owner">
+                                SelectedValuePath="Content">
                                 <ComboBoxItem>User</ComboBoxItem>
                                 <ComboBoxItem>Admin</ComboBoxItem>
                             </ComboBox>
