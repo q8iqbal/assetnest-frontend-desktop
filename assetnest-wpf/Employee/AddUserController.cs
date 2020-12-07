@@ -46,7 +46,7 @@ namespace assetnest_wpf.Employee
             {
                 string status = _response.getHttpResponseMessage().ReasonPhrase;
                 string response = await _response.getHttpResponseMessage().Content.ReadAsStringAsync();
-                //getView().callMethod("setAddUserStatus", status);
+                getView().callMethod("setAddUserStatus", status);
                 Trace.WriteLine(response);
             }
         }
