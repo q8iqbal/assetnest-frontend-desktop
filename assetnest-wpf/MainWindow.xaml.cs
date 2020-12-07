@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 using Velacro.DataStructures;
 using Velacro.UIElements.Basic;
 using assetnest_wpf.Profile;
-using assetnest_wpf.Auth;
+using assetnest_wpf.View.Auth;
 
 namespace assetnest_wpf
 {
@@ -29,6 +29,7 @@ namespace assetnest_wpf
 //            AuthPage = /*new AuthPage(); */ new assetnest_wpf.EditStaff.EditStaffPage(null);
             AuthPage = /*new AuthPage(); */ new assetnest_wpf.EditProfile.EditProfilePage();
             mainFrame.Navigate(AuthPage);
+            mainFrame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
         }
     }
 }
