@@ -30,11 +30,8 @@ namespace assetnest_wpf.Dashboard
         private IMyTextBlock totalTxtBlock;
         private IMyTextBlock adminTxtBlock;
         private IMyTextBlock employeeTxtBlock;
-        private int adminTotal;
-        private int userTotal;
         private BuilderTextBlock txtBlockBuilder;
 
-        public ModelDashboard dashboardobj { get;set; }
         public DashboardPage()
         {
             InitializeComponent();
@@ -48,8 +45,6 @@ namespace assetnest_wpf.Dashboard
         private void initUIBuilders()
         {
             txtBlockBuilder = new BuilderTextBlock();
-            dashboardobj = new ModelDashboard { AdminValue_txt  = 105, EmployeeValue_txt = 3109 };
-            this.DataContext = dashboardobj;
         }
 
         private void initUIElements()
@@ -63,13 +58,12 @@ namespace assetnest_wpf.Dashboard
         {
             getController().callMethod("getUserTotal", "admin");
             getController().callMethod("getUserTotal", "user");
-            setTotal();
+            getController().callMethod("getTotal");
         }
 
         public void setAdminTotal(int adminTotal)
         {
             this.Dispatcher.Invoke(() => {
-                this.adminTotal = adminTotal;
                 adminTxtBlock.setText(adminTotal.ToString());
             });
         }
@@ -77,16 +71,14 @@ namespace assetnest_wpf.Dashboard
         public void setUserTotal(int userTotal)
         {
             this.Dispatcher.Invoke(() => {
-                this.userTotal = userTotal;
                 employeeTxtBlock.setText(userTotal.ToString());
             });
         }
 
-        //noted buat ditanyakan 
-        private void setTotal()
+        public void setTotal(int total)
         {
             this.Dispatcher.Invoke(() => {
-                totalTxtBlock.setText((adminTotal + userTotal).ToString());
+                totalTxtBlock.setText(total.ToString());
             });
         }
     }

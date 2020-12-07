@@ -100,7 +100,6 @@
     <Compile Include="Dashboard\DashboardPage.xaml.cs">
       <DependentUpon>DashboardPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Dashboard\ModelDashboard.cs" />
     <Compile Include="Login\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
