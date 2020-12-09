@@ -10,14 +10,14 @@
       Title="ListUserPage">
 
     <Grid>
-        <Button Content="Add a new staff" HorizontalAlignment="Center" Padding="5" Margin="670,11,24,0" VerticalAlignment="Top" Background="#ff7b4b" FontFamily="Poppins" Foreground="White">
+        <Button Content="Add a new staff" HorizontalAlignment="Center" Padding="5" Margin="639,11,24,0" VerticalAlignment="Top" Background="#ff7b4b" FontFamily="Poppins" Foreground="White" Width="137">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="5"/>
                 </Style>
             </Button.Resources>
         </Button>
-        <TextBox HorizontalAlignment="Center" Height="23" Margin="470,16,146,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="184">
+        <TextBox HorizontalAlignment="Center" Height="23" Margin="436,16,180,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="184">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="5"/>
@@ -25,36 +25,34 @@
             </TextBox.Resources>
         </TextBox>
         <Button Content="All staff" HorizontalAlignment="Center" Margin="24,15,702,0" VerticalAlignment="Top" Background="Transparent" FontFamily="Poppins" BorderThickness="0"/>
-        <ScrollViewer Background="#FFF1F1F1" Margin="0,46,0,0">
-            <StackPanel>
-                <TextBlock Text="Items" Margin="10" FontSize="22" FontWeight="Medium"/>
-                <StackPanel Margin="20 0">
-                    <ItemsControl x:Name="ListViewProducts" ItemsSource="{Binding Product}">
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <Border Margin="10" Width="110" Height="160">
-                                    <StackPanel>
-                                        <Border Width="100" Height="100" CornerRadius="5" Margin="5">
-                                            <Border.Effect>
-                                                <DropShadowEffect ShadowDepth="1"/>
-                                            </Border.Effect>
-                                            <Border.Background>
-                                                <ImageBrush ImageSource="{Binding Image}"/>
-                                            </Border.Background>
-                                        </Border>
-                                        <TextBlock Margin="5" Text="{Binding role}" FontSize="17" FontFamily="Franklin Gothic Medium"/>
-                                        <TextBlock Margin="5 0" Text="{Binding name}" FontSize="15"/>
-                                    </StackPanel>
-                                </Border>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <WrapPanel/>
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                    </ItemsControl>
-                </StackPanel>
+        <ScrollViewer Margin="0,46,0,0">
+            <StackPanel Margin="20 0">
+                <ItemsControl x:Name="ListViewProducts" ItemsSource="{Binding Product}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Margin="10" Width="110" Height="460">
+                                <StackPanel>
+                                    <Border Width="100" Height="100" CornerRadius="5" Margin="5">
+                                        <Border.Effect>
+                                            <DropShadowEffect ShadowDepth="1"/>
+                                        </Border.Effect>
+                                        <Border.Background>
+                                            <ImageBrush ImageSource="{Binding Image}"/>
+                                        </Border.Background>
+                                    </Border>
+                                    <TextBlock Margin="5" Text="{Binding role}" FontSize="17" FontFamily="Franklin Gothic Medium"/>
+                                    <Image x:Name="user_img" Source="profile.png" />
+                                    <TextBlock Margin="5 0" Text="{Binding name}" FontSize="15"/>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
             </StackPanel>
         </ScrollViewer>
     </Grid>

@@ -140,5 +140,8 @@
     <Folder Include="Assets\" />
     <Folder Include="Register\" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ListUser\profile.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
