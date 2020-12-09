@@ -19,7 +19,7 @@
             <StackPanel Orientation="Horizontal" Grid.Row="0">
                 <Label 
                     Name="staffrole_label"
-                    Content="User" 
+                    Content="&lt;Role&gt;" 
                     BorderBrush="#3E4243"
                     BorderThickness="0 0 1.5 0"
                     FontSize="20"  
@@ -30,7 +30,7 @@
 
                 <Label 
                     Name="staffname_label"
-                    Content="Tiara Candina" 
+                    Content="&lt;Full Name&gt;" 
                     BorderBrush="#3E4243"
                     BorderThickness="1.5 0 0 0" 
                     FontSize="20"  
@@ -116,7 +116,7 @@
                                 Foreground="#FF3E4243"
                                 Margin="0 0 0 5"
                                 Padding="0 2" 
-                                Text="Tiara Candina" />
+                                Text="" />
 
                             <Label
                                 Grid.Row="1" Grid.Column="0"
@@ -162,7 +162,7 @@
                                 Foreground="#FF3E4243"
                                 IsReadOnly="True"
                                 Padding="0 2" 
-                                Text="trickster_candina@rocketmail.com" />
+                                Text="" />
                         </Grid>
 
                         <Grid Grid.Column="1" Margin="0 0 10 10">

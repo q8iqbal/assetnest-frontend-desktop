@@ -17,6 +17,7 @@ using Velacro.UIElements.Basic;
 using Velacro.UIElements.Button;
 using Velacro.UIElements.TextBox;
 using assetnest_wpf.Model;
+using assetnest_wpf.Utils;
 
 namespace assetnest_wpf.EditStaff
 {
@@ -39,13 +40,13 @@ namespace assetnest_wpf.EditStaff
         private ImageBrush staffImageImageBrush;
         private Image staffImageTooltipImage;
 
-        public EditStaffPage(User staff)
+        public EditStaffPage(int id)
         {
             InitializeComponent();
             setController(new EditStaffController(this));
             initUIBuilders();
             initUIElements();
-            initStaffProfile(staff);
+            getController().callMethod("getStaff", id);
         }
 
         private void initUIBuilders()
@@ -69,53 +70,90 @@ namespace assetnest_wpf.EditStaff
                 .addOnClick(this, "cancelButton_Click");
         }
 
-        private void initStaffProfile(User staff)
+        public void initStaff(User staff)
         {
-            staff = new User()
+            this.Dispatcher.Invoke(() =>
             {
-                id = 1,
-                company_id = 1,
-                name = "cinta",
-                role = "admin",
-                email = "cinta@gmail.com",
-                image = "/upload/user/U-1606353684.jpg"
-            };
+                string role = char.ToUpper(staff.role[0]) + staff.role.Substring(1);
 
-            string role = char.ToUpper(staff.role[0]) + staff.role.Substring(1);
+                staffId = staff.id;
+                staffImage = staff.image;
+                staffNameLabel.Content = staff.name;
+                staffRoleLabel.Content = role;
+                fullNameTextBox.setText(staff.name);
+                roleComboBox.SelectedValue = role;
+                emailTextBox.setText(staff.email);
+                if (staff.image != null)
+                {
+                    Uri imageUri = new Uri(Constants.BASE_URL + staff.image);
 
-            staffId = staff.id;
-            staffImage = staff.image;
-            staffNameLabel.Content = staff.name;
-            staffRoleLabel.Content = role;
-            fullNameTextBox.setText(staff.name);
-            roleComboBox.SelectedValue = role;
-            emailTextBox.setText(staff.email);
-            if (staff.image != null)
-            {
-                Uri imageUri = new Uri("http://api.assetnest.me/" + staff.image);
-
-                staffImageImageBrush.ImageSource = new BitmapImage(imageUri);
-                staffImageTooltipImage.Source = new BitmapImage(imageUri);
-            }
+                    staffImageImageBrush.ImageSource = new BitmapImage(imageUri);
+                    staffImageTooltipImage.Source = new BitmapImage(imageUri);
+                }
+            });
         }
 
         public void saveButton_Click()
         {
-            User newStaffData = new User()
-            {
-                id = staffId,
-                name = fullNameTextBox.getText(),
-                email = emailTextBox.getText(),
-                role = roleComboBox.SelectedValue.ToString(),
-                image = staffImage
-            };
+            string name = fullNameTextBox.getText();
+            string email = emailTextBox.getText();
+            string role = roleComboBox.SelectedValue.ToString();
 
-            getController().callMethod("updateStaff", staffId, newStaffData);
+            if (name.Equals("") || role.Equals(""))
+            {
+                showErrorMessage("All fillable fields are required.");
+
+                return;
+            }
+
+            switch (showConfirmationMessage("Proceed update staff?"))
+            {
+                case MessageBoxResult.OK:
+                    getController().callMethod("updateStaff", staffId, name, email, 
+                                               role, staffImage);
+                    break;
+                case MessageBoxResult.Cancel:
+                    break;
+                default:
+                    break;
+            }
         }
 
         public void cancelButton_Click()
         {
 
+        }
+
+        public void navigateToStaffPage()
+        {
+//            this.NavigationService.Navigate(new StaffPage(staffId));
+        }
+
+        public void showErrorMessage(string message)
+        {
+            showMessage(message, MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+
+        public void showSuccessMessage(string message)
+        {
+            showMessage(message, MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        public MessageBoxResult showConfirmationMessage(string message)
+        {
+            return showMessage(message, MessageBoxButton.OKCancel, MessageBoxImage.Question);
+        }
+
+        private MessageBoxResult showMessage(string message, MessageBoxButton buttons, MessageBoxImage icon)
+        {
+            MessageBoxResult messageResult = MessageBoxResult.OK;
+
+            this.Dispatcher.Invoke(() =>
+            {
+                messageResult = MessageBox.Show(message, Application.Current.MainWindow.Title, buttons, icon);
+            });
+
+            return messageResult;
         }
     }
 }

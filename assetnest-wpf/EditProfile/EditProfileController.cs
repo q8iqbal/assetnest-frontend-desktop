@@ -9,6 +9,7 @@ using System.Windows.Media.Imaging;
 using Velacro.Api;
 using Velacro.Basic;
 //using assetnest_wpf.Model;
+using assetnest_wpf.Utils;
 using Newtonsoft.Json.Linq;
 
 namespace assetnest_wpf.EditProfile
@@ -19,7 +20,6 @@ namespace assetnest_wpf.EditProfile
         {
         }
 
-
         private async Task<string> postUserImage(MyFile imageFile)
         {
             if (imageFile == null)
@@ -29,15 +29,14 @@ namespace assetnest_wpf.EditProfile
 
             MyList<string> fileKey = new MyList<string>() { "image" };
             MyList<MyFile> files = new MyList<MyFile>() { imageFile };
-            var client = new ApiClient("http://api.assetnest.me/");
+            var client = ApiUtil.Instance.vClient;
             var request = new ApiRequestBuilder()
                 .buildMultipartRequest(new MultiPartContent(files, fileKey))
                 .setRequestMethod(HttpMethod.Post)
                 .setEndpoint("users/image");
-            string token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9hcGkuYXNzZXRuZXN0Lm1lXC9sb2dpblwvbW9iaWxlIiwiaWF0IjoxNjA3MTM4MDA1LCJuYmYiOjE2MDcxMzgwMDUsImp0aSI6Im5pdWtZaW1iRnFKa2I5OEgiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.k91eXqRRdmihSbq3k-93BJZUeJmqS3Dmpun3sw2efbg";
             HttpResponseBundle response = null;
 
-            client.setAuthorizationToken(token);
+            client.setAuthorizationToken(StorageUtil.Instance.token);
 
             try
             {
@@ -73,8 +72,8 @@ namespace assetnest_wpf.EditProfile
             return null;
         }
 
-        public async void putUser(int user_id, string name, string email, 
-                                  string password, MyFile imageFile)
+        public async void updateUser(int user_id, string name, string email, 
+                                     string password, MyFile imageFile)
         {
             string imagePath = await postUserImage(imageFile);
             JObject userValue = new JObject();
@@ -87,7 +86,7 @@ namespace assetnest_wpf.EditProfile
             userValue.Add("password", password);
             user.Add("user", userValue);
 
-            var client = new ApiClient("http://api.assetnest.me/");
+            var client = ApiUtil.Instance.vClient;
             var requestBuilder = new ApiRequestBuilder();
             var request = requestBuilder
                 .buildHttpRequest()
@@ -95,11 +94,10 @@ namespace assetnest_wpf.EditProfile
                 .setEndpoint("users/" + user_id.ToString())
                 .addJSON<JObject>(user);
             var requestBundle = request.getApiRequestBundle();
-            string token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9hcGkuYXNzZXRuZXN0Lm1lXC9sb2dpblwvbW9iaWxlIiwiaWF0IjoxNjA3MTM4MDA1LCJuYmYiOjE2MDcxMzgwMDUsImp0aSI6Im5pdWtZaW1iRnFKa2I5OEgiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.k91eXqRRdmihSbq3k-93BJZUeJmqS3Dmpun3sw2efbg";
             HttpResponseBundle response = null;
 
             Trace.WriteLine("Request : " + requestBundle.getJSON());
-            client.setAuthorizationToken(token);
+            client.setAuthorizationToken(StorageUtil.Instance.token);
             client.setOnSuccessRequest(onSuccessPutUser);
             client.setOnFailedRequest(onFailedPutUser);
 
@@ -134,29 +132,28 @@ namespace assetnest_wpf.EditProfile
                 Trace.WriteLine(await _response.getHttpResponseMessage().Content.ReadAsStringAsync());
                 reasonPhrase = "Reason Phrase: " + _response.getHttpResponseMessage().ReasonPhrase;
             }
-            getView().callMethod("showSuccessMessage", "Profile updated successfully. " + reasonPhrase);
+            getView().callMethod("showErrorMessage", "Error updating profile. " + reasonPhrase);
         }
 
         public async Task<JObject> getUser(int user_id)
         {
-            var client = new ApiClient("http://api.assetnest.me/");
+            var client = ApiUtil.Instance.vClient;
             var requestBuilder = new ApiRequestBuilder();
             var request = requestBuilder
                 .buildHttpRequest()
                 .setRequestMethod(HttpMethod.Put)
                 .setEndpoint("users/" + user_id.ToString());
             var requestBundle = request.getApiRequestBundle();
-            string token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9hcGkuYXNzZXRuZXN0Lm1lXC9sb2dpblwvbW9iaWxlIiwiaWF0IjoxNjA3MTM4MDA1LCJuYmYiOjE2MDcxMzgwMDUsImp0aSI6Im5pdWtZaW1iRnFKa2I5OEgiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.k91eXqRRdmihSbq3k-93BJZUeJmqS3Dmpun3sw2efbg";
-
+            
             Trace.WriteLine("Request : " + requestBundle.getJSON());
-            client.setAuthorizationToken(token);
+            client.setAuthorizationToken(StorageUtil.Instance.token);
 
             var response = await client.sendRequest(request.getApiRequestBundle());
 
             return response.getJObject();
         }
 
-        private async void setViewUser(HttpResponseBundle _response)
+        private async void setUser(HttpResponseBundle _response)
         {
             HttpResponseMessage responseMessage = _response.getHttpResponseMessage();
             HttpContent responseContent = responseMessage.Content;

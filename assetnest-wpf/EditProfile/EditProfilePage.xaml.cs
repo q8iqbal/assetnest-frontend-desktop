@@ -13,16 +13,18 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+
 using Velacro.Basic;
 using Velacro.LocalFile;
 using Velacro.UIElements.Basic;
 using Velacro.UIElements.Button;
 using Velacro.UIElements.TextBox;
 using Velacro.UIElements.PasswordBox;
+
 //using assetnest_wpf.Model;
 using assetnest_wpf.Profile;
 using assetnest_wpf.Model;
-using Newtonsoft.Json.Linq;
+using assetnest_wpf.Utils;
 
 namespace assetnest_wpf.EditProfile
 {
@@ -84,9 +86,11 @@ namespace assetnest_wpf.EditProfile
 
         private void initProfile()
         {
+            User user = StorageUtil.Instance.user;
+
             profileImage = new MyList<MyFile>();
             profileImage.Add(null);
-            
+/*            
             User user = new User()
             {
                 id = 1,
@@ -96,7 +100,7 @@ namespace assetnest_wpf.EditProfile
                 image = null,
                 role = "Owner"
             };
-
+*/
             userId = user.id;
             roleLabel.Content = user.role;
             nameLabel.Content = user.name;
@@ -112,24 +116,29 @@ namespace assetnest_wpf.EditProfile
 
         public void saveButton_Click()
         {
-            string confirmationMessage = "Proceed update profile?";
             string name = fullNameTextBox.getText();
             string email = emailTextBox.getText();
             string password = passwordPasswordBox.getPassword();
-            MessageBoxResult confirmationResult = showConfirmationMessage(confirmationMessage);
-            
-            switch (confirmationResult)
+            MyFile image = profileImage[0];
+
+            if (name.Equals("") || email.Equals("") || password.Equals(""))
+            {
+                showErrorMessage("All fillable fields are required.");
+
+                return;
+            }
+
+            switch (showConfirmationMessage("Proceed update profile?"))
             {
                 case MessageBoxResult.Yes:
-                    getController().callMethod("putUser", 1, name, email, password, profileImage[0]);
+                    getController().callMethod("updateUser", userId, name, email, 
+                                               password, image);
                     break;
                 case MessageBoxResult.No:
                     break;
                 default:
                     break;
             }
-//            getController().callMethod("updateUserPassword", userId, newPassword);
-//            this.NavigationService.Navigate(new ProfilePage()); 
         }
 
         public void loadImageButton_Click()
