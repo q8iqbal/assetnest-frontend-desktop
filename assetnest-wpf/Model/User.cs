@@ -14,5 +14,6 @@ namespace assetnest_wpf.Model
         public string email { get; set; }
         public string image { get; set; }
         public string role { get; set; }
+        public string password { get; set; }
     }
 }
