@@ -1,4 +1,5 @@
 ﻿using RestSharp;
+using RestSharp.Serializers.NewtonsoftJson;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,7 @@ namespace assetnest_wpf.Utils
         private ApiUtil()
         {
             client = new RestClient(Constants.BASE_URL);
+            client.UseNewtonsoftJson();
             vClient = new ApiClient(Constants.BASE_URL);
         }
 

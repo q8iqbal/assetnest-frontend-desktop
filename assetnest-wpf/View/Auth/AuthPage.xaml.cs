@@ -22,6 +22,8 @@ using assetnest_wpf.Utils;
 using assetnest_wpf.Profile;
 using assetnest_wpf.Utils.Validations;
 using f = System.Windows.Forms;
+using RestSharp;
+using assetnest_wpf.Model;
 
 namespace assetnest_wpf.View.Auth
 {
@@ -33,6 +35,8 @@ namespace assetnest_wpf.View.Auth
         private AuthController controller;
         public string email{ get; set; }
         public string password { get; set; }
+        private string uImage = "";
+        private string cImage = "";
 
         public AuthPage()
         {
@@ -103,21 +107,21 @@ namespace assetnest_wpf.View.Auth
         {
             if (!registerCompanyValidate())
             {
-                object user = new
+                User user = new User()
                 {
                     name = tb_register_name.Text,
                     email = tb_register_email.Text,
                     password = tb_register_password.Password
                 };
 
-                object company = new
+                Company company = new Company()
                 {
                     name = tb_register_companyName.Text,
                     address = tb_register_address.Text,
                     phone = tb_register_phone.Text,
                     description = tb_register_desc.Text
                 };
-                controller.sendRegisterRequest(user, company);
+                controller.sendRegisterRequest(user, company, uImage, cImage);
             }
         }
 
@@ -266,6 +270,28 @@ namespace assetnest_wpf.View.Auth
                 var fill = new ImageBrush(new BitmapImage(new Uri(open.FileName)));
             }
 
+        }
+
+        private void bt_user_image_Click(object sender, RoutedEventArgs e)
+        {
+            f.OpenFileDialog temp = new f.OpenFileDialog();
+            temp.Filter = "Image Files(*.jpg; *.jpeg; *.png)|*.jpg; *.jpeg; *.png";
+            if (temp.ShowDialog() == f.DialogResult.OK)
+            {
+                tb_user_image.Text = temp.FileName;
+                uImage = temp.FileName;
+            }
+        }
+
+        private void bt_company_image_Click(object sender, RoutedEventArgs e)
+        {
+            f.OpenFileDialog temp = new f.OpenFileDialog();
+            temp.Filter = "Image Files(*.jpg; *.jpeg; *.png)|*.jpg; *.jpeg; *.png";
+            if (temp.ShowDialog() == f.DialogResult.OK)
+            {
+                tb_company_image.Text = temp.FileName;
+                cImage = temp.FileName;
+            }
         }
     }
 }
