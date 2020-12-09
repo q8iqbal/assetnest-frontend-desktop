@@ -10,6 +10,7 @@ namespace assetnest_wpf.ListUser
 {
     class ListUserController : MyController
     {
+
         public ListUserController(IMyView _myView) : base(_myView)
         {
         }
@@ -20,7 +21,7 @@ namespace assetnest_wpf.ListUser
 
             var req = request
                 .buildHttpRequest()
-                .setEndpoint("/users?page=2")
+                .setEndpoint("/users?page=1")
                 .setRequestMethod(HttpMethod.Get);
             //Console.WriteLine(req.getApiRequestBundle().ToString());
             client.setAuthorizationToken(token);
@@ -33,9 +34,18 @@ namespace assetnest_wpf.ListUser
             if (_response.getHttpResponseMessage().Content != null)
             {
                 String status = _response.getHttpResponseMessage().ReasonPhrase;
-                Console.WriteLine(_response.getParsedObject<Root>().data.current_page);
-                Console.WriteLine(_response.getJObject().ToString());
+                getView().callMethod("testList", _response.getParsedObject<Root>().data.data);
+
+                //testList();
+                //Console.WriteLine(_response.getParsedObject<Root>().data.data);
+                //Console.WriteLine(_response.getJObject().ToString());
                 //getView().callMethod("setProfile", _response.getParsedObject<RootModelProfile>().data);
+            }
+        }   
+        private void testList(List<Datum> data) {
+            foreach (var datum in data)
+            {
+                Console.WriteLine(datum.name);
             }
         }
     }

@@ -1,0 +1,12 @@
+﻿<UserControl x:Class="assetnest_wpf.ListUser.ListItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:assetnest_wpf.ListUser"
+             mc:Ignorable="d" Width="376.47" Height="386.471">
+    <Grid Margin="0,10,10,10">
+        <TextBlock x:Name="tbStr" HorizontalAlignment="Left" Margin="47,118,0,0" TextWrapping="Wrap" Text="STR" VerticalAlignment="Top" FontSize="100" Width="281"/>
+
+    </Grid>
+</UserControl>
