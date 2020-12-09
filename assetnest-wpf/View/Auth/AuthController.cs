@@ -10,6 +10,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Velacro.Api;
 using Velacro.Basic;
 
@@ -18,30 +19,18 @@ namespace assetnest_wpf.View.Auth
     class AuthController
     {
         private AuthPage view;
+        private RestClient client = ApiUtil.Instance.client;
         public AuthController(AuthPage view)
         {
-            ApiUtil apiUtil = ApiUtil.Instance;
             this.view = view;
         }
 
         public async void sendLoginRequest(String email, String password)
         {
             view.startLoading();
-            //JObject json=  JObject.FromObject(new { email=email, password=password });
-            //var req = new ApiRequestBuilder();
-            //req
-            //    .buildHttpRequest()
-            //    .addParameters("user", json.ToString())
-            //    .setEndpoint("login/mobile")
-            //    .setRequestMethod(HttpMethod.Post);
-
-            //var response = await ApiUtil.Instance.vClient.sendRequest(req.getApiRequestBundle());
-            //Console.WriteLine(response.getJObject()["token"]);
-
-            var client = ApiUtil.Instance.client;
             var request = new RestRequest("login/mobile", Method.POST);
             request.AddJsonBody(new { user = new { email = email, password = password } });
-            var response = await client.ExecuteAsync<LoginResponse>(request);
+            var response = await this.client.ExecuteAsync<LoginResponse>(request);
             view.endLoading();
             if (response.IsSuccessful)
             {
@@ -49,7 +38,7 @@ namespace assetnest_wpf.View.Auth
                 StorageUtil.Instance.user = response.Data.user;
                 StorageUtil.Instance.token = response.Data.token;
                 var req = new RestRequest("companies", Method.GET);
-                var respons = await client.ExecuteAsync<GetCompanyResponse>(req);
+                var respons = await this.client.ExecuteAsync<GetCompanyResponse>(req);
                 if (respons.IsSuccessful)
                 {
                     StorageUtil.Instance.company = respons.Data.data;
@@ -62,12 +51,44 @@ namespace assetnest_wpf.View.Auth
             }
         }
 
-        public async void sendRegisterRequest(object user, object company)
+        public async void sendRegisterRequest(User user, Company company, string uImage , string cImage)
         {
             view.startLoading();
             var request = new RestRequest("register/", Method.POST);
-            request.AddJsonBody(new { user = user, company = company });
-            Console.WriteLine(new { user = user, company = company });
+
+            if(!string.IsNullOrWhiteSpace(uImage))
+            {
+                Console.WriteLine("tes");
+                var req = new RestRequest("users/image", Method.POST);
+                req.AddFile("image",uImage);
+                var resp = await this.client.ExecuteAsync(req);
+                JObject obj = JObject.Parse(resp.Content);
+                user.image = obj["data"]["path"].ToString();
+            }
+
+            if (!string.IsNullOrWhiteSpace(cImage))
+            {
+                var req = new RestRequest("companies/image", Method.POST);
+                req.AddFile("image", cImage);
+                var resp = await this.client.ExecuteAsync(req);
+                JObject obj = JObject.Parse(resp.Content);
+                company.image = obj["data"]["path"].ToString();
+            }
+            object body = (new {
+                user = new {
+                    name = user.name,
+                    email = user.email,
+                    password = user.password,
+                    image = user.image != null ? user.image : null
+                }, 
+                company = new{
+                    name = company.name,
+                    address = company.address,
+                    phone = company.phone,
+                    image = company.image != null ? company.image : null
+                } 
+            });
+            request.AddJsonBody(body);
             var client = ApiUtil.Instance.client;
             var response = await client.ExecuteAsync(request);   
             view.endLoading();
@@ -78,7 +99,7 @@ namespace assetnest_wpf.View.Auth
             }
             else
             {
-                view.showMessage("ga masok");
+                view.showMessage("Failed Register");
             }
         }
     }
