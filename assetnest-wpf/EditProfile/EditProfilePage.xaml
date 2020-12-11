@@ -253,6 +253,12 @@
                         Foreground="#FF7B4B" />
                 </StackPanel>
             </Grid>
+            <ProgressBar 
+                x:Name="loading_progressbar" 
+                Height="10" Margin="-20"
+                VerticalAlignment="Top"
+                IsIndeterminate="True" 
+                Visibility="Hidden"/>
         </Grid>
     </Border>
 </basic:MyPage>

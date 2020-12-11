@@ -5,12 +5,14 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Media.Imaging;
+
+using Newtonsoft.Json.Linq;
+
 using Velacro.Api;
 using Velacro.Basic;
-//using assetnest_wpf.Model;
+
+using assetnest_wpf.Model;
 using assetnest_wpf.Utils;
-using Newtonsoft.Json.Linq;
 
 namespace assetnest_wpf.EditProfile
 {
@@ -49,7 +51,7 @@ namespace assetnest_wpf.EditProfile
 
             if (response != null)
             {
-                Trace.WriteLine(response.getJObject().ToString());
+                Trace.WriteLine("Response: \n" + response.getJObject().ToString());
                 if (response.getHttpResponseMessage().IsSuccessStatusCode)
                 {
                     if (response.getHttpResponseMessage().Content != null)
@@ -72,17 +74,18 @@ namespace assetnest_wpf.EditProfile
             return null;
         }
 
-        public async void updateUser(int user_id, string name, string email, 
-                                     string password, MyFile imageFile)
+        public async void updateUser(int userId, string name, string email, string password, 
+                                     string currentImagePath, MyFile newImageFile)
         {
-            string imagePath = await postUserImage(imageFile);
+            getView().callMethod("startLoading");
+            string newImagePath = await postUserImage(newImageFile);
             JObject userValue = new JObject();
             JObject user = new JObject();
 
             userValue.Add("name", name);
             userValue.Add("email", email);
             userValue.Add("role", "owner");
-            userValue.Add("image", imagePath);
+            userValue.Add("image", newImagePath == null ? currentImagePath : newImagePath);
             userValue.Add("password", password);
             user.Add("user", userValue);
 
@@ -91,12 +94,12 @@ namespace assetnest_wpf.EditProfile
             var request = requestBuilder
                 .buildHttpRequest()
                 .setRequestMethod(HttpMethod.Put)
-                .setEndpoint("users/" + user_id.ToString())
+                .setEndpoint("users/" + userId.ToString())
                 .addJSON<JObject>(user);
             var requestBundle = request.getApiRequestBundle();
             HttpResponseBundle response = null;
 
-            Trace.WriteLine("Request : " + requestBundle.getJSON());
+            Trace.WriteLine("Request : \n" + requestBundle.getJSON());
             client.setAuthorizationToken(StorageUtil.Instance.token);
             client.setOnSuccessRequest(onSuccessPutUser);
             client.setOnFailedRequest(onFailedPutUser);
@@ -104,9 +107,15 @@ namespace assetnest_wpf.EditProfile
             try
             {
                 response = await client.sendRequest(request.getApiRequestBundle());
+
+                if (response.getHttpResponseMessage().IsSuccessStatusCode)
+                {
+                    setUserInLocalStorage(userId);
+                }
             } 
             catch(Exception e)
             {
+                getView().callMethod("endLoading");
                 getView().callMethod("showErrorMessage", "Error updating profile. " + e.Message);
             }
         }
@@ -117,9 +126,11 @@ namespace assetnest_wpf.EditProfile
 
             if (_response.getHttpResponseMessage().Content != null)
             {
+                Trace.WriteLine("onSuccessPutUser Response: ");
                 Trace.WriteLine(await _response.getHttpResponseMessage().Content.ReadAsStringAsync());
                 reasonPhrase = "Reason Phrase: " + _response.getHttpResponseMessage().ReasonPhrase;
             }
+            getView().callMethod("endLoading");
             getView().callMethod("showSuccessMessage", "Profile updated successfully. " + reasonPhrase);
         }
 
@@ -129,43 +140,61 @@ namespace assetnest_wpf.EditProfile
 
             if (_response.getHttpResponseMessage().Content != null)
             {
+                Trace.WriteLine("Response: ");
                 Trace.WriteLine(await _response.getHttpResponseMessage().Content.ReadAsStringAsync());
                 reasonPhrase = "Reason Phrase: " + _response.getHttpResponseMessage().ReasonPhrase;
             }
+            getView().callMethod("endLoading");
             getView().callMethod("showErrorMessage", "Error updating profile. " + reasonPhrase);
         }
 
-        public async Task<JObject> getUser(int user_id)
+        private async void setUserInLocalStorage(int userId)
+        {
+            HttpResponseBundle response = await getUser(userId);
+
+            if (response != null && response.getHttpResponseMessage().IsSuccessStatusCode)
+            {
+                JObject userDataJson = (JObject)response.getJObject()["data"];
+
+                StorageUtil.Instance.user = new User()
+                {
+                    id = (int)userDataJson["id"],
+                    company_id = (int)userDataJson["company_id"],
+                    name = (string)userDataJson["name"],
+                    email = (string)userDataJson["email"],
+                    role = (string)userDataJson["role"],
+                    image = (string)userDataJson["image"]
+                };
+            }
+            else
+            {
+                getView().callMethod("showErrorMessage", "Error getting updated user data.");
+            }
+
+            getView().callMethod("navigateToProfilePage");
+        }
+        
+        public async Task<HttpResponseBundle> getUser(int userId)
         {
             var client = ApiUtil.Instance.vClient;
             var requestBuilder = new ApiRequestBuilder();
             var request = requestBuilder
                 .buildHttpRequest()
-                .setRequestMethod(HttpMethod.Put)
-                .setEndpoint("users/" + user_id.ToString());
-            var requestBundle = request.getApiRequestBundle();
-            
-            Trace.WriteLine("Request : " + requestBundle.getJSON());
+                .setRequestMethod(HttpMethod.Get)
+                .setEndpoint("users/" + userId.ToString());
+            HttpResponseBundle response = null;
+
             client.setAuthorizationToken(StorageUtil.Instance.token);
 
-            var response = await client.sendRequest(request.getApiRequestBundle());
-
-            return response.getJObject();
-        }
-
-        private async void setUser(HttpResponseBundle _response)
-        {
-            HttpResponseMessage responseMessage = _response.getHttpResponseMessage();
-            HttpContent responseContent = responseMessage.Content;
-
-            if (_response.getHttpResponseMessage().Content != null)
+            try
             {
-                string status = _response.getHttpResponseMessage().ReasonPhrase;
-                string content = await responseContent.ReadAsStringAsync();
-
-                Trace.WriteLine("Reason Phrase :" + status);
-                Trace.WriteLine("Response Body :" + content);
+                response = await client.sendRequest(request.getApiRequestBundle());
+            } catch (Exception e)
+            {
+                Trace.WriteLine(e.Message);
             }
+
+            return response;
         }
     }
 }
