@@ -27,6 +27,7 @@ namespace assetnest_wpf.ListUser
         String key = "";
         String value = "";
         int currentPage = 1;
+        int maxPage;
         String currentQueryPage = "";
         String currentQueryFilter = "";
         String currentQuery = "";
@@ -40,20 +41,25 @@ namespace assetnest_wpf.ListUser
             getController().callMethod("getUser", token, "");
 
         }
-        public void testList(List<Datum> list)
+        public void testList(Data data)
         {
+            List<Datum> list = data.data;
+            maxPage = data.last_page;
             this.Dispatcher.Invoke(() =>
             {
-                ListViewProducts.ItemsSource = list;
+                ListViewUsers.ItemsSource = list;
             });
 
         }
         private void btnNext_Click(object sender, RoutedEventArgs e)
         {
-            currentPage++;
-            currentQueryPage = page + currentPage;
-            currentQuery = currentQueryPage + currentQueryFilter;
-            getController().callMethod("getUser", token, currentQuery);
+            if (currentPage < maxPage)
+            {
+                currentPage++;
+                currentQueryPage = page + currentPage;
+                currentQuery = currentQueryPage + currentQueryFilter;
+                getController().callMethod("getUser", token, currentQuery);
+            }
         }
 
         private void btnPrev_Click(object sender, RoutedEventArgs e)
@@ -82,7 +88,6 @@ namespace assetnest_wpf.ListUser
             currentQueryFilter = filter + key + value;
             currentPage = 1;
             currentQuery = page + currentPage + currentQueryFilter;
-            //MessageBox.Show(currentQuery);
             getController().callMethod("getUser", token, currentQuery);
         }
 
@@ -103,8 +108,14 @@ namespace assetnest_wpf.ListUser
             currentQueryFilter = filter + key + value;
             currentPage = 1;
             currentQuery = page + currentPage + currentQueryFilter;
-            //MessageBox.Show(currentQuery);
             getController().callMethod("getUser", token, currentQuery);
+        }
+
+        private void itemUser_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            
+            StackPanel sp = (StackPanel) sender;
+            MessageBox.Show("id"+sp);
         }
     }
 }

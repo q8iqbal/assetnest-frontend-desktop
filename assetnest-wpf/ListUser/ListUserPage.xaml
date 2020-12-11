@@ -24,16 +24,17 @@
             </TextBox.Resources>
         </TextBox>
         <Button x:Name="btnAllStaff" Content="All staff" HorizontalAlignment="Center" Margin="24,15,702,0" VerticalAlignment="Top" Background="Transparent" FontFamily="Poppins" BorderThickness="0" Click="btnAllStaff_Click"/>
-        <Button x:Name="btnStaffAdmin" Content="Admin" HorizontalAlignment="Center" Margin="106,15,654,0" VerticalAlignment="Top" Background="Transparent" FontFamily="Poppins" BorderThickness="0" Click="btnStaffAdmin_Click"/>
-        <Button x:Name="btnStaffEmployee" Content="Employee" HorizontalAlignment="Center" Margin="169,15,571,0" VerticalAlignment="Top" Background="Transparent" FontFamily="Poppins" BorderThickness="0" Click="btnStaffEmployee_Click"/>
+        <Button x:Name="btnStaffAdmin" Content="Admin" HorizontalAlignment="Center" Margin="106,15,631,0" VerticalAlignment="Top" Background="Transparent" FontFamily="Poppins" BorderThickness="0" Click="btnStaffAdmin_Click" Width="63"/>
+        <Button x:Name="btnStaffEmployee" Content="Employee" HorizontalAlignment="Center" Margin="174,15,554,0" VerticalAlignment="Top" Background="Transparent" FontFamily="Poppins" BorderThickness="0" Click="btnStaffEmployee_Click" Width="72"/>
         <ScrollViewer Margin="0,46,0,73">
             <StackPanel Margin="20 0">
-                <ItemsControl x:Name="ListViewProducts" ItemsSource="{Binding Product}">
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
+                <ItemsControl x:Name="ListViewUsers" ItemsSource="{Binding users}">
+                    <ItemsControl.ItemTemplate >
+                        <DataTemplate x:Name="dataTemp" x:Uid="{Binding id}">
                             <Border Margin="10" Width="110" Height="170">
-                                <StackPanel>
+                                <StackPanel x:Name="itemUser" MouseDown="itemUser_MouseDown">
                                     <TextBlock Margin="5" Text="{Binding role}" FontSize="17" FontFamily="Franklin Gothic Medium"/>
+
                                     <Border Width="100" Height="100" CornerRadius="5" Margin="5">
                                         <Border.Effect>
                                             <DropShadowEffect ShadowDepth="1"/>

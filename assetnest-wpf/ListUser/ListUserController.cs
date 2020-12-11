@@ -34,7 +34,7 @@ namespace assetnest_wpf.ListUser
             if (_response.getHttpResponseMessage().Content != null)
             {
                 String status = _response.getHttpResponseMessage().ReasonPhrase;
-                getView().callMethod("testList", _response.getParsedObject<Root>().data.data);
+                getView().callMethod("testList", _response.getParsedObject<Root>().data);
 
                 //testList();
                 //Console.WriteLine(_response.getParsedObject<Root>().data.data);
