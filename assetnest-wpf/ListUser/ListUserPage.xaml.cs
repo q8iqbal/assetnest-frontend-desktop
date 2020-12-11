@@ -22,21 +22,89 @@ namespace assetnest_wpf.ListUser
     /// </summary>
     public partial class ListUserPage : MyPage
     {
+        String filter = "&filter";
+        String page = "?page=";
+        String key = "";
+        String value = "";
+        int currentPage = 1;
+        String currentQueryPage = "";
+        String currentQueryFilter = "";
+        String currentQuery = "";
+        String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9hcGkuYXNzZXRuZXN0Lm1lXC9sb2dpblwvbW9iaWxlIiwiaWF0IjoxNjA3MDg0MjAxLCJuYmYiOjE2MDcwODQyMDEsImp0aSI6Im9SWjNCVmFpTDNWb1BKVTYiLCJzdWIiOjYsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.dn197l2g5i4uLzVx49_HLD1jLRJXPvVpctYtF8gcRNI";
         public ListUserPage()
         {
             InitializeComponent();
             this.KeepAlive = true;
-            
+
             setController(new ListUserController(this));
-            String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9hcGkuYXNzZXRuZXN0Lm1lXC9sb2dpblwvbW9iaWxlIiwiaWF0IjoxNjA3MDg0MjAxLCJuYmYiOjE2MDcwODQyMDEsImp0aSI6Im9SWjNCVmFpTDNWb1BKVTYiLCJzdWIiOjYsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.dn197l2g5i4uLzVx49_HLD1jLRJXPvVpctYtF8gcRNI";
-            getController().callMethod("getUser", token);
-            
+            getController().callMethod("getUser", token, "");
+
         }
-        public void testList(List<Datum> list) {
-            this.Dispatcher.Invoke(() => {
+        public void testList(List<Datum> list)
+        {
+            this.Dispatcher.Invoke(() =>
+            {
                 ListViewProducts.ItemsSource = list;
             });
-                
+
+        }
+        private void btnNext_Click(object sender, RoutedEventArgs e)
+        {
+            currentPage++;
+            currentQueryPage = page + currentPage;
+            currentQuery = currentQueryPage + currentQueryFilter;
+            getController().callMethod("getUser", token, currentQuery);
+        }
+
+        private void btnPrev_Click(object sender, RoutedEventArgs e)
+        {
+            if (currentPage > 0)
+            {
+                currentPage--;
+                currentQueryPage = page + currentPage;
+                currentQuery = currentQueryPage + currentQueryFilter;
+                getController().callMethod("getUser", token, currentQuery);
+            }
+        }
+
+        private void btnAllStaff_Click(object sender, RoutedEventArgs e)
+        {
+            currentPage = 1;
+            currentQuery = page + currentPage;
+            currentQueryFilter = "";
+            getController().callMethod("getUser", token, currentQuery);
+        }
+
+        private void btnStaffAdmin_Click(object sender, RoutedEventArgs e)
+        {
+            key = "[role]=";
+            value = "admin";
+            currentQueryFilter = filter + key + value;
+            currentPage = 1;
+            currentQuery = page + currentPage + currentQueryFilter;
+            //MessageBox.Show(currentQuery);
+            getController().callMethod("getUser", token, currentQuery);
+        }
+
+        private void btnStaffEmployee_Click(object sender, RoutedEventArgs e)
+        {
+            key = "[role]=";
+            value = "user";
+            currentQueryFilter = filter + key + value;
+            currentPage = 1;
+            currentQuery = page + currentPage + currentQueryFilter;
+            getController().callMethod("getUser", token, currentQuery);
+        }
+
+        private void tbSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            key = "[name]=";
+            value = tbSearch.Text;
+            currentQueryFilter = filter + key + value;
+            currentPage = 1;
+            currentQuery = page + currentPage + currentQueryFilter;
+            //MessageBox.Show(currentQuery);
+            getController().callMethod("getUser", token, currentQuery);
         }
     }
 }

@@ -5,11 +5,10 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:assetnest_wpf.ListUser"
       x:Class="assetnest_wpf.ListUser.ListUserPage" 
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="ListUserPage">
+      mc:Ignorable="d" d:DesignWidth="800"
+      Title="ListUserPage" Height="462">
 
-    <Grid>
+    <Grid Margin="0,0,0,51">
         <Button Content="Add a new staff" HorizontalAlignment="Center" Padding="5" Margin="639,11,24,0" VerticalAlignment="Top" Background="#ff7b4b" FontFamily="Poppins" Foreground="White" Width="137">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
@@ -17,31 +16,32 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <TextBox HorizontalAlignment="Center" Height="23" Margin="436,16,180,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="184">
+        <TextBox x:Name="tbSearch" KeyDown="tbSearch_KeyDown" HorizontalAlignment="Center" Height="23" Margin="436,16,180,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="184">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="5"/>
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <Button Content="All staff" HorizontalAlignment="Center" Margin="24,15,702,0" VerticalAlignment="Top" Background="Transparent" FontFamily="Poppins" BorderThickness="0"/>
-        <ScrollViewer Margin="0,46,0,0">
+        <Button x:Name="btnAllStaff" Content="All staff" HorizontalAlignment="Center" Margin="24,15,702,0" VerticalAlignment="Top" Background="Transparent" FontFamily="Poppins" BorderThickness="0" Click="btnAllStaff_Click"/>
+        <Button x:Name="btnStaffAdmin" Content="Admin" HorizontalAlignment="Center" Margin="106,15,654,0" VerticalAlignment="Top" Background="Transparent" FontFamily="Poppins" BorderThickness="0" Click="btnStaffAdmin_Click"/>
+        <Button x:Name="btnStaffEmployee" Content="Employee" HorizontalAlignment="Center" Margin="169,15,571,0" VerticalAlignment="Top" Background="Transparent" FontFamily="Poppins" BorderThickness="0" Click="btnStaffEmployee_Click"/>
+        <ScrollViewer Margin="0,46,0,73">
             <StackPanel Margin="20 0">
                 <ItemsControl x:Name="ListViewProducts" ItemsSource="{Binding Product}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Border Margin="10" Width="110" Height="460">
+                            <Border Margin="10" Width="110" Height="170">
                                 <StackPanel>
+                                    <TextBlock Margin="5" Text="{Binding role}" FontSize="17" FontFamily="Franklin Gothic Medium"/>
                                     <Border Width="100" Height="100" CornerRadius="5" Margin="5">
                                         <Border.Effect>
                                             <DropShadowEffect ShadowDepth="1"/>
                                         </Border.Effect>
                                         <Border.Background>
-                                            <ImageBrush ImageSource="{Binding Image}"/>
+                                            <ImageBrush ImageSource="profile.png"/>
                                         </Border.Background>
                                     </Border>
-                                    <TextBlock Margin="5" Text="{Binding role}" FontSize="17" FontFamily="Franklin Gothic Medium"/>
-                                    <Image x:Name="user_img" Source="profile.png" />
                                     <TextBlock Margin="5 0" Text="{Binding name}" FontSize="15"/>
                                 </StackPanel>
                             </Border>
@@ -55,5 +55,7 @@
                 </ItemsControl>
             </StackPanel>
         </ScrollViewer>
+        <Button x:Name="btnNext" Content="Next" Click="btnNext_Click" HorizontalAlignment="Left" Margin="701,381,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnPrev" Content="Previous" Click="btnPrev_Click" HorizontalAlignment="Left" Margin="621,381,0,0" VerticalAlignment="Top" Width="75"/>
     </Grid>
 </basic:MyPage>

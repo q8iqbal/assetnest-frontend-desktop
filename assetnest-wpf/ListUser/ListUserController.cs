@@ -14,14 +14,14 @@ namespace assetnest_wpf.ListUser
         public ListUserController(IMyView _myView) : base(_myView)
         {
         }
-        public async void getUser(String token)
+        public async void getUser(String token, String filter)
         {
             var client = new ApiClient("http://api.assetnest.me");
             var request = new ApiRequestBuilder();
 
             var req = request
                 .buildHttpRequest()
-                .setEndpoint("/users?page=1")
+                .setEndpoint("/users"+filter)
                 .setRequestMethod(HttpMethod.Get);
             //Console.WriteLine(req.getApiRequestBundle().ToString());
             client.setAuthorizationToken(token);
