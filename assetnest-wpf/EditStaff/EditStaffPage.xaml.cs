@@ -30,15 +30,16 @@ namespace assetnest_wpf.EditStaff
         private string staffImage;
         private BuilderButton builderButton;
         private BuilderTextBox builderTextBox;
+        private ComboBox roleComboBox;
+        private Image staffImageTooltipImage;
+        private ImageBrush staffImageImageBrush;
         private Label staffNameLabel;
         private Label staffRoleLabel;
-        private IMyTextBox fullNameTextBox;
-        private ComboBox roleComboBox;
-        private IMyTextBox emailTextBox;
+        private ProgressBar loadingProgressBar;
         private IMyButton cancelButton;
         private IMyButton saveButton;
-        private ImageBrush staffImageImageBrush;
-        private Image staffImageTooltipImage;
+        private IMyTextBox fullNameTextBox;
+        private IMyTextBox emailTextBox;
 
         public EditStaffPage(int id)
         {
@@ -59,11 +60,12 @@ namespace assetnest_wpf.EditStaff
         {
             staffNameLabel = this.FindName("staffname_label") as Label;
             staffRoleLabel = this.FindName("staffrole_label") as Label;
-            fullNameTextBox = builderTextBox.activate(this, "fullname_textbox");
             roleComboBox = this.FindName("role_combobox") as ComboBox;
-            emailTextBox = builderTextBox.activate(this, "email_textbox");
             staffImageImageBrush = this.FindName("staffimage_imagebrush") as ImageBrush;
             staffImageTooltipImage = this.FindName("staffimage_tooltip_image") as Image;
+            loadingProgressBar = this.FindName("loading_progressbar") as ProgressBar;
+            fullNameTextBox = builderTextBox.activate(this, "fullname_textbox");
+            emailTextBox = builderTextBox.activate(this, "email_textbox");
             saveButton = builderButton.activate(this, "save_button")
                 .addOnClick(this, "saveButton_Click");
             cancelButton = builderButton.activate(this, "cancel_button")
@@ -106,6 +108,7 @@ namespace assetnest_wpf.EditStaff
                 return;
             }
 
+            role = Char.ToLower(role[0]) + role.Substring(1);
             switch (showConfirmationMessage("Proceed update staff?"))
             {
                 case MessageBoxResult.OK:
@@ -121,12 +124,15 @@ namespace assetnest_wpf.EditStaff
 
         public void cancelButton_Click()
         {
-
+            navigateToStaffPage();
         }
 
         public void navigateToStaffPage()
         {
-//            this.NavigationService.Navigate(new StaffPage(staffId));
+            this.Dispatcher.Invoke(() =>
+            {
+                this.NavigationService.Navigate(new EditStaffPage(staffId));
+            });
         }
 
         public void showErrorMessage(string message)
@@ -154,6 +160,20 @@ namespace assetnest_wpf.EditStaff
             });
 
             return messageResult;
+        }
+
+        public void startLoading()
+        {
+            this.Dispatcher.Invoke(() => {
+                loadingProgressBar.Visibility = Visibility.Visible;
+            });
+        }
+
+        public void endLoading()
+        {
+            this.Dispatcher.Invoke(() => {
+                loadingProgressBar.Visibility = Visibility.Hidden;
+            });
         }
     }
 }
