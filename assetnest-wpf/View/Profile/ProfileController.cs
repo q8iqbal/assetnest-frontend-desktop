@@ -1,5 +1,4 @@
-﻿using assetnest_wpf.Utils;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -8,13 +7,13 @@ using System.Threading.Tasks;
 using Velacro.Api;
 using Velacro.Basic;
 
-namespace assetnest_wpf.Profile
+namespace assetnest_wpf.View.Profile
 {
     class ProfileController : MyController
     {
         public ProfileController(IMyView _myView) : base(_myView)
         {
-            Console.WriteLine(StorageUtil.Instance.company.name);
+
         }
 
         public async void profile(string role, string name, string email)

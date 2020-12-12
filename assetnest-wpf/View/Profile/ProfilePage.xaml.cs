@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Velacro.UIElements.Basic;
 
-namespace assetnest_wpf.Profile
+namespace assetnest_wpf.View.Profile
 {
     public partial class ProfilePage : MyPage
     {
