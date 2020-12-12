@@ -50,6 +50,8 @@ namespace assetnest_wpf.Employee
         {
             saveButton = buttonBuilder.activate(this, "save_btn")
                 .addOnClick(this, "onSaveButtonClick");
+            cancelButton = buttonBuilder.activate(this, "cancel_btn")
+                .addOnClick(this, "onCancelButtonClick");
             nameTxtBox = txtBoxBuilder.activate(this, "name_txt");
             emailTxtBox = txtBoxBuilder.activate(this, "email_txt");
             //roleComboBox = comboBoxBuilder.activate(this, "role_cb");
@@ -64,6 +66,11 @@ namespace assetnest_wpf.Employee
                 nameTxtBox.getText(),
                 emailTxtBox.getText(),
                 comboBox.SelectedValue.ToString());
+        }
+
+        private cancelButton_Click()
+        {
+           // this.NavigationService.Navigate(new ListUserPage());
         }
 
         public void setAddUserStatus(string _status)
