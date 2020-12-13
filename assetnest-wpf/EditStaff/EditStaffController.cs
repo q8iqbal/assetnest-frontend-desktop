@@ -28,9 +28,7 @@ namespace assetnest_wpf.EditStaff
                 .buildHttpRequest()
                 .setRequestMethod(HttpMethod.Get)
                 .setEndpoint("users/" + staffId.ToString());
-            var requestBundle = request.getApiRequestBundle();
             HttpResponseBundle response = null;
-            //            string token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9hcGkuYXNzZXRuZXN0Lm1lXC9sb2dpblwvbW9iaWxlIiwiaWF0IjoxNjA3MTM4MDA1LCJuYmYiOjE2MDcxMzgwMDUsImp0aSI6Im5pdWtZaW1iRnFKa2I5OEgiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.k91eXqRRdmihSbq3k-93BJZUeJmqS3Dmpun3sw2efbg";
 
             client.setAuthorizationToken(StorageUtil.Instance.token);
             client.setOnSuccessRequest(onSuccessGetStaff);
@@ -50,7 +48,7 @@ namespace assetnest_wpf.EditStaff
                 getView().callMethod("endLoading");
                 getView().callMethod("showErrorMessage",
                                      "Error initializing staff data. " + e.Message);
-                getView().callMethod("navigateToStaffPage");
+                getView().callMethod("navigateToStaffListPage");
             }
         }
 
@@ -75,8 +73,8 @@ namespace assetnest_wpf.EditStaff
             else
             {
                 getView().callMethod("showErrorMessage", "Error initializing staff data.");
-                getView().callMethod("navigateToStaffPage");
             }
+            getView().callMethod("changeToShowStaffPage");
         }
 
         private void onFailedGetStaff(HttpResponseBundle _response)
@@ -90,7 +88,7 @@ namespace assetnest_wpf.EditStaff
             getView().callMethod("endLoading");
             getView().callMethod("showErrorMessage", 
                                  "Error initializing staff data. " + reasonPhrase);
-            getView().callMethod("navigateToStaffPage");
+            getView().callMethod("changeToShowStaffPage");
         }
 
         public async void updateStaff(int staffId, string name, string email, 
@@ -115,7 +113,6 @@ namespace assetnest_wpf.EditStaff
                 .setEndpoint("users/" + staffId.ToString())
                 .addJSON<JObject>(user);
             HttpResponseBundle response = null;
-            //            string token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9hcGkuYXNzZXRuZXN0Lm1lXC9sb2dpblwvbW9iaWxlIiwiaWF0IjoxNjA3MTM4MDA1LCJuYmYiOjE2MDcxMzgwMDUsImp0aSI6Im5pdWtZaW1iRnFKa2I5OEgiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.k91eXqRRdmihSbq3k-93BJZUeJmqS3Dmpun3sw2efbg";
 
             Trace.WriteLine("Request : \n" + request.getApiRequestBundle().getJSON());
             client.setAuthorizationToken(StorageUtil.Instance.token);
@@ -125,13 +122,20 @@ namespace assetnest_wpf.EditStaff
             try
             {
                 response = await client.sendRequest(request.getApiRequestBundle());
-                Trace.WriteLine("Response : \n" +
-                        await response.getHttpResponseMessage().Content.ReadAsStringAsync());
+                if (response.getHttpResponseMessage().IsSuccessStatusCode &&
+                    response.getHttpResponseMessage().Content != null)
+                {
+                    Trace.WriteLine("Response : \n" +
+                            await response.getHttpResponseMessage().Content.ReadAsStringAsync());
+                    getStaff(staffId);
+                }
             }
             catch (Exception e)
             {
                 getView().callMethod("endLoading");
                 getView().callMethod("showErrorMessage", "Error updating staff. " + e.Message);
+                getView().callMethod("resetFields");
+                getView().callMethod("changeToShowStaffPage");
             }
         }
 
@@ -145,7 +149,6 @@ namespace assetnest_wpf.EditStaff
             }
             getView().callMethod("endLoading");
             getView().callMethod("showSuccessMessage", "Staff updated successfully. " + reasonPhrase);
-            getView().callMethod("navigateToStaffPage");
         }
 
         private void onFailedUpdateStaff(HttpResponseBundle _response)
@@ -158,6 +161,11 @@ namespace assetnest_wpf.EditStaff
             }
             getView().callMethod("endLoading");
             getView().callMethod("showErrorMessage", "Error updating staff. " + reasonPhrase);
+        }
+
+        public async void deleteStaff()
+        {
+
         }
     }
 }

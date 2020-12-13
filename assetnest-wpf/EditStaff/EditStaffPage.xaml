@@ -50,7 +50,7 @@
                     <Ellipse
                          Margin="10 0 20 0" 
                          Name ="staffimage_ellipse"
-                         Height="130" Width="130">
+                         Height="120" Width="120">
                         <Ellipse.ToolTip>
                             <ToolTip Placement="Right">
                                 <Image 
@@ -84,7 +84,7 @@
                             <ColumnDefinition Width="1*" />
                         </Grid.ColumnDefinitions>
                     
-                        <Grid Grid.Column="0" Margin="30 20">
+                        <Grid Grid.Column="0" Margin="25 15">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="0.75*"/>
                                 <ColumnDefinition Width="1.25*" />
@@ -109,8 +109,8 @@
                             <TextBox 
                                 Grid.Row="0" Grid.Column="1"
                                 Name="fullname_textbox"
-                                Background="{x:Null}"
-                                BorderThickness="0 0 0 1" 
+                                Background="Transparent"
+                                BorderThickness="0 0 0 0" 
                                 FontWeight="Bold" 
                                 Foreground="#FF3E4243"
                                 Margin="0 0 0 5"
@@ -126,20 +126,35 @@
                                 Padding="0 2"
                                 Target="{Binding ElementName=role_combobox}"
                                 VerticalAlignment="Center" />
-                            
+
+                            <TextBox 
+                                Grid.Column="1" Grid.Row="1" 
+                                Name="role_textbox"
+                                Background="Transparent"
+                                BorderBrush="Transparent"
+                                Focusable="False"
+                                FontWeight="Bold" 
+                                Foreground="#FF3E4243"
+                                IsReadOnly="True"
+                                Padding="0 2" 
+                                Text=""
+                                Visibility="Visible"/>
+
                             <ComboBox 
                                  Grid.Column="1" Grid.Row="1"
                                  Name="role_combobox"
-                                 Background="{x:Null}"
-                                 BorderThickness="0 0 0 1"  
-                                 Focusable="False"
+                                 Background="Transparent"
+                                 BorderThickness="0 0 0 1"
                                  FontWeight="Bold"
                                  Foreground="#FF3E4243"
                                  Margin="0 0 0 5" 
                                  Padding="2 5" 
-                                 SelectedValuePath="Content">
-                                <ComboBoxItem>User</ComboBoxItem>
-                                <ComboBoxItem>Admin</ComboBoxItem>
+                                 SelectedValuePath="Content"
+                                 Visibility="Collapsed">
+                                <ComboBoxItem 
+                                    Background="Transparent">User</ComboBoxItem>
+                                <ComboBoxItem 
+                                    Background="Transparent">Admin</ComboBoxItem>
                             </ComboBox>
                             
                             <Label
@@ -154,8 +169,8 @@
                             <TextBox 
                                 Grid.Column="1" Grid.Row="2" 
                                 Name="email_textbox"
-                                Background="{x:Null}"
-                                BorderBrush="{x:Null}"
+                                Background="Transparent"
+                                BorderBrush="Transparent"
                                 Focusable="False"
                                 FontWeight="Bold" 
                                 Foreground="#FF3E4243"
@@ -165,9 +180,11 @@
                         </Grid>
                         <Grid Grid.Column="1" Margin="0 0 10 10">
                             <StackPanel 
+                                 x:Name="editstaffbuttons_stackpanel"
                                  HorizontalAlignment="Right"
                                  Orientation="Horizontal" 
-                                 VerticalAlignment="Bottom">
+                                 VerticalAlignment="Bottom" 
+                                 Visibility="Collapsed">
                                 <Border 
                                      Background="#E2E2E2" 
                                      CornerRadius="7" 
@@ -192,6 +209,39 @@
                                         Content="Save" 
                                         FontWeight="Bold"
                                         Foreground="#FFFFFF" 
+                                        Width="80"/>
+                                </Border>
+                            </StackPanel>
+                            <StackPanel 
+                                 x:Name="showstaffbuttons_stackpanel"
+                                 HorizontalAlignment="Right"
+                                 Orientation="Horizontal" 
+                                 VerticalAlignment="Bottom"
+                                 Visibility="Visible">
+                                <Border 
+                                     Background="#F85E5E" 
+                                     CornerRadius="7" 
+                                     Margin="0 0 5 0">
+                                    <Button 
+                                        Name="delete_button"
+                                        BorderThickness="0" 
+                                        Background="{x:Null}" 
+                                        Content="Delete" 
+                                        FontWeight="Bold"
+                                        Foreground="#FFFFFF" 
+                                        Width="80"/>
+                                </Border>
+                                <Border 
+                                     Background="#78F184" 
+                                     CornerRadius="7" 
+                                     Margin="5 0 0 0">
+                                    <Button 
+                                        Name="edit_button"
+                                        BorderThickness="0"
+                                        Background="{x:Null}" 
+                                        Content="Edit" 
+                                        FontWeight="Bold"
+                                        Foreground="#FFFFFF"
                                         Width="80"/>
                                 </Border>
                             </StackPanel>

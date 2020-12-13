@@ -13,9 +13,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+
 using Velacro.UIElements.Basic;
 using Velacro.UIElements.Button;
 using Velacro.UIElements.TextBox;
+
 using assetnest_wpf.Model;
 using assetnest_wpf.Utils;
 
@@ -36,9 +38,14 @@ namespace assetnest_wpf.EditStaff
         private Label staffNameLabel;
         private Label staffRoleLabel;
         private ProgressBar loadingProgressBar;
+        private StackPanel editStaffButtonsStackPanel;
+        private StackPanel showStaffButtonsStackPanel;
+        private TextBox fullNameTextBox;
+        private TextBox roleTextBox;
+        private IMyButton editButton;
+        private IMyButton deleteButton;
         private IMyButton cancelButton;
         private IMyButton saveButton;
-        private IMyTextBox fullNameTextBox;
         private IMyTextBox emailTextBox;
 
         public EditStaffPage(int id)
@@ -47,6 +54,8 @@ namespace assetnest_wpf.EditStaff
             setController(new EditStaffController(this));
             initUIBuilders();
             initUIElements();
+            StorageUtil.Instance.token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9hcGkuYXNzZXRuZXN0Lm1lXC9sb2dpblwvbW9iaWxlIiwiaWF0IjoxNjA3NzU2MjcyLCJuYmYiOjE2MDc3NTYyNzIsImp0aSI6IklGa3FOeTBoSU1FbFhtblAiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.3JnBBj60Q_iz7GnGVM5TT9CawopKAdSwgN-rU3UVjHo";
+            staffId = id;
             getController().callMethod("getStaff", id);
         }
 
@@ -64,8 +73,17 @@ namespace assetnest_wpf.EditStaff
             staffImageImageBrush = this.FindName("staffimage_imagebrush") as ImageBrush;
             staffImageTooltipImage = this.FindName("staffimage_tooltip_image") as Image;
             loadingProgressBar = this.FindName("loading_progressbar") as ProgressBar;
-            fullNameTextBox = builderTextBox.activate(this, "fullname_textbox");
+            editStaffButtonsStackPanel 
+                = this.FindName("editstaffbuttons_stackpanel") as StackPanel;
+            showStaffButtonsStackPanel 
+                = this.FindName("showstaffbuttons_stackpanel") as StackPanel;
+            fullNameTextBox = this.FindName("fullname_textbox") as TextBox;
+            roleTextBox = this.FindName("role_textbox") as TextBox;
             emailTextBox = builderTextBox.activate(this, "email_textbox");
+            editButton = builderButton.activate(this, "edit_button")
+                .addOnClick(this, "editButton_Click");
+            deleteButton = builderButton.activate(this, "delete_button")
+                .addOnClick(this, "deleteButton_Click");
             saveButton = builderButton.activate(this, "save_button")
                 .addOnClick(this, "saveButton_Click");
             cancelButton = builderButton.activate(this, "cancel_button")
@@ -78,11 +96,11 @@ namespace assetnest_wpf.EditStaff
             {
                 string role = char.ToUpper(staff.role[0]) + staff.role.Substring(1);
 
-                staffId = staff.id;
                 staffImage = staff.image;
                 staffNameLabel.Content = staff.name;
                 staffRoleLabel.Content = role;
-                fullNameTextBox.setText(staff.name);
+                fullNameTextBox.Text = staff.name;
+                roleTextBox.Text = role;
                 roleComboBox.SelectedValue = role;
                 emailTextBox.setText(staff.email);
                 if (staff.image != null)
@@ -95,13 +113,65 @@ namespace assetnest_wpf.EditStaff
             });
         }
 
+        public void changeToEditStaffPage()
+        {
+            this.Dispatcher.Invoke(() =>
+            {
+                editStaffButtonsStackPanel.Visibility = Visibility.Visible;
+                showStaffButtonsStackPanel.Visibility = Visibility.Collapsed;
+                fullNameTextBox.IsReadOnly = false;
+                fullNameTextBox.Focusable = true;
+                fullNameTextBox.BorderThickness = new Thickness(0, 0, 0, 1);
+                roleComboBox.Visibility = Visibility.Visible;
+                roleTextBox.Visibility = Visibility.Collapsed;
+            });
+        }
+
+        public void changeToShowStaffPage()
+        {
+            this.Dispatcher.Invoke(() =>
+            {
+                editStaffButtonsStackPanel.Visibility = Visibility.Collapsed;
+                showStaffButtonsStackPanel.Visibility = Visibility.Visible;
+                fullNameTextBox.IsReadOnly = true;
+                fullNameTextBox.Focusable = false;
+                fullNameTextBox.BorderThickness = new Thickness(0, 0, 0, 0);
+                roleComboBox.Visibility = Visibility.Collapsed;
+                roleTextBox.Visibility = Visibility.Visible;
+            });
+        }
+
+        public void resetFields()
+        {
+            this.Dispatcher.Invoke(() =>
+            {
+                fullNameTextBox.Text = staffNameLabel.Content.ToString();
+                roleComboBox.SelectedValue = staffRoleLabel.Content.ToString();
+            });
+        }
+
+        public void editButton_Click()
+        {
+            changeToEditStaffPage();
+        }
+
+        public void deleteButton_Click()
+        {
+        }
+
+        public void cancelButton_Click()
+        {
+            resetFields();
+            changeToShowStaffPage();
+        }
+
         public void saveButton_Click()
         {
-            string name = fullNameTextBox.getText();
+            string name = fullNameTextBox.Text;
             string email = emailTextBox.getText();
-            string role = roleComboBox.SelectedValue.ToString();
+            string role = roleComboBox.SelectedValue?.ToString();
 
-            if (name.Equals("") || role.Equals(""))
+            if (name.Equals("") || role == null || role.Equals(""))
             {
                 showErrorMessage("All fillable fields are required.");
 
@@ -122,16 +192,13 @@ namespace assetnest_wpf.EditStaff
             }
         }
 
-        public void cancelButton_Click()
-        {
-            navigateToStaffPage();
-        }
-
-        public void navigateToStaffPage()
+        public void navigateToStaffListPage()
         {
             this.Dispatcher.Invoke(() =>
             {
-                this.NavigationService.Navigate(new EditStaffPage(staffId));
+//                MyPage page = assetnest_wpf.EditProfile.EditProfilePage();
+//
+//                this.NavigationService.Navigate(page);
             });
         }
 
