@@ -84,6 +84,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ListUser\ListUsesrPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Login\LoginPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -99,6 +103,11 @@
     <Compile Include="Dashboard\DashboardPage.xaml.cs">
       <DependentUpon>DashboardPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ListUser\ListUserController.cs" />
+    <Compile Include="ListUser\ListUsesrPage.xaml.cs">
+      <DependentUpon>ListUsesrPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ListUser\ModelListUser.cs" />
     <Compile Include="Login\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
@@ -161,6 +170,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="option.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ListUser\profile.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

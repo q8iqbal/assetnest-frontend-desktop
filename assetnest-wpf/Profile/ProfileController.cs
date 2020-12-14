@@ -13,14 +13,14 @@ namespace assetnest_wpf.Profile
 
         }
 
-        public async void profile(String token)
+        public async void profile(String token, int id)
         {
             var client = new ApiClient("http://api.assetnest.me");
             var request = new ApiRequestBuilder();
 
             var req = request
                 .buildHttpRequest()
-                .setEndpoint("/users/6")
+                .setEndpoint("/users/"+id)
                 .setRequestMethod(HttpMethod.Get);
             client.setAuthorizationToken(token);
             client.setOnSuccessRequest(setUser);

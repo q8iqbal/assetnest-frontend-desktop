@@ -20,9 +20,10 @@ namespace assetnest_wpf.Profile
         private Image image;
         private BuilderTextBlock txtBlockBuilder;
         private BuilderButton buttonBuilder;
-
-        public ProfilePage()
+        private readonly int _id;
+        public ProfilePage(int id)
         {
+            _id = id;
             InitializeComponent();
             this.KeepAlive = true;
             setController(new ProfileController(this));
@@ -66,7 +67,7 @@ namespace assetnest_wpf.Profile
         private void getProfile()
         {
             String token = File.ReadAllText(@"userToken.txt");
-            getController().callMethod("profile", token);
+            getController().callMethod("profile", token, _id);
         }
 
         public void onLogoutClick()

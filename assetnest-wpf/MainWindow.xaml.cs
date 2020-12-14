@@ -16,17 +16,20 @@ using System.Windows.Shapes;
 using Velacro.DataStructures;
 using Velacro.UIElements.Basic;
 using assetnest_wpf.Profile;
+using assetnest_wpf.ListUser;
 
 namespace assetnest_wpf
 {
     public partial class MainWindow : MyWindow
     {
-        private MyPage profilePage;
+       // private MyPage profilePage;
+        private MyPage listUserPage;
         public MainWindow()
         {
             InitializeComponent();
-            profilePage = new ProfilePage();
-            mainFrame.Navigate(profilePage);
+            //profilePage = new ProfilePage();
+            listUserPage = new ListUserPage(mainFrame);
+            mainFrame.Navigate(listUserPage);
         }
     }
 }
