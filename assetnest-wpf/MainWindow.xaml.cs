@@ -17,6 +17,7 @@ using Velacro.DataStructures;
 using Velacro.UIElements.Basic;
 using assetnest_wpf.Profile;
 using assetnest_wpf.ListUser;
+using assetnest_wpf.Dashboard;
 
 namespace assetnest_wpf
 {
@@ -28,8 +29,8 @@ namespace assetnest_wpf
         {
             InitializeComponent();
             //profilePage = new ProfilePage();
-            listUserPage = new ListUserPage(mainFrame);
-            mainFrame.Navigate(listUserPage);
+            //listUserPage = new ListUserPage(mainFrame);
+            mainFrame.Navigate(new DashboardPage(mainFrame));
         }
     }
 }

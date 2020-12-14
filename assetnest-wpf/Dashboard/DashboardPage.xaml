@@ -21,18 +21,22 @@
         <TextBlock Text="(0354) 883 438" FontFamily="Montserrat" FontSize="15" HorizontalAlignment="Left" Margin="518,224,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBlock x:Name="slogan_txt" Text="Fixed Assets Management System Powered by" FontSize="18" HorizontalAlignment="Left" Margin="309,406,0,0" VerticalAlignment="Top"/>
         <TextBlock x:Name="assetnest_txt" Text="AssetNest" Foreground="#FF7B4B" FontFamily="Poppins-Regular" FontSize="18" HorizontalAlignment="Left" Margin="688,409,0,0" VerticalAlignment="Top"/>
-        <Rectangle Fill="WhiteSmoke" HorizontalAlignment="Left" Height="99" Margin="9,291,0,0" VerticalAlignment="Top" Width="241" RadiusY="15" RadiusX="15"/>
+        <Rectangle Fill="WhiteSmoke" HorizontalAlignment="Left" Height="99" Margin="9,291,0,0" VerticalAlignment="Top" Width="241" RadiusY="15" RadiusX="15" />
+        
         <Rectangle Fill="WhiteSmoke" HorizontalAlignment="Left" Height="99" Margin="272,291,0,0" VerticalAlignment="Top" Width="241" RadiusY="15" RadiusX="15"/>
         <Rectangle Fill="WhiteSmoke" HorizontalAlignment="Left" Height="99" Margin="535,291,0,0" VerticalAlignment="Top" Width="241" RadiusY="15" RadiusX="15"/>
         <TextBlock x:Name="assetnest2_txt" Text="AssetNest" Foreground="#FF7B4B" FontFamily="Poppins-Medium" FontSize="18" HorizontalAlignment="Left" Margin="688,409,0,0" VerticalAlignment="Top"/>
         <Image Margin="195,300,570,115" Source="/assetnest-wpf;component/option.png" Stretch="Fill"/>
         <Image Margin="732,300,33,115" Source="/assetnest-wpf;component/option.png" Stretch="Fill"/>
         <Image Margin="455,300,310,115" Source="/assetnest-wpf;component/option.png" Stretch="Fill"/>
-        <TextBlock x:Name="totalValue_txt" Text="3207" Foreground="#FF7B4B" FontFamily="Poppins-Medium" FontSize="35" HorizontalAlignment="Left" Margin="155,343,0,0" VerticalAlignment="Top"/>
-        <TextBlock x:Name="adminValue_txt" Text="105" Foreground="#FF7B4B" FontFamily="Poppins-Medium" FontSize="35" HorizontalAlignment="Left" Margin="433,340,0,0" VerticalAlignment="Top"/>
-        <TextBlock x:Name="employeeValue_txt" Text="3.109" Foreground="#FF7B4B" FontFamily="Poppins-Medium" FontSize="35" HorizontalAlignment="Left" Margin="684,340,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="totalValue_txt" Text="totalValue_txt" Foreground="#FF7B4B" FontFamily="Poppins-Medium" FontSize="35" HorizontalAlignment="Left" Margin="155,343,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="adminValue_txt" Text="adminvalue_txt" Foreground="#FF7B4B" FontFamily="Poppins-Medium" FontSize="35" HorizontalAlignment="Left" Margin="433,340,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="employeeValue_txt" Text="employeeValue_txt" Foreground="#FF7B4B" FontFamily="Poppins-Medium" FontSize="35" HorizontalAlignment="Left" Margin="684,340,0,0" VerticalAlignment="Top"/>
         <TextBlock x:Name="totalStaff_txt" Text="Total Staffs" FontSize="25" HorizontalAlignment="Left" Margin="34,311,0,0" VerticalAlignment="Top"/>
         <TextBlock x:Name="admins_txt" Text="Admins" FontSize="25" HorizontalAlignment="Left" Margin="297,311,0,0" VerticalAlignment="Top"/>
         <TextBlock x:Name="employees_txt" Text="Employees" FontSize="25" HorizontalAlignment="Left" Margin="556,311,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnAllStaff" Content="Total Staff" HorizontalAlignment="Left" Margin="34,291,0,0" VerticalAlignment="Top" Width="75" Click="btnAllStaff_Click"/>
+        <Button x:Name="btnAdmin" Content="Button" HorizontalAlignment="Left" Margin="305,291,0,0" VerticalAlignment="Top" Width="75" Click="btnAdmin_Click"/>
+        <Button x:Name="btnEmployee" Content="Button" HorizontalAlignment="Left" Margin="590,291,0,0" VerticalAlignment="Top" Width="75" Click="btnEmployee_Click"/>
     </basic:MyGrid>
 </basic:MyPage>

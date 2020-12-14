@@ -35,14 +35,20 @@ namespace assetnest_wpf.ListUser
         String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9hcGkuYXNzZXRuZXN0Lm1lXC9sb2dpblwvbW9iaWxlIiwiaWF0IjoxNjA3MDg0MjAxLCJuYmYiOjE2MDcwODQyMDEsImp0aSI6Im9SWjNCVmFpTDNWb1BKVTYiLCJzdWIiOjYsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.dn197l2g5i4uLzVx49_HLD1jLRJXPvVpctYtF8gcRNI";
         private readonly Frame mainFrame;
 
-        public ListUserPage(Frame frame)
+        public ListUserPage(Frame frame, String type)
         {
             mainFrame = frame;
             InitializeComponent();
             this.KeepAlive = true;
-
+            if (!type.Equals(""))
+            {
+                value = type;
+                key = "[role]=";
+                currentQueryFilter = filter + key + value;
+                currentQuery = page + currentPage + currentQueryFilter;
+            }
             setController(new ListUserController(this));
-            getController().callMethod("getUser", token, "");
+            getController().callMethod("getUser", token, currentQuery);
 
         }
         public void testList(Data data)
