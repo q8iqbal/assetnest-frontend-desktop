@@ -113,9 +113,9 @@ namespace assetnest_wpf.ListUser
 
         private void itemUser_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            
-            StackPanel sp = (StackPanel) sender;
-            MessageBox.Show("id"+sp);
+            StackPanel sp = sender as StackPanel;
+            Datum item = sp.DataContext as Datum;
+            MessageBox.Show("id"+item.id);
         }
     }
 }

@@ -29,8 +29,8 @@
         <ScrollViewer Margin="0,46,0,73">
             <StackPanel Margin="20 0">
                 <ItemsControl x:Name="ListViewUsers" ItemsSource="{Binding users}">
-                    <ItemsControl.ItemTemplate >
-                        <DataTemplate x:Name="dataTemp" x:Uid="{Binding id}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
                             <Border Margin="10" Width="110" Height="170">
                                 <StackPanel x:Name="itemUser" MouseDown="itemUser_MouseDown">
                                     <TextBlock Margin="5" Text="{Binding role}" FontSize="17" FontFamily="Franklin Gothic Medium"/>
