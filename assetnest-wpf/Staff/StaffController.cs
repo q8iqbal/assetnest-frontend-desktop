@@ -11,11 +11,11 @@ using Newtonsoft.Json.Linq;
 using assetnest_wpf.Model;
 using assetnest_wpf.Utils;
 
-namespace assetnest_wpf.EditStaff
+namespace assetnest_wpf.Staff
 {
-    public class EditStaffController : MyController
+    public class StaffController : MyController
     {
-        public EditStaffController(IMyView _myView) : base(_myView)
+        public StaffController(IMyView _myView) : base(_myView)
         {
         }
 
@@ -69,12 +69,13 @@ namespace assetnest_wpf.EditStaff
                     role = (string)userDataJSON["role"]
                 };
                 getView().callMethod("initStaff", staff);
+                getView().callMethod("changeToShowStaffPage");
             }
             else
             {
                 getView().callMethod("showErrorMessage", "Error initializing staff data.");
+                getView().callMethod("navigateToStaffListPage");
             }
-            getView().callMethod("changeToShowStaffPage");
         }
 
         private void onFailedGetStaff(HttpResponseBundle _response)
@@ -88,7 +89,7 @@ namespace assetnest_wpf.EditStaff
             getView().callMethod("endLoading");
             getView().callMethod("showErrorMessage", 
                                  "Error initializing staff data. " + reasonPhrase);
-            getView().callMethod("changeToShowStaffPage");
+            getView().callMethod("navigateToStaffListPage");
         }
 
         public async void updateStaff(int staffId, string name, string email, 
@@ -133,8 +134,7 @@ namespace assetnest_wpf.EditStaff
             catch (Exception e)
             {
                 getView().callMethod("endLoading");
-                getView().callMethod("showErrorMessage", "Error updating staff. " + e.Message);
-                getView().callMethod("resetFields");
+                getView().callMethod("showErrorMessage", "Failed updating staff. " + e.Message);
                 getView().callMethod("changeToShowStaffPage");
             }
         }
@@ -160,12 +160,63 @@ namespace assetnest_wpf.EditStaff
                 reasonPhrase = "Reason Phrase: " + _response.getHttpResponseMessage().ReasonPhrase;
             }
             getView().callMethod("endLoading");
-            getView().callMethod("showErrorMessage", "Error updating staff. " + reasonPhrase);
+            getView().callMethod("showErrorMessage", "Failed to update staff. " + reasonPhrase);
         }
 
-        public async void deleteStaff()
+        public async void deleteStaff(int staffId)
         {
+            getView().callMethod("startLoading");
+            var client = ApiUtil.Instance.vClient;
+            var requestBuilder = new ApiRequestBuilder();
+            var request = requestBuilder
+                .buildHttpRequest()
+                .setRequestMethod(HttpMethod.Delete)
+                .setEndpoint("users/" + staffId.ToString());
+            HttpResponseBundle response = null;
 
+            client.setAuthorizationToken(StorageUtil.Instance.token);
+            client.setOnSuccessRequest(onSuccessDeleteStaff);
+            client.setOnFailedRequest(onFailedDeleteStaff);
+
+            try
+            {
+                response = await client.sendRequest(request.getApiRequestBundle());
+                if (response.getHttpResponseMessage().Content != null)
+                {
+                    Trace.WriteLine("Response: \n" +
+                        await response.getHttpResponseMessage().Content.ReadAsStringAsync());
+                }
+            }
+            catch (Exception e)
+            {
+                getView().callMethod("endLoading");
+                getView().callMethod("showErrorMessage",
+                                     "Failed to delete staff. " + e.Message);
+            }
+        }
+
+        private void onSuccessDeleteStaff(HttpResponseBundle _response)
+        {
+            string reasonPhrase = "";
+
+            if (_response.getHttpResponseMessage().Content != null)
+            {
+                reasonPhrase = "Reason Phrase: " + _response.getHttpResponseMessage().ReasonPhrase;
+            }
+            getView().callMethod("endLoading");
+            getView().callMethod("showSuccessMessage", "Staff deleted successfully. " + reasonPhrase);
+            getView().callMethod("navigateToStaffListPage");
+        }
+        private void onFailedDeleteStaff(HttpResponseBundle _response)
+        {
+            string reasonPhrase = "";
+
+            if (_response.getHttpResponseMessage().Content != null)
+            {
+                reasonPhrase = "Reason Phrase: " + _response.getHttpResponseMessage().ReasonPhrase;
+            }
+            getView().callMethod("endLoading");
+            getView().callMethod("showErrorMessage", "Failed to delete staff. " + reasonPhrase);
         }
     }
 }

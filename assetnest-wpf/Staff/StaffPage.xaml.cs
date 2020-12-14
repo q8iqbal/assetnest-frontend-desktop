@@ -21,12 +21,12 @@ using Velacro.UIElements.TextBox;
 using assetnest_wpf.Model;
 using assetnest_wpf.Utils;
 
-namespace assetnest_wpf.EditStaff
+namespace assetnest_wpf.Staff
 {
     /// <summary>
-    /// Interaction logic for EditStaffPage.xaml
+    /// Interaction logic for StaffPage.xaml
     /// </summary>
-    public partial class EditStaffPage : MyPage
+    public partial class StaffPage : MyPage
     {
         private int staffId;
         private string staffImage;
@@ -48,14 +48,13 @@ namespace assetnest_wpf.EditStaff
         private IMyButton saveButton;
         private IMyTextBox emailTextBox;
 
-        public EditStaffPage(int id)
+        public StaffPage(int id)
         {
             InitializeComponent();
-            setController(new EditStaffController(this));
+            staffId = -1;
+            setController(new StaffController(this));
             initUIBuilders();
             initUIElements();
-            StorageUtil.Instance.token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9hcGkuYXNzZXRuZXN0Lm1lXC9sb2dpblwvbW9iaWxlIiwiaWF0IjoxNjA3NzU2MjcyLCJuYmYiOjE2MDc3NTYyNzIsImp0aSI6IklGa3FOeTBoSU1FbFhtblAiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.3JnBBj60Q_iz7GnGVM5TT9CawopKAdSwgN-rU3UVjHo";
-            staffId = id;
             getController().callMethod("getStaff", id);
         }
 
@@ -96,6 +95,7 @@ namespace assetnest_wpf.EditStaff
             {
                 string role = char.ToUpper(staff.role[0]) + staff.role.Substring(1);
 
+                staffId = staff.id;
                 staffImage = staff.image;
                 staffNameLabel.Content = staff.name;
                 staffRoleLabel.Content = role;
@@ -131,6 +131,8 @@ namespace assetnest_wpf.EditStaff
         {
             this.Dispatcher.Invoke(() =>
             {
+                fullNameTextBox.Text = staffNameLabel.Content.ToString();
+                roleComboBox.SelectedValue = staffRoleLabel.Content.ToString();
                 editStaffButtonsStackPanel.Visibility = Visibility.Collapsed;
                 showStaffButtonsStackPanel.Visibility = Visibility.Visible;
                 fullNameTextBox.IsReadOnly = true;
@@ -141,27 +143,40 @@ namespace assetnest_wpf.EditStaff
             });
         }
 
-        public void resetFields()
-        {
-            this.Dispatcher.Invoke(() =>
-            {
-                fullNameTextBox.Text = staffNameLabel.Content.ToString();
-                roleComboBox.SelectedValue = staffRoleLabel.Content.ToString();
-            });
-        }
-
         public void editButton_Click()
         {
+            if (staffId == -1)
+            {
+                return;
+            }
+
             changeToEditStaffPage();
         }
 
         public void deleteButton_Click()
         {
+            string confirmationMessage = "You're about to delete staff: " 
+                + fullNameTextBox.Text + " (" + roleTextBox.Text + "). Proceed delete staff?";
+            
+            if (staffId == -1)
+            {
+                return;
+            }
+
+            switch (showConfirmationMessage(confirmationMessage))
+            {
+                case MessageBoxResult.OK:
+                    getController().callMethod("deleteStaff", staffId);
+                    break;
+                case MessageBoxResult.Cancel:
+                    break;
+                default:
+                    break;
+            }
         }
 
         public void cancelButton_Click()
         {
-            resetFields();
             changeToShowStaffPage();
         }
 
@@ -196,9 +211,7 @@ namespace assetnest_wpf.EditStaff
         {
             this.Dispatcher.Invoke(() =>
             {
-//                MyPage page = assetnest_wpf.EditProfile.EditProfilePage();
-//
-//                this.NavigationService.Navigate(page);
+
             });
         }
 

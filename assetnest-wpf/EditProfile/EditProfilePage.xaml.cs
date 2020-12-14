@@ -171,15 +171,9 @@ namespace assetnest_wpf.EditProfile
         {
             this.Dispatcher.Invoke(() =>
             {
-                this.NavigationService.Navigate(new EditProfilePage());
+
             });
         }
-
-        public void redirectToLogin()
-        {
-            
-        }
-
         public void showErrorMessage(string message)
         {
             showMessage(message, MessageBoxButton.OK, MessageBoxImage.Error);

@@ -27,8 +27,6 @@ namespace assetnest_wpf
         {
             InitializeComponent();
             AuthPage = new AuthPage();
-//            AuthPage = /*new AuthPage(); */ new assetnest_wpf.EditStaff.EditStaffPage(null);
-//            AuthPage = /*new AuthPage(); */ new assetnest_wpf.EditProfile.EditProfilePage();
             mainFrame.Navigate(AuthPage);
             mainFrame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
         }
