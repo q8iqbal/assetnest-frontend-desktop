@@ -28,9 +28,9 @@
         <Image Margin="195,300,570,115" Source="/assetnest-wpf;component/option.png" Stretch="Fill"/>
         <Image Margin="732,300,33,115" Source="/assetnest-wpf;component/option.png" Stretch="Fill"/>
         <Image Margin="455,300,310,115" Source="/assetnest-wpf;component/option.png" Stretch="Fill"/>
-        <TextBlock x:Name="totalValue_txt" Text="3207" Foreground="#FF7B4B" FontFamily="Poppins-Medium" FontSize="35" HorizontalAlignment="Left" Margin="155,343,0,0" VerticalAlignment="Top"/>
-        <TextBlock x:Name="adminValue_txt" Text="105" Foreground="#FF7B4B" FontFamily="Poppins-Medium" FontSize="35" HorizontalAlignment="Left" Margin="433,340,0,0" VerticalAlignment="Top"/>
-        <TextBlock x:Name="employeeValue_txt" Text="3.109" Foreground="#FF7B4B" FontFamily="Poppins-Medium" FontSize="35" HorizontalAlignment="Left" Margin="684,340,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="totalValue_txt" Text="totalValue_txt" Foreground="#FF7B4B" FontFamily="Poppins-Medium" FontSize="35" HorizontalAlignment="Left" Margin="155,343,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="adminValue_txt" Text="adminvalue_txt" Foreground="#FF7B4B" FontFamily="Poppins-Medium" FontSize="35" HorizontalAlignment="Left" Margin="433,340,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="employeeValue_txt" Text="employeeValue_txt" Foreground="#FF7B4B" FontFamily="Poppins-Medium" FontSize="35" HorizontalAlignment="Left" Margin="684,340,0,0" VerticalAlignment="Top"/>
         <TextBlock x:Name="totalStaff_txt" Text="Total Staffs" FontSize="25" HorizontalAlignment="Left" Margin="34,311,0,0" VerticalAlignment="Top"/>
         <TextBlock x:Name="admins_txt" Text="Admins" FontSize="25" HorizontalAlignment="Left" Margin="297,311,0,0" VerticalAlignment="Top"/>
         <TextBlock x:Name="employees_txt" Text="Employees" FontSize="25" HorizontalAlignment="Left" Margin="556,311,0,0" VerticalAlignment="Top"/>
