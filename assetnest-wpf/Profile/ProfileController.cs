@@ -10,7 +10,7 @@ namespace assetnest_wpf.Profile
     {
         public ProfileController(IMyView _myView) : base(_myView)
         {
-
+            Console.WriteLine(StorageUtil.Instance.company.name);
         }
 
         public async void profile(String token, int id)
