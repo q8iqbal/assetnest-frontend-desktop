@@ -18,19 +18,21 @@ using Velacro.UIElements.Basic;
 using assetnest_wpf.Profile;
 using assetnest_wpf.ListUser;
 using assetnest_wpf.Dashboard;
+using assetnest_wpf.View.Auth;
 
 namespace assetnest_wpf
 {
     public partial class MainWindow : MyWindow
     {
        // private MyPage profilePage;
-        private MyPage listUserPage;
+        private Page authPage;
         public MainWindow()
         {
             InitializeComponent();
             //profilePage = new ProfilePage();
+            authPage = new AuthPage();
             //listUserPage = new ListUserPage(mainFrame);
-            mainFrame.Navigate(new DashboardPage(mainFrame));
+            mainFrame.Navigate(authPage);
         }
     }
 }

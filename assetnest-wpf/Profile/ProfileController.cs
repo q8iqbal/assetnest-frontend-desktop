@@ -3,6 +3,7 @@ using System.Net.Http;
 using Velacro.Api;
 using Velacro.Basic;
 using System.Diagnostics;
+using assetnest_wpf.Utils;
 
 namespace assetnest_wpf.Profile
 {
