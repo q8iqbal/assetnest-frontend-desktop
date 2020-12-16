@@ -24,6 +24,8 @@ using assetnest_wpf.Utils.Validations;
 using f = System.Windows.Forms;
 using RestSharp;
 using assetnest_wpf.Model;
+using assetnest_wpf.EditProfile;
+using assetnest_wpf.Staff;
 
 namespace assetnest_wpf.View.Auth
 {
@@ -161,8 +163,8 @@ namespace assetnest_wpf.View.Auth
 
         public void onSuccessLogin()
         {
-            //ProfilePage page = new ProfilePage();
-            //NavigationService.Navigate(page);
+            StaffPage page = new StaffPage(8);
+            NavigationService.Navigate(page);
             this.showMessage(StorageUtil.Instance.company.name);
         }
 
