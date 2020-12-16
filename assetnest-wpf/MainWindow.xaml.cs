@@ -19,6 +19,7 @@ using assetnest_wpf.Profile;
 using assetnest_wpf.ListUser;
 using assetnest_wpf.Dashboard;
 using assetnest_wpf.View.Auth;
+using assetnest_wpf.EditProfile;
 
 namespace assetnest_wpf
 {

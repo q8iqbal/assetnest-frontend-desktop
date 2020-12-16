@@ -77,6 +77,7 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="RestSharp, Version=106.11.7.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
       <HintPath>..\packages\RestSharp.106.11.7\lib\net452\RestSharp.dll</HintPath>
     </Reference>
@@ -132,6 +133,8 @@
     <Compile Include="Model\Company.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="View\PasswordBoxAssistant.cs" />
+    <Compile Include="EditProfile\EditProfileController.cs" />
+    <Compile Include="Staff\StaffController.cs" />
     <Compile Include="Profile\ProfileController.cs" />
     <Compile Include="Profile\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
@@ -144,10 +147,6 @@
     <Compile Include="View\Auth\AuthController.cs" />
     <Compile Include="View\Auth\AuthPage.xaml.cs">
       <DependentUpon>AuthPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Profile\ProfileController.cs" />
-    <Compile Include="View\Profile\ProfilePage.xaml.cs">
-      <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
     <Page Include="Employee\AddUser.xaml">
       <SubType>Designer</SubType>
@@ -162,6 +161,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Login\LoginPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditProfile\EditProfilePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Staff\StaffPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -189,6 +196,12 @@
       <DependentUpon>AddUser.xaml</DependentUpon>
     </Compile>
     <Compile Include="Employee\AddUserController.cs" />
+    <Compile Include="EditProfile\EditProfilePage.xaml.cs">
+      <DependentUpon>EditProfilePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Staff\StaffPage.xaml.cs">
+      <DependentUpon>StaffPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -205,17 +218,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\Profile\ProfilePage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Profile\ModelProfile.cs" />
-    <Compile Include="Profile\ProfileController.cs" />
-    <Compile Include="Profile\ProfilePage.xaml.cs">
-      <DependentUpon>ProfilePage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -243,6 +248,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Assets\camera.png" />
+    <Content Include="Assets\camera.svg" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="View\Auth\D - Login – 2%402x.png" />
     <Folder Include="Assets\" />
@@ -276,6 +285,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="ListUser\profile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\profile.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\profile %281%29.png" />
