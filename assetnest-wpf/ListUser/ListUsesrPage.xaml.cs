@@ -1,4 +1,6 @@
-﻿using assetnest_wpf.Profile;
+﻿using assetnest_wpf.Employee;
+using assetnest_wpf.Profile;
+using assetnest_wpf.Staff;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -33,11 +35,9 @@ namespace assetnest_wpf.ListUser
         String currentQueryFilter = "";
         String currentQuery = "";
         String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9hcGkuYXNzZXRuZXN0Lm1lXC9sb2dpblwvbW9iaWxlIiwiaWF0IjoxNjA3MDg0MjAxLCJuYmYiOjE2MDcwODQyMDEsImp0aSI6Im9SWjNCVmFpTDNWb1BKVTYiLCJzdWIiOjYsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.dn197l2g5i4uLzVx49_HLD1jLRJXPvVpctYtF8gcRNI";
-        private readonly Frame mainFrame;
 
-        public ListUserPage(Frame frame, String type)
+        public ListUserPage(String type)
         {
-            mainFrame = frame;
             InitializeComponent();
             this.KeepAlive = true;
             if (!type.Equals(""))
@@ -126,8 +126,13 @@ namespace assetnest_wpf.ListUser
             StackPanel sp = sender as StackPanel;
             Datum item = sp.DataContext as Datum;
             //ListUserPage.Navi
-            mainFrame.Navigate(new ProfilePage(item.id));
+            NavigationService.Navigate(new StaffPage(item.id));
             //MessageBox.Show("id" + item.id);
+        }
+
+        private void btnAddStaff_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AddUser());
         }
     }
 }

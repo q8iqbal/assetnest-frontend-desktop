@@ -32,11 +32,9 @@ namespace assetnest_wpf.Dashboard
         private IMyTextBlock adminTxtBlock;
         private IMyTextBlock employeeTxtBlock;
         private BuilderTextBlock txtBlockBuilder;
-        private readonly Frame _mainFrame;
 
-        public DashboardPage(Frame mainFrame)
+        public DashboardPage()
         {
-            _mainFrame = mainFrame;
             InitializeComponent();
             this.KeepAlive = true;
             setController(new DashboardController(this));
@@ -88,17 +86,17 @@ namespace assetnest_wpf.Dashboard
 
         private void btnAllStaff_Click(object sender, RoutedEventArgs e)
         {
-            _mainFrame.Navigate(new ListUserPage(_mainFrame,""));
+            NavigationService.Navigate(new ListUserPage(""));
         }
 
         private void btnAdmin_Click(object sender, RoutedEventArgs e)
         {
-            _mainFrame.Navigate(new ListUserPage(_mainFrame, "admin"));
+            NavigationService.Navigate(new ListUserPage( "admin"));
         }
 
         private void btnEmployee_Click(object sender, RoutedEventArgs e)
         {
-            _mainFrame.Navigate(new ListUserPage(_mainFrame, "user"));
+            NavigationService.Navigate(new ListUserPage( "user"));
         }
     }
 }

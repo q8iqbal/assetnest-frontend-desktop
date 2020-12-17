@@ -25,6 +25,7 @@ using f = System.Windows.Forms;
 using RestSharp;
 using assetnest_wpf.Model;
 using assetnest_wpf.Employee;
+using assetnest_wpf.Dashboard;
 
 namespace assetnest_wpf.View.Auth
 {
@@ -163,7 +164,7 @@ namespace assetnest_wpf.View.Auth
         public void onSuccessLogin()
         {
             //ProfilePage page = new ProfilePage();
-            NavigationService.Navigate(new AddUser());
+            NavigationService.Navigate(new DashboardPage());
             this.showMessage(StorageUtil.Instance.company.name);
         }
 

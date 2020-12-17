@@ -9,7 +9,7 @@
       Title="ListUserPage" Height="462">
 
     <Grid Margin="0,0,0,51">
-        <Button Content="Add a new staff" HorizontalAlignment="Center" Padding="5" Margin="639,11,24,0" VerticalAlignment="Top" Background="#ff7b4b" FontFamily="Poppins" Foreground="White" Width="137">
+        <Button x:Name="btnAddStaff" Content="Add a new staff" HorizontalAlignment="Center" Padding="5" Margin="639,11,24,0" VerticalAlignment="Top" Background="#ff7b4b" FontFamily="Poppins" Foreground="White" Width="137" Click="btnAddStaff_Click">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="5"/>
