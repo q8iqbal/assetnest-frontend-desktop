@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Velacro.Api;
 using Velacro.Basic;
 using Newtonsoft.Json.Linq;
+using assetnest_wpf.Utils;
 
 namespace assetnest_wpf.Dashboard
 {
@@ -22,13 +23,13 @@ namespace assetnest_wpf.Dashboard
 
         public async void getUserTotal(string role)
         {
-            var client = new ApiClient("http://api.assetnest.me/");
+            var client = ApiUtil.Instance.vClient;
             var requestBuilder = new ApiRequestBuilder();
             var request = requestBuilder
                 .buildHttpRequest()
                 .setEndpoint("users?filter[role]=" + role)
                 .setRequestMethod(HttpMethod.Get);
-            string token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9hcGkuYXNzZXRuZXN0Lm1lXC9sb2dpblwvbW9iaWxlIiwiaWF0IjoxNjA3MDg2OTg5LCJuYmYiOjE2MDcwODY5ODksImp0aSI6IlVoWlMzbFpxQWFPN2ZOZHYiLCJzdWIiOjYsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.gMSCsLdfFyFyUAh2A7JVsJLYXz3JatMQnQD4vnimdtE";
+            string token = StorageUtil.Instance.token;
             client.setAuthorizationToken(token);
             if (role.Equals("admin"))
             {
@@ -45,13 +46,13 @@ namespace assetnest_wpf.Dashboard
 
         public async void getTotal()
         {
-            var client = new ApiClient("http://api.assetnest.me/");
+            var client = ApiUtil.Instance.vClient;
             var requestBuilder = new ApiRequestBuilder();
             var request = requestBuilder
                 .buildHttpRequest()
                 .setEndpoint("users")
                 .setRequestMethod(HttpMethod.Get);
-            string token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9hcGkuYXNzZXRuZXN0Lm1lXC9sb2dpblwvbW9iaWxlIiwiaWF0IjoxNjA3MDg2OTg5LCJuYmYiOjE2MDcwODY5ODksImp0aSI6IlVoWlMzbFpxQWFPN2ZOZHYiLCJzdWIiOjYsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.gMSCsLdfFyFyUAh2A7JVsJLYXz3JatMQnQD4vnimdtE";
+            string token = StorageUtil.Instance.token;
             client.setAuthorizationToken(token);
             client.setOnSuccessRequest(setViewTotal);
             var response = await client.sendRequest(request.getApiRequestBundle());

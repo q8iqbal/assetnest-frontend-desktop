@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Velacro.Api;
 using Velacro.Basic;
 using System.Net.Http;
+using assetnest_wpf.Utils;
+
 namespace assetnest_wpf.ListUser
 {
     class ListUserController : MyController
@@ -14,15 +16,16 @@ namespace assetnest_wpf.ListUser
         public ListUserController(IMyView _myView) : base(_myView)
         {
         }
-        public async void getUser(String token, String filter)
+        public async void getUser(String filter)
         {
-            var client = new ApiClient("http://api.assetnest.me");
+            var client = ApiUtil.Instance.vClient;
             var request = new ApiRequestBuilder();
 
             var req = request
                 .buildHttpRequest()
                 .setEndpoint("/users" + filter)
                 .setRequestMethod(HttpMethod.Get);
+            String token = StorageUtil.Instance.token;
             //Console.WriteLine(req.getApiRequestBundle().ToString());
             client.setAuthorizationToken(token);
             client.setOnSuccessRequest(setUser);

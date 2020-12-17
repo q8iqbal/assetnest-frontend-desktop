@@ -34,7 +34,6 @@ namespace assetnest_wpf.ListUser
         String currentQueryPage = "";
         String currentQueryFilter = "";
         String currentQuery = "";
-        String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9hcGkuYXNzZXRuZXN0Lm1lXC9sb2dpblwvbW9iaWxlIiwiaWF0IjoxNjA3MDg0MjAxLCJuYmYiOjE2MDcwODQyMDEsImp0aSI6Im9SWjNCVmFpTDNWb1BKVTYiLCJzdWIiOjYsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.dn197l2g5i4uLzVx49_HLD1jLRJXPvVpctYtF8gcRNI";
 
         public ListUserPage(String type)
         {
@@ -48,7 +47,7 @@ namespace assetnest_wpf.ListUser
                 currentQuery = page + currentPage + currentQueryFilter;
             }
             setController(new ListUserController(this));
-            getController().callMethod("getUser", token, currentQuery);
+            getController().callMethod("getUser", currentQuery);
 
         }
         public void testList(Data data)
@@ -68,7 +67,7 @@ namespace assetnest_wpf.ListUser
                 currentPage++;
                 currentQueryPage = page + currentPage;
                 currentQuery = currentQueryPage + currentQueryFilter;
-                getController().callMethod("getUser", token, currentQuery);
+                getController().callMethod("getUser", currentQuery);
             }
         }
 
@@ -79,7 +78,7 @@ namespace assetnest_wpf.ListUser
                 currentPage--;
                 currentQueryPage = page + currentPage;
                 currentQuery = currentQueryPage + currentQueryFilter;
-                getController().callMethod("getUser", token, currentQuery);
+                getController().callMethod("getUser", currentQuery);
             }
         }
 
@@ -88,7 +87,7 @@ namespace assetnest_wpf.ListUser
             currentPage = 1;
             currentQuery = page + currentPage;
             currentQueryFilter = "";
-            getController().callMethod("getUser", token, currentQuery);
+            getController().callMethod("getUser", currentQuery);
         }
 
         private void btnStaffAdmin_Click(object sender, RoutedEventArgs e)
@@ -98,7 +97,7 @@ namespace assetnest_wpf.ListUser
             currentQueryFilter = filter + key + value;
             currentPage = 1;
             currentQuery = page + currentPage + currentQueryFilter;
-            getController().callMethod("getUser", token, currentQuery);
+            getController().callMethod("getUser", currentQuery);
         }
 
         private void btnStaffEmployee_Click(object sender, RoutedEventArgs e)
@@ -108,7 +107,7 @@ namespace assetnest_wpf.ListUser
             currentQueryFilter = filter + key + value;
             currentPage = 1;
             currentQuery = page + currentPage + currentQueryFilter;
-            getController().callMethod("getUser", token, currentQuery);
+            getController().callMethod("getUser", currentQuery);
         }
 
         private void tbSearch_KeyDown(object sender, KeyEventArgs e)
@@ -118,7 +117,7 @@ namespace assetnest_wpf.ListUser
             currentQueryFilter = filter + key + value;
             currentPage = 1;
             currentQuery = page + currentPage + currentQueryFilter;
-            getController().callMethod("getUser", token, currentQuery);
+            getController().callMethod("getUser", currentQuery);
         }
 
         private void itemUser_MouseDown(object sender, MouseButtonEventArgs e)
