@@ -50,7 +50,7 @@ namespace assetnest_wpf.ListUser
             getController().callMethod("getUser", currentQuery);
 
         }
-        public void testList(Data data)
+        public void showList(Data data)
         {
             List<Datum> list = data.data;
             maxPage = data.last_page;
