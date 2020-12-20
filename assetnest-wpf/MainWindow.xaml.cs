@@ -15,20 +15,22 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Velacro.DataStructures;
 using Velacro.UIElements.Basic;
-using assetnest_wpf.Profile;
+using assetnest_wpf.View.Dashboard;
 using assetnest_wpf.View.Auth;
 
 namespace assetnest_wpf
 {
     public partial class MainWindow : MyWindow
     {
-        private Page AuthPage;
+       // private MyPage profilePage;
+        private Page authPage;
         public MainWindow()
         {
             InitializeComponent();
-            AuthPage = new AuthPage();
-            mainFrame.Navigate(AuthPage);
-            mainFrame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
+            //profilePage = new ProfilePage();
+            authPage = new AuthPage();
+            //listUserPage = new ListUserPage(mainFrame);
+            mainFrame.Navigate(authPage);
         }
     }
 }

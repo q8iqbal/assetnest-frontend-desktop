@@ -135,8 +135,8 @@
     <Compile Include="View\PasswordBoxAssistant.cs" />
     <Compile Include="View\EditProfile\EditProfileController.cs" />
     <Compile Include="View\Staff\StaffController.cs" />
-    <Compile Include="Profile\ProfileController.cs" />
-    <Compile Include="Profile\ProfilePage.xaml.cs">
+    <Compile Include="View\Profile\ProfileController.cs" />
+    <Compile Include="View\Profile\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utils\ApiUtil.cs" />
@@ -148,10 +148,18 @@
     <Compile Include="View\Auth\AuthPage.xaml.cs">
       <DependentUpon>AuthPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Profile\ProfileController.cs" />
-    <Compile Include="View\Profile\ProfilePage.xaml.cs">
-      <DependentUpon>ProfilePage.xaml</DependentUpon>
-    </Compile>
+    <Page Include="View\Employee\AddUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Dashboard\DashboardPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ListUser\ListUsesrPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\EditProfile\EditProfilePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -168,6 +176,19 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="View\Dashboard\DashboardController.cs" />
+    <Compile Include="View\Dashboard\DashboardPage.xaml.cs">
+      <DependentUpon>DashboardPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ListUser\ListUserController.cs" />
+    <Compile Include="View\ListUser\ListUsesrPage.xaml.cs">
+      <DependentUpon>ListUsesrPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ListUser\ModelListUser.cs" />
+    <Compile Include="View\Employee\AddUser.xaml.cs">
+      <DependentUpon>AddUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Employee\AddUserController.cs" />
     <Compile Include="View\EditProfile\EditProfilePage.xaml.cs">
       <DependentUpon>EditProfilePage.xaml</DependentUpon>
     </Compile>
@@ -178,7 +199,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Profile\ProfilePage.xaml">
+    <Page Include="View\Profile\ProfilePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -190,12 +211,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\Profile\ProfilePage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="View\Profile\ModelProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -244,6 +262,18 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Profile\profile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Mask Group 3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="option.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\ListUser\profile.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\profile.png" />
