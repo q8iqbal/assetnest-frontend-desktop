@@ -9,6 +9,7 @@ using Velacro.UIElements.TextBox;
 
 using assetnest_wpf.Model;
 using assetnest_wpf.Utils;
+using assetnest_wpf.View.ListUser;
 
 namespace assetnest_wpf.View.Staff
 {
@@ -182,7 +183,7 @@ namespace assetnest_wpf.View.Staff
         {
             this.Dispatcher.Invoke(() =>
             {
-
+                this.NavigationService.Navigate(new ListUserPage(""));
             });
         }
 

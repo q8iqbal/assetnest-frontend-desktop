@@ -11,6 +11,7 @@ using Velacro.UIElements.TextBox;
 
 using assetnest_wpf.Model;
 using assetnest_wpf.Utils;
+using assetnest_wpf.View.Profile;
 
 namespace assetnest_wpf.View.EditProfile
 {
@@ -196,7 +197,7 @@ namespace assetnest_wpf.View.EditProfile
         {
             this.Dispatcher.Invoke(() =>
             {
-                this.NavigationService.Navigate(new EditProfilePage());
+                this.NavigationService.Navigate(new ProfilePage(userId));
             });
         }
         public void showErrorMessage(string message)
