@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:assetnest_wpf.EditProfile"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:basic="clr-namespace:Velacro.UIElements.Basic;assembly=Velacro" 
       mc:Ignorable="d" 
       d:DesignHeight="500" d:DesignWidth="800"
@@ -16,6 +17,7 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
+            
             <StackPanel Orientation="Horizontal" Grid.Row="0">
                 <Label 
                     Name="role_label"
@@ -27,7 +29,6 @@
                     Foreground="#FF7B4B"
                     Padding="0 0 10 0"
                     VerticalAlignment="Center" />
-
                 <Label 
                     Name="name_label"
                     Content="&lt;Full Name&gt;" 
@@ -38,49 +39,53 @@
                     Foreground="#3E4243"
                     Padding="10 0 0 0"
                     VerticalAlignment="Center" />
-
             </StackPanel>
 
             <Grid Margin="0 20" Grid.Row="1">
-                
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Column="0">
-                    <Ellipse
-                        Margin="10 0 20 0" 
-                        Name ="profileimage_ellipse"
-                        Height="150" Width="150">
-                        <Ellipse.ToolTip>
-                            <ToolTip Placement="Right">
-                                <Image 
-                                    Name="profileimage_tooltip_image"
-                                    Source="../Assets/profile.png"/>
-                            </ToolTip>
-                        </Ellipse.ToolTip>
-                        <Ellipse.Fill>
-                            <ImageBrush 
-                                x:Name="profileimage_imagebrush"
-                                ImageSource="../Assets/profile.png"
-                                Stretch="UniformToFill"/>
-                        </Ellipse.Fill>
-                    </Ellipse>
-                    <Button 
-                        Name="loadimage_button"
-                        Background="{x:Null}"
-                        BorderBrush="{x:Null}"
-                        Margin="35 5" 
-                        Padding="0"
-                        Width="Auto"
-                        Height="Auto"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Bottom">
-                        <Image 
-                            Source="../Assets/camera.png" 
-                            Width="35" />
-                    </Button>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Ellipse
+                            Margin="10 0 20 0" 
+                            Name ="profileimage_ellipse"
+                            Height="150" Width="150">
+                            <Ellipse.ToolTip>
+                                <ToolTip Placement="Right">
+                                    <Image 
+                                        Name="profileimage_tooltip_image"
+                                        Source="../Assets/profile.png"/>
+                                </ToolTip>
+                            </Ellipse.ToolTip>
+                            <Ellipse.Fill>
+                                <ImageBrush 
+                                    x:Name="profileimage_imagebrush"
+                                    ImageSource="../Assets/profile.png"
+                                    Stretch="UniformToFill"/>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <Button 
+                            Name="loadimage_button"
+                            Background="{x:Null}"
+                            BorderBrush="{x:Null}"
+                            Click="loadImageButton_Click"
+                            Margin="35 5" 
+                            Padding="0"
+                            Width="Auto"
+                            Height="Auto"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom">
+                            <Image 
+                                Source="../Assets/camera.png" 
+                                Width="35" />
+                        </Button>
+                    </Grid>
                 </Grid>
 
                 <Border 
@@ -100,17 +105,17 @@
                             <ColumnDefinition Width="1*" />
                         </Grid.ColumnDefinitions>
 
-                        <Grid Grid.Column="0" Margin="30 20">
+                        <Grid Grid.Column="0" Margin="20 20">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="0.75*"/>
                                 <ColumnDefinition Width="1.25*" />
                             </Grid.ColumnDefinitions>
 
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
 
                             <Label
@@ -118,10 +123,8 @@
                                 Content="_Full Name"
                                 FontWeight="Bold"
                                 Foreground="#FF3E4243"
-                                Padding="0 2"
                                 Target="{Binding ElementName=fullname_textbox}"
                                 VerticalAlignment="Center" />
-
                             <TextBox 
                                 Grid.Row="0" Grid.Column="1"
                                 Name="fullname_textbox"
@@ -129,18 +132,19 @@
                                 BorderThickness="0 0 0 1" 
                                 FontWeight="Bold" 
                                 Foreground="#FF3E4243"
-                                Padding="0 2" 
-                                Text="" />
+                                Padding="0"
+                                Text=""
+                                VerticalAlignment="Center"
+                                materialDesign:HintAssist.Hint="Full Name"
+                                materialDesign:HintAssist.HintOpacity="0.3" />
 
                             <Label
                                 Grid.Row="1" Grid.Column="0"
                                 Content="_Role" 
                                 FontWeight="Bold"
                                 Foreground="#FF3E4243"
-                                Padding="0 2"
                                 Target="{Binding ElementName=role_textbox}"
                                 VerticalAlignment="Center" />
-
                             <TextBox 
                                 Grid.Column="1" Grid.Row="1"
                                 Name="role_textbox"
@@ -150,46 +154,81 @@
                                 FontWeight="Bold"
                                 Foreground="#FF3E4243" 
                                 IsReadOnly="True"
-                                Padding="0 2" 
-                                Text="" />
-
+                                Padding="0"
+                                Text="Owner"
+                                VerticalAlignment="Center"/>
+                            
                             <Label
                                 Grid.Row="2" Grid.Column="0"
                                 Content="_Email" 
                                 FontWeight="Bold" 
                                 Foreground="#FF3E4243"
-                                Padding="0 2"
                                 Target="{Binding ElementName=email_textbox}"
                                 VerticalAlignment="Center" />
-
                             <TextBox 
                                 Grid.Column="1" Grid.Row="2" 
                                 Name="email_textbox"
                                 Background="{x:Null}"
                                 BorderThickness="0 0 0 1"
                                 FontWeight="Bold" 
-                                Foreground="#FF3E4243" 
-                                Padding="0 2" 
-                                Text="" />
-
+                                Foreground="#FF3E4243"
+                                Text=""
+                                Padding="0"
+                                VerticalAlignment="Center"
+                                materialDesign:HintAssist.Hint="Email"
+                                materialDesign:HintAssist.HintOpacity="0.3" />
+                            
                             <Label 
                                 Grid.Row="3" Grid.Column="0"
                                 Content="_Password"
                                 FontWeight="Bold" 
                                 Foreground="#FF3E4243"
-                                Padding="0 2"
-                                Target="{Binding ElementName=password_passwordbox}"
-                                VerticalAlignment="Center" />
-
-                            <PasswordBox 
-                                Grid.Column="1" Grid.Row="3"
-                                Name="password_passwordbox"
-                                Background="{x:Null}"
-                                BorderThickness="0 0 0 1"
-                                Foreground="#FF3E4243" 
-                                FontWeight="Bold" 
-                                Padding="0 2" 
-                                Password="" />
+                                VerticalAlignment="Top" />
+                            <StackPanel Grid.Column="1" Grid.Row="3">
+                                <PasswordBox 
+                                    Name="current_passwordbox"
+                                    Background="{x:Null}"
+                                    BorderThickness="0 0 0 1"
+                                    Foreground="#FF3E4243" 
+                                    FontWeight="Bold" 
+                                    Password=""
+                                    VerticalAlignment="Center"
+                                    Visibility="Collapsed"
+                                    materialDesign:HintAssist.Hint="Current Password"
+                                    materialDesign:HintAssist.HintOpacity="0.3" />
+                                <PasswordBox 
+                                    Name="new_passwordbox"
+                                    Background="{x:Null}"
+                                    BorderThickness="0 0 0 1"
+                                    Foreground="#FF3E4243" 
+                                    FontWeight="Bold" 
+                                    Password=""
+                                    VerticalAlignment="Center"
+                                    Visibility="Collapsed"
+                                    materialDesign:HintAssist.Hint="New Password"
+                                    materialDesign:HintAssist.HintOpacity="0.3" />
+                                <PasswordBox 
+                                    Name="confirmnew_passwordbox"
+                                    Background="{x:Null}"
+                                    BorderThickness="0 0 0 1"
+                                    Foreground="#FF3E4243" 
+                                    FontWeight="Bold" 
+                                    Password=""
+                                    VerticalAlignment="Center"
+                                    Visibility="Collapsed"
+                                    materialDesign:HintAssist.Hint="Confirm New Password"
+                                    materialDesign:HintAssist.HintOpacity="0.3" />
+                                <Button
+                                    Name="changepassword_button"
+                                    Background="{x:Null}"
+                                    BorderThickness="0"
+                                    Click="changePasswordButton_Click"
+                                    Content="Change Password"
+                                    Height="Auto"
+                                    Foreground="#FF7B4B" 
+                                    HorizontalAlignment="Right"
+                                    Padding="0 2"/>
+                            </StackPanel>
                         </Grid>
 
                         <Grid Grid.Column="1" Margin="0 0 10 10">
@@ -197,37 +236,33 @@
                                 HorizontalAlignment="Right"
                                 Orientation="Horizontal" 
                                 VerticalAlignment="Bottom">
-
                                 <Border 
                                     Background="#E2E2E2" 
                                     CornerRadius="7" 
                                     Margin="0 0 5 0">
-                                    
                                     <Button 
                                         Name="cancel_button"
                                         BorderThickness="0"
-                                        Background="{x:Null}" 
+                                        Background="{x:Null}"
+                                        Click="cancelButton_Click"
                                         Content="Cancel" 
                                         FontWeight="Bold"
                                         Foreground="#3E4243"
                                         Width="80"/>
-                                    
                                 </Border>
-
                                 <Border 
                                     Background="#FF7B4B" 
                                     CornerRadius="7" 
                                     Margin="5 0 0 0">
-
                                     <Button 
                                         Name="save_button"
                                         BorderThickness="0" 
-                                        Background="{x:Null}" 
+                                        Background="{x:Null}"
+                                        Click="saveButton_Click"
                                         Content="Save" 
                                         FontWeight="Bold"
                                         Foreground="#FFFFFF" 
                                         Width="80"/>
-                                
                                 </Border>
                             </StackPanel>
                         </Grid>
@@ -239,13 +274,11 @@
                     HorizontalAlignment="Right" 
                     Orientation="Horizontal" 
                     VerticalAlignment="Bottom">
-                    
                     <TextBlock 
                         Text="Fixed Assets Management System Powered by " 
                         FontWeight="Bold" 
                         FontSize="14"
                         Foreground="#3E4243" />
-                    
                     <TextBlock 
                         Text="AssetNest" 
                         FontWeight="Bold"
