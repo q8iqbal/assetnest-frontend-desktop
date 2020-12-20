@@ -163,7 +163,7 @@ namespace assetnest_wpf.View.EditProfile
                 } 
                 else
                 {
-                    showErrorMessage("Image should be in .jpg, .jpeg, or .png and less than 1 MB!");
+                    showErrorMessage("Image must be in .jpg, .jpeg, or .png and less than 1 MB!");
                 }
             }
         }
@@ -214,13 +214,16 @@ namespace assetnest_wpf.View.EditProfile
             return showMessage(message, MessageBoxButton.OKCancel, MessageBoxImage.Question);
         }
 
-        private MessageBoxResult showMessage(string message, MessageBoxButton buttons, MessageBoxImage icon)
+        private MessageBoxResult showMessage(string message, MessageBoxButton buttons, 
+                                             MessageBoxImage icon)
         {
             MessageBoxResult messageResult = MessageBoxResult.OK;
 
             this.Dispatcher.Invoke(() =>
             {
-                messageResult = MessageBox.Show(message, Application.Current.MainWindow.Title, buttons, icon);
+                string title = Application.Current.MainWindow.Title;
+
+                messageResult = MessageBox.Show(message, title, buttons, icon);
             });
 
             return messageResult;
@@ -228,14 +231,16 @@ namespace assetnest_wpf.View.EditProfile
 
         public void startLoading()
         {
-            this.Dispatcher.Invoke(() => {
+            this.Dispatcher.Invoke(() => 
+            {
                 loadingProgressBar.Visibility = Visibility.Visible;
             });
         }
 
         public void endLoading()
         {
-            this.Dispatcher.Invoke(() => {
+            this.Dispatcher.Invoke(() => 
+            {
                 loadingProgressBar.Visibility = Visibility.Hidden;
             });
         }

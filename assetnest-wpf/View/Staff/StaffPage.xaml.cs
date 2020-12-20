@@ -1,21 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 using Velacro.UIElements.Basic;
-using Velacro.UIElements.Button;
 using Velacro.UIElements.TextBox;
 
 using assetnest_wpf.Model;
@@ -30,7 +19,6 @@ namespace assetnest_wpf.View.Staff
     {
         private int staffId;
         private string staffImage;
-        private BuilderButton builderButton;
         private BuilderTextBox builderTextBox;
         private ComboBox roleComboBox;
         private Image staffImageTooltipImage;
@@ -42,10 +30,6 @@ namespace assetnest_wpf.View.Staff
         private StackPanel showStaffButtonsStackPanel;
         private TextBox fullNameTextBox;
         private TextBox roleTextBox;
-        private IMyButton editButton;
-        private IMyButton deleteButton;
-        private IMyButton cancelButton;
-        private IMyButton saveButton;
         private IMyTextBox emailTextBox;
 
         public StaffPage(int id)
@@ -60,7 +44,6 @@ namespace assetnest_wpf.View.Staff
 
         private void initUIBuilders()
         {
-            builderButton = new BuilderButton();
             builderTextBox = new BuilderTextBox();
         }
 
@@ -79,14 +62,6 @@ namespace assetnest_wpf.View.Staff
             fullNameTextBox = this.FindName("fullname_textbox") as TextBox;
             roleTextBox = this.FindName("role_textbox") as TextBox;
             emailTextBox = builderTextBox.activate(this, "email_textbox");
-            editButton = builderButton.activate(this, "edit_button")
-                .addOnClick(this, "editButton_Click");
-            deleteButton = builderButton.activate(this, "delete_button")
-                .addOnClick(this, "deleteButton_Click");
-            saveButton = builderButton.activate(this, "save_button")
-                .addOnClick(this, "saveButton_Click");
-            cancelButton = builderButton.activate(this, "cancel_button")
-                .addOnClick(this, "cancelButton_Click");
         }
 
         public void initStaff(User staff)
@@ -143,7 +118,7 @@ namespace assetnest_wpf.View.Staff
             });
         }
 
-        public void editButton_Click()
+        private void editButton_Click(object sender, RoutedEventArgs e)
         {
             if (staffId == -1)
             {
@@ -153,7 +128,7 @@ namespace assetnest_wpf.View.Staff
             changeToEditStaffPage();
         }
 
-        public void deleteButton_Click()
+        private void deleteButton_Click(object sender, RoutedEventArgs e)
         {
             string confirmationMessage = "You're about to delete staff: " 
                 + fullNameTextBox.Text + " (" + roleTextBox.Text + "). Proceed delete staff?";
@@ -168,19 +143,17 @@ namespace assetnest_wpf.View.Staff
                 case MessageBoxResult.OK:
                     getController().callMethod("deleteStaff", staffId);
                     break;
-                case MessageBoxResult.Cancel:
-                    break;
                 default:
                     break;
             }
         }
 
-        public void cancelButton_Click()
+        private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
             changeToShowStaffPage();
         }
 
-        public void saveButton_Click()
+        private void saveButton_Click(object sender, RoutedEventArgs e)
         {
             string name = fullNameTextBox.Text;
             string email = emailTextBox.getText();
@@ -197,10 +170,8 @@ namespace assetnest_wpf.View.Staff
             switch (showConfirmationMessage("Proceed update staff?"))
             {
                 case MessageBoxResult.OK:
-                    getController().callMethod("updateStaff", staffId, name, email, 
-                                               role, staffImage);
-                    break;
-                case MessageBoxResult.Cancel:
+                    getController()
+                        .callMethod("updateStaff", staffId, name, email, role, staffImage);
                     break;
                 default:
                     break;
@@ -230,13 +201,16 @@ namespace assetnest_wpf.View.Staff
             return showMessage(message, MessageBoxButton.OKCancel, MessageBoxImage.Question);
         }
 
-        private MessageBoxResult showMessage(string message, MessageBoxButton buttons, MessageBoxImage icon)
+        private MessageBoxResult showMessage(string message, MessageBoxButton buttons, 
+                                             MessageBoxImage icon)
         {
             MessageBoxResult messageResult = MessageBoxResult.OK;
 
             this.Dispatcher.Invoke(() =>
             {
-                messageResult = MessageBox.Show(message, Application.Current.MainWindow.Title, buttons, icon);
+                string title = Application.Current.MainWindow.Title;
+
+                messageResult = MessageBox.Show(message, title, buttons, icon);
             });
 
             return messageResult;
@@ -244,14 +218,16 @@ namespace assetnest_wpf.View.Staff
 
         public void startLoading()
         {
-            this.Dispatcher.Invoke(() => {
+            this.Dispatcher.Invoke(() => 
+            {
                 loadingProgressBar.Visibility = Visibility.Visible;
             });
         }
 
         public void endLoading()
         {
-            this.Dispatcher.Invoke(() => {
+            this.Dispatcher.Invoke(() => 
+            {
                 loadingProgressBar.Visibility = Visibility.Hidden;
             });
         }
