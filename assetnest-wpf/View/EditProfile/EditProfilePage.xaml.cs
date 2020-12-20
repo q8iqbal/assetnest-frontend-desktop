@@ -12,7 +12,7 @@ using Velacro.UIElements.TextBox;
 using assetnest_wpf.Model;
 using assetnest_wpf.Utils;
 
-namespace assetnest_wpf.EditProfile
+namespace assetnest_wpf.View.EditProfile
 {
     /// <summary>
     /// Interaction logic for EditProfilePage.xaml

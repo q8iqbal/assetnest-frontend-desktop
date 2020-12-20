@@ -133,8 +133,8 @@
     <Compile Include="Model\Company.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="View\PasswordBoxAssistant.cs" />
-    <Compile Include="EditProfile\EditProfileController.cs" />
-    <Compile Include="Staff\StaffController.cs" />
+    <Compile Include="View\EditProfile\EditProfileController.cs" />
+    <Compile Include="View\Staff\StaffController.cs" />
     <Compile Include="Profile\ProfileController.cs" />
     <Compile Include="Profile\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
@@ -152,11 +152,11 @@
     <Compile Include="View\Profile\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
-    <Page Include="EditProfile\EditProfilePage.xaml">
+    <Page Include="View\EditProfile\EditProfilePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Staff\StaffPage.xaml">
+    <Page Include="View\Staff\StaffPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -168,10 +168,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="EditProfile\EditProfilePage.xaml.cs">
+    <Compile Include="View\EditProfile\EditProfilePage.xaml.cs">
       <DependentUpon>EditProfilePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Staff\StaffPage.xaml.cs">
+    <Compile Include="View\Staff\StaffPage.xaml.cs">
       <DependentUpon>StaffPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">

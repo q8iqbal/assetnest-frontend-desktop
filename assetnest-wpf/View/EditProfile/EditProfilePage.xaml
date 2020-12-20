@@ -1,9 +1,9 @@
-﻿<basic:MyPage x:Class="assetnest_wpf.EditProfile.EditProfilePage"
+﻿<basic:MyPage x:Class="assetnest_wpf.View.EditProfile.EditProfilePage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:assetnest_wpf.EditProfile"
+      xmlns:local="clr-namespace:assetnest_wpf.View.EditProfile"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:basic="clr-namespace:Velacro.UIElements.Basic;assembly=Velacro" 
       mc:Ignorable="d" 
@@ -60,13 +60,13 @@
                                 <ToolTip Placement="Right">
                                     <Image 
                                         Name="profileimage_tooltip_image"
-                                        Source="../Assets/profile.png"/>
+                                        Source="../../Assets/profile.png"/>
                                 </ToolTip>
                             </Ellipse.ToolTip>
                             <Ellipse.Fill>
                                 <ImageBrush 
                                     x:Name="profileimage_imagebrush"
-                                    ImageSource="../Assets/profile.png"
+                                    ImageSource="../../Assets/profile.png"
                                     Stretch="UniformToFill"/>
                             </Ellipse.Fill>
                         </Ellipse>
@@ -82,7 +82,7 @@
                             HorizontalAlignment="Right"
                             VerticalAlignment="Bottom">
                             <Image 
-                                Source="../Assets/camera.png" 
+                                Source="../../Assets/camera.png" 
                                 Width="35" />
                         </Button>
                     </Grid>

@@ -11,7 +11,7 @@ using Newtonsoft.Json.Linq;
 using assetnest_wpf.Model;
 using assetnest_wpf.Utils;
 
-namespace assetnest_wpf.Staff
+namespace assetnest_wpf.View.Staff
 {
     public class StaffController : MyController
     {
