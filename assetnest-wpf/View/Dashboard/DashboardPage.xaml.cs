@@ -1,4 +1,4 @@
-﻿using assetnest_wpf.ListUser;
+﻿using assetnest_wpf.View.ListUser;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,7 +18,7 @@ using System.Windows.Shapes;
 using Velacro.UIElements.Basic;
 using Velacro.UIElements.TextBlock;
 
-namespace assetnest_wpf.Dashboard
+namespace assetnest_wpf.View.Dashboard
 {
     /// <summary>
     /// Interaction logic for Dashboard.xaml

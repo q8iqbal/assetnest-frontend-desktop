@@ -8,7 +8,7 @@ using Velacro.Basic;
 using Newtonsoft.Json.Linq;
 using assetnest_wpf.Utils;
 
-namespace assetnest_wpf.Employee
+namespace assetnest_wpf.View.Employee
 {
     public class AddUserController : MyController
     {

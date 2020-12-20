@@ -21,7 +21,7 @@ using Velacro.UIElements.TextBox;
 using assetnest_wpf.Model;
 using assetnest_wpf.Utils;
 
-namespace assetnest_wpf.Staff
+namespace assetnest_wpf.View.Staff
 {
     /// <summary>
     /// Interaction logic for StaffPage.xaml

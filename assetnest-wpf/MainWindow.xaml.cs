@@ -15,11 +15,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Velacro.DataStructures;
 using Velacro.UIElements.Basic;
-using assetnest_wpf.Profile;
-using assetnest_wpf.ListUser;
-using assetnest_wpf.Dashboard;
+using assetnest_wpf.View.Dashboard;
 using assetnest_wpf.View.Auth;
-using assetnest_wpf.EditProfile;
 
 namespace assetnest_wpf
 {

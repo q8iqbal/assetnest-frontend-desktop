@@ -1,6 +1,6 @@
-﻿using assetnest_wpf.Employee;
-using assetnest_wpf.Profile;
-using assetnest_wpf.Staff;
+﻿using assetnest_wpf.View.Employee;
+using assetnest_wpf.View.Profile;
+using assetnest_wpf.View.Staff;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -18,7 +18,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Velacro.UIElements.Basic;
 
-namespace assetnest_wpf.ListUser
+namespace assetnest_wpf.View.ListUser
 {
     /// <summary>
     /// Interaction logic for ListUserPage.xaml

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace assetnest_wpf.ListUser
+namespace assetnest_wpf.View.ListUser
 {
     class ModelListUser
     {

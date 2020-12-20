@@ -3,8 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:assetnest_wpf.ListUser"
-      x:Class="assetnest_wpf.ListUser.ListUserPage" 
+      x:Class="assetnest_wpf.View.ListUser.ListUserPage" 
       mc:Ignorable="d" d:DesignWidth="800"
       Title="ListUserPage" Height="462">
 
@@ -33,16 +32,16 @@
                         <DataTemplate>
                             <Border Margin="10" Width="110" Height="170">
                                 <StackPanel x:Name="itemUser" MouseDown="itemUser_MouseDown">
-                                    <TextBlock x:Name="tbRole" Margin="5" Text="{Binding image}" FontSize="17" FontFamily="Franklin Gothic Medium"/>
+                                    <TextBlock x:Name="tbRole" Margin="5" Text="{Binding role}" FontSize="17" FontFamily="Franklin Gothic Medium"/>
                                     <Grid Grid.Column="0">
                                         <Ellipse Name ="ecUser" Height="120" Width="120">
                                             <Ellipse.ToolTip>
                                                 <ToolTip Placement="Right">
-                                                    <Image Name="imgUser" Source="../Assets/profile.png"/>
+                                                    <Image Name="imgUser" Source="../../Assets/profile.png"/>
                                                 </ToolTip>
                                                 </Ellipse.ToolTip>
                                                 <Ellipse.Fill>
-                                                    <ImageBrush x:Name="ibUser" ImageSource="../Assets/profile.png" Stretch="UniformToFill"/>
+                                                    <ImageBrush x:Name="ibUser" ImageSource="../../Assets/profile.png" Stretch="UniformToFill"/>
                                             </Ellipse.Fill>
                                         </Ellipse>
                                     </Grid>

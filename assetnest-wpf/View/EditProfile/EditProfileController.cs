@@ -14,7 +14,7 @@ using Velacro.Basic;
 using assetnest_wpf.Model;
 using assetnest_wpf.Utils;
 
-namespace assetnest_wpf.EditProfile
+namespace assetnest_wpf.View.EditProfile
 {
     public class EditProfileController : MyController
     {

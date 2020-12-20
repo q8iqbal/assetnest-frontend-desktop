@@ -8,7 +8,7 @@ using Velacro.Basic;
 using System.Net.Http;
 using assetnest_wpf.Utils;
 
-namespace assetnest_wpf.ListUser
+namespace assetnest_wpf.View.ListUser
 {
     class ListUserController : MyController
     {

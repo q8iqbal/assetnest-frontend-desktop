@@ -19,13 +19,13 @@ using ToastNotifications.Lifetime;
 using ToastNotifications.Position;
 using ToastNotifications.Messages;
 using assetnest_wpf.Utils;
-using assetnest_wpf.Profile;
+using assetnest_wpf.View.Profile;
 using assetnest_wpf.Utils.Validations;
 using f = System.Windows.Forms;
 using RestSharp;
 using assetnest_wpf.Model;
-using assetnest_wpf.Employee;
-using assetnest_wpf.Dashboard;
+using assetnest_wpf.View.Employee;
+using assetnest_wpf.View.Dashboard;
 
 namespace assetnest_wpf.View.Auth
 {

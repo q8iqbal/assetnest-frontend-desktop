@@ -10,7 +10,7 @@ using Velacro.Basic;
 using Newtonsoft.Json.Linq;
 using assetnest_wpf.Utils;
 
-namespace assetnest_wpf.Dashboard
+namespace assetnest_wpf.View.Dashboard
 {
     class DashboardController : MyController
     {

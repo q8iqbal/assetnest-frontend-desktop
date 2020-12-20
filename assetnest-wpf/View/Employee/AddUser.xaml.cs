@@ -1,4 +1,5 @@
-﻿using System;
+﻿using assetnest_wpf.View.ListUser;
+using System;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -8,7 +9,7 @@ using Velacro.UIElements.Button;
 using Velacro.UIElements.TextBlock;
 using Velacro.UIElements.TextBox;
 
-namespace assetnest_wpf.Employee
+namespace assetnest_wpf.View.Employee
 {
     /// <summary>
     /// Interaction logic for AddUser.xaml
@@ -62,9 +63,9 @@ namespace assetnest_wpf.Employee
                 comboBox.SelectedValue.ToString());
         }
 
-        public void cancelButton_Click()
+        public void onCancelButtonClick()
         {
-           // this.NavigationService.Navigate(new ListUserPage());
+             NavigationService.Navigate(new ListUserPage(""));
         }
 
         public void setAddUserStatus(string _status)

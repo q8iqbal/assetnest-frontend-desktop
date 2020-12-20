@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace assetnest_wpf.Profile
+namespace assetnest_wpf.View.Profile
 {
     public class ModelProfile
     {
