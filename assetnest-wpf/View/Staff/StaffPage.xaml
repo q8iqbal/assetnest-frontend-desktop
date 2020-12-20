@@ -3,6 +3,8 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:assetnest_wpf.View.Staff"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:basic="clr-namespace:Velacro.UIElements.Basic;assembly=Velacro" 
       mc:Ignorable="d" 
       d:DesignHeight="500" d:DesignWidth="800"
@@ -90,9 +92,9 @@
                             </Grid.ColumnDefinitions>
                         
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
                             
                             <Label
@@ -101,7 +103,7 @@
                                 FontWeight="Bold"
                                 Foreground="#FF3E4243"
                                 Margin="0 0 0 5"
-                                Padding="0 2"
+                                Padding="0"
                                 Target="{Binding ElementName=fullname_textbox}"
                                 VerticalAlignment="Center" />
 
@@ -113,8 +115,11 @@
                                 FontWeight="Bold" 
                                 Foreground="#FF3E4243"
                                 Margin="0 0 0 5"
-                                Padding="0 2" 
-                                Text="" />
+                                Padding="0" 
+                                Text=""
+                                VerticalAlignment="Center"
+                                materialDesign:HintAssist.Hint="Full Name"
+                                materialDesign:HintAssist.HintOpacity="0.3"/>
                             
                             <Label
                                 Grid.Row="1" Grid.Column="0"
@@ -122,7 +127,7 @@
                                 FontWeight="Bold"
                                 Foreground="#FF3E4243"
                                 Margin="0 0 0 5"
-                                Padding="0 2"
+                                Padding="0"
                                 Target="{Binding ElementName=role_combobox}"
                                 VerticalAlignment="Center" />
 
@@ -135,9 +140,9 @@
                                 FontWeight="Bold" 
                                 Foreground="#FF3E4243"
                                 IsReadOnly="True"
-                                Padding="0 2" 
+                                Padding="0" 
                                 Text=""
-                                Visibility="Visible"/>
+                                VerticalAlignment="Center"/>
 
                             <ComboBox 
                                  Grid.Column="1" Grid.Row="1"
@@ -161,7 +166,7 @@
                                 Content="_Email" 
                                 FontWeight="Bold" 
                                 Foreground="#FF3E4243"
-                                Padding="0 2"
+                                Padding="0"
                                 Target="{Binding ElementName=email_textbox}"
                                 VerticalAlignment="Center" />
                             
@@ -174,8 +179,9 @@
                                 FontWeight="Bold" 
                                 Foreground="#FF3E4243"
                                 IsReadOnly="True"
-                                Padding="0 2" 
-                                Text="" />
+                                Padding="0" 
+                                Text=""
+                                VerticalAlignment="Center"/>
                         </Grid>
                         <Grid Grid.Column="1" Margin="0 0 10 10">
                             <StackPanel 
@@ -192,6 +198,7 @@
                                         Name="cancel_button"
                                         BorderThickness="0"
                                         Background="{x:Null}" 
+                                        Click="cancelButton_Click"
                                         Content="Cancel" 
                                         FontWeight="Bold"
                                         Foreground="#3E4243"
@@ -205,6 +212,7 @@
                                         Name="save_button"
                                         BorderThickness="0" 
                                         Background="{x:Null}" 
+                                        Click="saveButton_Click"
                                         Content="Save" 
                                         FontWeight="Bold"
                                         Foreground="#FFFFFF" 
@@ -215,8 +223,7 @@
                                  x:Name="showstaffbuttons_stackpanel"
                                  HorizontalAlignment="Right"
                                  Orientation="Horizontal" 
-                                 VerticalAlignment="Bottom"
-                                 Visibility="Visible">
+                                 VerticalAlignment="Bottom">
                                 <Border 
                                      Background="#F85E5E" 
                                      CornerRadius="7" 
@@ -224,7 +231,8 @@
                                     <Button 
                                         Name="delete_button"
                                         BorderThickness="0" 
-                                        Background="{x:Null}" 
+                                        Background="{x:Null}"
+                                        Click="deleteButton_Click"
                                         Content="Delete" 
                                         FontWeight="Bold"
                                         Foreground="#FFFFFF" 
@@ -238,6 +246,7 @@
                                         Name="edit_button"
                                         BorderThickness="0"
                                         Background="{x:Null}" 
+                                        Click="editButton_Click"
                                         Content="Edit" 
                                         FontWeight="Bold"
                                         Foreground="#FFFFFF"

@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
+
 using Velacro.Api;
 using Velacro.Basic;
+
 using Newtonsoft.Json.Linq;
+
 using assetnest_wpf.Model;
 using assetnest_wpf.Utils;
 
@@ -21,14 +20,17 @@ namespace assetnest_wpf.View.Staff
 
         public async void getStaff(int staffId)
         {
+            ApiClient client = ApiUtil.Instance.vClient;
+            ApiRequestBuilder requestBuilder;
+            ApiRequestBundle requestBundle;
+            HttpResponseBundle response = null;
+
             getView().callMethod("startLoading");
-            var client = ApiUtil.Instance.vClient;
-            var requestBuilder = new ApiRequestBuilder();
-            var request = requestBuilder
+            requestBuilder = new ApiRequestBuilder()
                 .buildHttpRequest()
                 .setRequestMethod(HttpMethod.Get)
                 .setEndpoint("users/" + staffId.ToString());
-            HttpResponseBundle response = null;
+            requestBundle = requestBuilder.getApiRequestBundle();
 
             client.setAuthorizationToken(StorageUtil.Instance.token);
             client.setOnSuccessRequest(onSuccessGetStaff);
@@ -36,10 +38,10 @@ namespace assetnest_wpf.View.Staff
 
             try
             {
-                response = await client.sendRequest(request.getApiRequestBundle());
+                response = await client.sendRequest(requestBundle);
                 if (response.getHttpResponseMessage().Content != null)
                 {
-                    Trace.WriteLine("Response: \n" +
+                    Trace.WriteLine("getStaff Response: \n" +
                         await response.getHttpResponseMessage().Content.ReadAsStringAsync());
                 }
             }
@@ -68,6 +70,7 @@ namespace assetnest_wpf.View.Staff
                     image = (string)userDataJSON["image"],
                     role = (string)userDataJSON["role"]
                 };
+                
                 getView().callMethod("initStaff", staff);
                 getView().callMethod("changeToShowStaffPage");
             }
@@ -95,10 +98,14 @@ namespace assetnest_wpf.View.Staff
         public async void updateStaff(int staffId, string name, string email, 
                                       string role, string image)
         {
-            getView().callMethod("startLoading");
-
             JObject userValue = new JObject();
             JObject user = new JObject();
+            ApiClient client = ApiUtil.Instance.vClient;
+            ApiRequestBuilder requestBuilder;
+            ApiRequestBundle requestBundle;
+            HttpResponseBundle response = null;
+
+            getView().callMethod("startLoading");
 
             userValue.Add("name", name);
             userValue.Add("email", email);
@@ -106,27 +113,24 @@ namespace assetnest_wpf.View.Staff
             userValue.Add("image", image);
             user.Add("user", userValue);
 
-            var client = ApiUtil.Instance.vClient;
-            var requestBuilder = new ApiRequestBuilder();
-            var request = requestBuilder
+            requestBuilder = new ApiRequestBuilder()
                 .buildHttpRequest()
                 .setRequestMethod(HttpMethod.Put)
                 .setEndpoint("users/" + staffId.ToString())
                 .addJSON<JObject>(user);
-            HttpResponseBundle response = null;
-
-            Trace.WriteLine("Request : \n" + request.getApiRequestBundle().getJSON());
+            requestBundle = requestBuilder.getApiRequestBundle();
+            
             client.setAuthorizationToken(StorageUtil.Instance.token);
             client.setOnSuccessRequest(onSuccessUpdateStaff);
             client.setOnFailedRequest(onFailedUpdateStaff);
 
             try
             {
-                response = await client.sendRequest(request.getApiRequestBundle());
+                response = await client.sendRequest(requestBundle);
                 if (response.getHttpResponseMessage().IsSuccessStatusCode &&
                     response.getHttpResponseMessage().Content != null)
                 {
-                    Trace.WriteLine("Response : \n" +
+                    Trace.WriteLine("updateStaff Response : \n" +
                             await response.getHttpResponseMessage().Content.ReadAsStringAsync());
                     getStaff(staffId);
                 }
@@ -148,7 +152,8 @@ namespace assetnest_wpf.View.Staff
                 reasonPhrase = "Reason Phrase: " + _response.getHttpResponseMessage().ReasonPhrase;
             }
             getView().callMethod("endLoading");
-            getView().callMethod("showSuccessMessage", "Staff updated successfully. " + reasonPhrase);
+            getView().callMethod("showSuccessMessage", 
+                                 "Staff updated successfully. " + reasonPhrase);
         }
 
         private void onFailedUpdateStaff(HttpResponseBundle _response)
@@ -165,25 +170,25 @@ namespace assetnest_wpf.View.Staff
 
         public async void deleteStaff(int staffId)
         {
-            getView().callMethod("startLoading");
-            var client = ApiUtil.Instance.vClient;
-            var requestBuilder = new ApiRequestBuilder();
-            var request = requestBuilder
+            ApiClient client = ApiUtil.Instance.vClient;
+            ApiRequestBuilder requestBuilder = new ApiRequestBuilder()
                 .buildHttpRequest()
                 .setRequestMethod(HttpMethod.Delete)
                 .setEndpoint("users/" + staffId.ToString());
+            ApiRequestBundle requestBundle = requestBuilder.getApiRequestBundle();
             HttpResponseBundle response = null;
 
+            getView().callMethod("startLoading");
             client.setAuthorizationToken(StorageUtil.Instance.token);
             client.setOnSuccessRequest(onSuccessDeleteStaff);
             client.setOnFailedRequest(onFailedDeleteStaff);
 
             try
             {
-                response = await client.sendRequest(request.getApiRequestBundle());
+                response = await client.sendRequest(requestBundle);
                 if (response.getHttpResponseMessage().Content != null)
                 {
-                    Trace.WriteLine("Response: \n" +
+                    Trace.WriteLine("deleteStaff Response: \n" +
                         await response.getHttpResponseMessage().Content.ReadAsStringAsync());
                 }
             }
@@ -204,9 +209,11 @@ namespace assetnest_wpf.View.Staff
                 reasonPhrase = "Reason Phrase: " + _response.getHttpResponseMessage().ReasonPhrase;
             }
             getView().callMethod("endLoading");
-            getView().callMethod("showSuccessMessage", "Staff deleted successfully. " + reasonPhrase);
+            getView().callMethod("showSuccessMessage", 
+                                 "Staff deleted successfully. " + reasonPhrase);
             getView().callMethod("navigateToStaffListPage");
         }
+
         private void onFailedDeleteStaff(HttpResponseBundle _response)
         {
             string reasonPhrase = "";

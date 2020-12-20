@@ -1,29 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 using Velacro.Basic;
 using Velacro.LocalFile;
 using Velacro.UIElements.Basic;
-using Velacro.UIElements.Button;
-using Velacro.UIElements.PasswordBox;
 using Velacro.UIElements.TextBox;
 
 using assetnest_wpf.Model;
-using assetnest_wpf.View.Profile;
 using assetnest_wpf.Utils;
+using assetnest_wpf.View.Profile;
 
 namespace assetnest_wpf.View.EditProfile
 {
@@ -34,19 +22,18 @@ namespace assetnest_wpf.View.EditProfile
     {
         private int userId;
         private string currentImagePath;
-        private MyList<MyFile> newProfileImage;
-        private BuilderButton builderButton;
-        private BuilderPasswordBox builderPasswordBox;
+        private bool changePassword;
         private BuilderTextBox builderTextBox;
+        private Button changePasswordButton;
         private Image profileImageTooltipImage;
         private ImageBrush profileImageImageBrush;
         private Label roleLabel;
         private Label nameLabel;
+        private PasswordBox currentPasswordBox;
+        private PasswordBox newPasswordBox;
+        private PasswordBox confirmNewPasswordBox;
         private ProgressBar loadingProgressBar;
-        private IMyButton cancelButton;
-        private IMyButton saveButton;
-        private IMyButton loadImageButton;
-        private IMyPasswordBox passwordPasswordBox;
+        private MyList<MyFile> newProfileImage;
         private IMyTextBox fullNameTextBox;
         private IMyTextBox roleTextBox;
         private IMyTextBox emailTextBox;
@@ -58,12 +45,11 @@ namespace assetnest_wpf.View.EditProfile
             initUIBuilders();
             initUIElements();
             initProfile();
+            changePassword = false;
         }
 
         private void initUIBuilders()
         {
-            builderButton = new BuilderButton();
-            builderPasswordBox = new BuilderPasswordBox();
             builderTextBox = new BuilderTextBox();
         }
 
@@ -73,17 +59,14 @@ namespace assetnest_wpf.View.EditProfile
             profileImageImageBrush = this.FindName("profileimage_imagebrush") as ImageBrush;
             roleLabel = this.FindName("role_label") as Label;
             nameLabel = this.FindName("name_label") as Label;
+            currentPasswordBox = this.FindName("current_passwordbox") as PasswordBox;
+            newPasswordBox = this.FindName("new_passwordbox") as PasswordBox;
+            confirmNewPasswordBox = this.FindName("confirmnew_passwordbox") as PasswordBox;
             loadingProgressBar = this.FindName("loading_progressbar") as ProgressBar;
             fullNameTextBox = builderTextBox.activate(this, "fullname_textbox");
             roleTextBox = builderTextBox.activate(this, "role_textbox");
             emailTextBox = builderTextBox.activate(this, "email_textbox");
-            passwordPasswordBox = builderPasswordBox.activate(this, "password_passwordbox");
-            cancelButton = builderButton.activate(this, "cancel_button")
-                    .addOnClick(this, "cancelButton_Click");
-            saveButton = builderButton.activate(this, "save_button")
-                    .addOnClick(this, "saveButton_Click");
-            loadImageButton = builderButton.activate(this, "loadimage_button")
-                    .addOnClick(this, "loadImageButton_Click");
+            changePasswordButton = this.FindName("changepassword_button") as Button;
         }
 
         private void initProfile()
@@ -109,38 +92,57 @@ namespace assetnest_wpf.View.EditProfile
             }
         }
 
-        public void cancelButton_Click() 
+        private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
             navigateToProfilePage();
         }
 
-        public void saveButton_Click()
+        private void saveButton_Click(object sender, RoutedEventArgs e)
         {
             string name = fullNameTextBox.getText();
             string email = emailTextBox.getText();
-            string password = passwordPasswordBox.getPassword();
+            string currentPassword = currentPasswordBox.Password;
+            string newPassword = newPasswordBox.Password;
+            string confirmNewPassword = confirmNewPasswordBox.Password;
             MyFile newImageFile = newProfileImage[0];
 
-            if (name.Equals("") || email.Equals("") || password.Equals(""))
+            if (name.Equals("") || email.Equals("") || 
+                (changePassword && (currentPassword.Equals("") || 
+                                    newPassword.Equals("") || 
+                                    confirmNewPassword.Equals(""))))
             {
                 showErrorMessage("All fillable fields are required.");
+                return;
+            }
+
+            if (changePassword && !confirmNewPassword.Equals(newPassword))
+            {
+                showErrorMessage("New password and confirm new password should be equal.");
                 return;
             }
 
             switch (showConfirmationMessage("Proceed update profile?"))
             {
                 case MessageBoxResult.OK:
-                    getController().callMethod("updateUser", userId, name, email, 
-                                               password, currentImagePath, newImageFile);
-                    break;
-                case MessageBoxResult.Cancel:
+                    if (changePassword)
+                    {
+                        getController()
+                            .callMethod("updateUser", userId, name, email, currentPassword, 
+                                        newPassword, currentImagePath, newImageFile);
+                    }
+                    else
+                    {
+                        getController()
+                            .callMethod("updateUser", userId, name, email, null, 
+                                        null, currentImagePath, newImageFile);
+                    }
                     break;
                 default:
                     break;
             }
         }
 
-        public void loadImageButton_Click()
+        private void loadImageButton_Click(object sender, RoutedEventArgs e)
         {
             MyList<MyFile> chosenImage = new OpenFile().openFile(false);
 
@@ -162,8 +164,32 @@ namespace assetnest_wpf.View.EditProfile
                 } 
                 else
                 {
-                    showErrorMessage("Image should be in .jpg, .jpeg, or .png and less than 1 MB!");
+                    showErrorMessage("Image must be in .jpg, .jpeg, or .png and less than 1 MB!");
                 }
+            }
+        }
+
+        private void changePasswordButton_Click(object sender, RoutedEventArgs e)
+        {
+            currentPasswordBox.Password = "";
+            newPasswordBox.Password = "";
+            confirmNewPasswordBox.Password = "";
+
+            if (changePasswordButton.Content.ToString().Equals("Change Password"))
+            {
+                changePassword = true;
+                currentPasswordBox.Visibility = Visibility.Visible;
+                newPasswordBox.Visibility = Visibility.Visible;
+                confirmNewPasswordBox.Visibility = Visibility.Visible;
+                changePasswordButton.Content = "Cancel Change Password";
+            } 
+            else
+            {
+                changePassword = false;
+                currentPasswordBox.Visibility = Visibility.Collapsed;
+                newPasswordBox.Visibility = Visibility.Collapsed;
+                confirmNewPasswordBox.Visibility = Visibility.Collapsed;
+                changePasswordButton.Content = "Change Password";
             }
         }
 
@@ -171,7 +197,7 @@ namespace assetnest_wpf.View.EditProfile
         {
             this.Dispatcher.Invoke(() =>
             {
-
+                this.NavigationService.Navigate(new ProfilePage(userId));
             });
         }
         public void showErrorMessage(string message)
@@ -189,13 +215,16 @@ namespace assetnest_wpf.View.EditProfile
             return showMessage(message, MessageBoxButton.OKCancel, MessageBoxImage.Question);
         }
 
-        private MessageBoxResult showMessage(string message, MessageBoxButton buttons, MessageBoxImage icon)
+        private MessageBoxResult showMessage(string message, MessageBoxButton buttons, 
+                                             MessageBoxImage icon)
         {
             MessageBoxResult messageResult = MessageBoxResult.OK;
 
             this.Dispatcher.Invoke(() =>
             {
-                messageResult = MessageBox.Show(message, Application.Current.MainWindow.Title, buttons, icon);
+                string title = Application.Current.MainWindow.Title;
+
+                messageResult = MessageBox.Show(message, title, buttons, icon);
             });
 
             return messageResult;
@@ -203,14 +232,16 @@ namespace assetnest_wpf.View.EditProfile
 
         public void startLoading()
         {
-            this.Dispatcher.Invoke(() => {
+            this.Dispatcher.Invoke(() => 
+            {
                 loadingProgressBar.Visibility = Visibility.Visible;
             });
         }
 
         public void endLoading()
         {
-            this.Dispatcher.Invoke(() => {
+            this.Dispatcher.Invoke(() => 
+            {
                 loadingProgressBar.Visibility = Visibility.Hidden;
             });
         }
