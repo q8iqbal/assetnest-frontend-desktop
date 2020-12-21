@@ -9,14 +9,16 @@ namespace assetnest_wpf.View.Profile
 {
     class ProfileController : MyController
     {
+        String token = StorageUtil.Instance.token;
+        int id = StorageUtil.Instance.user.id;
         public ProfileController(IMyView _myView) : base(_myView)
         {
             Console.WriteLine(StorageUtil.Instance.company.name);
         }
 
-        public async void profile(String token, int id)
+        public async void profile()
         {
-            var client = new ApiClient("http://api.assetnest.me");
+            var client = ApiUtil.Instance.vClient;
             var request = new ApiRequestBuilder();
 
             var req = request
@@ -39,9 +41,9 @@ namespace assetnest_wpf.View.Profile
             }
         }
 
-        public async void logout(String token)
+        public async void logout()
         {
-            var client = new ApiClient("http://api.assetnest.me");
+            var client = ApiUtil.Instance.vClient;
             var request = new ApiRequestBuilder();
 
             var req = request

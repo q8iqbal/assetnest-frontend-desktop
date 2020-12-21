@@ -58,7 +58,7 @@ namespace assetnest_wpf.View.ListUser
             foreach(Datum datum in list) {
                 if (datum.image == null)
                 {
-                    datum.image = "../../Assets/profile.png";//new BitmapImage(new Uri("pack://application:,,,/assetnest-wpf;component/Assets/profile.png"));
+                    datum.image = "../../Assets/profile.png";
                 }
                 else
                 {

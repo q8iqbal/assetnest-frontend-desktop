@@ -197,7 +197,7 @@ namespace assetnest_wpf.View.EditProfile
         {
             this.Dispatcher.Invoke(() =>
             {
-                this.NavigationService.Navigate(new ProfilePage(userId));
+                this.NavigationService.Navigate(new ProfilePage());
             });
         }
         public void showErrorMessage(string message)
