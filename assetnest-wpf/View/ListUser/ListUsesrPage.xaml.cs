@@ -1,4 +1,5 @@
-﻿using assetnest_wpf.View.Employee;
+﻿using assetnest_wpf.Utils;
+using assetnest_wpf.View.Employee;
 using assetnest_wpf.View.Profile;
 using assetnest_wpf.View.Staff;
 using System;
@@ -54,6 +55,16 @@ namespace assetnest_wpf.View.ListUser
         {
             List<Datum> list = data.data;
             maxPage = data.last_page;
+            foreach(Datum datum in list) {
+                if (datum.image == null)
+                {
+                    datum.image = "../../Assets/profile.png";//new BitmapImage(new Uri("pack://application:,,,/assetnest-wpf;component/Assets/profile.png"));
+                }
+                else
+                {
+                    datum.image = Constants.BASE_URL + datum.image;
+                }
+            }
             this.Dispatcher.Invoke(() =>
             {
                 ListViewUsers.ItemsSource = list;

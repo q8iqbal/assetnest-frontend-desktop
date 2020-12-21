@@ -35,13 +35,8 @@
                                     <TextBlock x:Name="tbRole" Margin="5" Text="{Binding role}" FontSize="17" FontFamily="Franklin Gothic Medium"/>
                                     <Grid Grid.Column="0">
                                         <Ellipse Name ="ecUser" Height="120" Width="120">
-                                            <Ellipse.ToolTip>
-                                                <ToolTip Placement="Right">
-                                                    <Image Name="imgUser" Source="../../Assets/profile.png"/>
-                                                </ToolTip>
-                                                </Ellipse.ToolTip>
-                                                <Ellipse.Fill>
-                                                    <ImageBrush x:Name="ibUser" ImageSource="../../Assets/profile.png" Stretch="UniformToFill"/>
+                                            <Ellipse.Fill>
+                                                <ImageBrush x:Name="ibUser" ImageSource="{Binding image}" Stretch="UniformToFill"/>
                                             </Ellipse.Fill>
                                         </Ellipse>
                                     </Grid>
