@@ -18,27 +18,7 @@ namespace assetnest_wpf.View.Profile
 
         public async void profile()
         {
-            var client = ApiUtil.Instance.vClient;
-            var request = new ApiRequestBuilder();
-
-            var req = request
-                .buildHttpRequest()
-                .setEndpoint("/users/"+id)
-                .setRequestMethod(HttpMethod.Get);
-            client.setAuthorizationToken(token);
-            client.setOnSuccessRequest(setUser);
-            var response = await client.sendRequest(request.getApiRequestBundle());
-        }
-
-        private void setUser(HttpResponseBundle _response)
-        {
-            if (_response.getHttpResponseMessage().Content != null)
-            {
-                String status = _response.getHttpResponseMessage().ReasonPhrase;
-                Console.WriteLine(_response.getParsedObject<RootModelProfile>().data);
-                Console.WriteLine(_response.getJObject().ToString());
-                getView().callMethod("setProfile", _response.getParsedObject<RootModelProfile>().data);
-            }
+            getView().callMethod("setProfile", StorageUtil.Instance.user);
         }
 
         public async void logout()

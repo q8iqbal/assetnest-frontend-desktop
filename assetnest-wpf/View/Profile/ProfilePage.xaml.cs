@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using assetnest_wpf.View.Auth;
 using assetnest_wpf.Utils;
+using assetnest_wpf.Model;
 
 namespace assetnest_wpf.View.Profile
 {
@@ -31,7 +32,7 @@ namespace assetnest_wpf.View.Profile
             getProfile();
         }
 
-        public void setProfile(ModelProfile profiles)
+        public void setProfile(User profiles)
         {
             this.Dispatcher.Invoke(() => {
                 roleTxtBlock.setText(profiles.role);
@@ -77,7 +78,7 @@ namespace assetnest_wpf.View.Profile
         {
             this.Dispatcher.Invoke(() =>
             {
-                this.NavigationService.Navigate(new AuthPage());
+                ((MainWindow)MyWindow.GetWindow(this)).mainFrame.Navigate(new AuthPage());
             });
         }
     }

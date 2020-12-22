@@ -8,6 +8,6 @@ namespace assetnest_wpf.Utils
 {
     class Constants
     {
-        public static string BASE_URL = "http://api.assetnest.me/";
+        public static string BASE_URL = "https://api.assetnest.me/";
     }
 }

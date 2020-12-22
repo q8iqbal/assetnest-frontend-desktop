@@ -10,8 +10,8 @@
 
     <Grid>
         <Rectangle x:Name="profileList" Fill="WhiteSmoke" HorizontalAlignment="Left" Height="166" Margin="220,136,0,0" VerticalAlignment="Top" Width="537" RadiusY="15" RadiusX="15"/>
-        <Border Background="#F85E5E" BorderThickness="0" Height="auto" Width="auto" Margin="624,250,76,167" CornerRadius="10" Padding="2 0">
-            <Button x:Name="btn_logout" BorderThickness="0" Background="#F85E5E" FontFamily="Poppins-Medium" Content="Logout" FontSize="20" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto" Height="auto"/>
+        <Border Height="33" Background="#F85E5E" BorderThickness="0" Width="auto" Margin="624,252,76,158" CornerRadius="10" Padding="2 0">
+            <Button x:Name="btn_logout" BorderThickness="0" Background="#F85E5E" FontFamily="Poppins-Medium" Content="Logout" FontSize="20" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto" Height="33"/>
         </Border>
         <Image x:Name="user_img" Source="profile.png" HorizontalAlignment="Left" Height="137" Margin="45,136,0,0" VerticalAlignment="Top" Width="137"/>
 
