@@ -6,6 +6,8 @@ using Velacro.UIElements.Button;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using assetnest_wpf.View.Auth;
+using assetnest_wpf.Utils;
+using assetnest_wpf.Model;
 
 namespace assetnest_wpf.View.Profile
 {
@@ -20,10 +22,8 @@ namespace assetnest_wpf.View.Profile
         private Image image;
         private BuilderTextBlock txtBlockBuilder;
         private BuilderButton buttonBuilder;
-        private readonly int _id;
-        public ProfilePage(int id)
+        public ProfilePage()
         {
-            _id = id;
             InitializeComponent();
             this.KeepAlive = true;
             setController(new ProfileController(this));
@@ -32,7 +32,7 @@ namespace assetnest_wpf.View.Profile
             getProfile();
         }
 
-        public void setProfile(ModelProfile profiles)
+        public void setProfile(User profiles)
         {
             this.Dispatcher.Invoke(() => {
                 roleTxtBlock.setText(profiles.role);
@@ -42,7 +42,7 @@ namespace assetnest_wpf.View.Profile
                 emailTxtBlock.setText(profiles.email);
 
                 if(profiles.image != null)
-                    image.Source = new BitmapImage(new Uri("http://api.assetnest.me" + profiles.image));
+                    image.Source = new BitmapImage(new Uri(Constants.BASE_URL + profiles.image));
             });
         }
 
@@ -66,21 +66,19 @@ namespace assetnest_wpf.View.Profile
 
         private void getProfile()
         {
-            String token = File.ReadAllText(@"userToken.txt");
-            getController().callMethod("profile", token, _id);
+            getController().callMethod("profile");
         }
 
         public void onLogoutClick()
         {
-            String token = File.ReadAllText(@"userToken.txt");
-            getController().callMethod("logout", token);
+            getController().callMethod("logout");
         }
 
         public void navigateToLogin()
         {
             this.Dispatcher.Invoke(() =>
             {
-                this.NavigationService.Navigate(new AuthPage());
+                ((MainWindow)MyWindow.GetWindow(this)).mainFrame.Navigate(new AuthPage());
             });
         }
     }

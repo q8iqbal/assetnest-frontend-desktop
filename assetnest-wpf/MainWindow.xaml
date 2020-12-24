@@ -16,5 +16,4 @@
         FontFamily="{materialDesign:MaterialDesignFont}"
         >
     <Frame x:Name="mainFrame" Content="Frame" Margin="0"/>
-
 </basic1:MyWindow>

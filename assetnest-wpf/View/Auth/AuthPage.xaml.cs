@@ -164,7 +164,7 @@ namespace assetnest_wpf.View.Auth
         public void onSuccessLogin()
         {
             //ProfilePage page = new ProfilePage();
-            NavigationService.Navigate(new DashboardPage());
+            NavigationService.Navigate(new MainPage());
             this.showMessage(StorageUtil.Instance.company.name);
         }
 

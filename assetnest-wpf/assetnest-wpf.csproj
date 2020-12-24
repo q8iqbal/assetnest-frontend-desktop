@@ -130,6 +130,9 @@
     </ApplicationDefinition>
     <Compile Include="ApiResponse\GetCompanyResponse.cs" />
     <Compile Include="ApiResponse\LoginResponse.cs" />
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\Company.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="View\PasswordBoxAssistant.cs" />
@@ -148,6 +151,10 @@
     <Compile Include="View\Auth\AuthPage.xaml.cs">
       <DependentUpon>AuthPage.xaml</DependentUpon>
     </Compile>
+    <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Employee\AddUser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
