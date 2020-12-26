@@ -1,5 +1,5 @@
 ﻿using assetnest_wpf.Utils;
-using assetnest_wpf.View.Employee;
+using assetnest_wpf.View.AddStaff;
 using assetnest_wpf.View.Profile;
 using assetnest_wpf.View.Staff;
 using System;
@@ -142,7 +142,7 @@ namespace assetnest_wpf.View.ListUser
 
         private void btnAddStaff_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new AddUser());
+            NavigationService.Navigate(new AddStaffPage());
         }
     }
 }

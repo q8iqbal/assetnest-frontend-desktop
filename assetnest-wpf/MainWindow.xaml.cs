@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Net;
 using System.Net.Http;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -27,6 +28,9 @@ namespace assetnest_wpf
         public MainWindow()
         {
             InitializeComponent();
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | 
+                                                   SecurityProtocolType.Tls11 | 
+                                                   SecurityProtocolType.Tls12;
             //profilePage = new ProfilePage();
             authPage = new AuthPage();
             //listUserPage = new ListUserPage(mainFrame);

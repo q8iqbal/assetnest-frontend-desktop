@@ -155,7 +155,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Employee\AddUser.xaml">
+    <Page Include="View\AddStaff\AddStaffPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -192,10 +192,10 @@
       <DependentUpon>ListUsesrPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ListUser\ModelListUser.cs" />
-    <Compile Include="View\Employee\AddUser.xaml.cs">
-      <DependentUpon>AddUser.xaml</DependentUpon>
+    <Compile Include="View\AddStaff\AddStaffPage.xaml.cs">
+      <DependentUpon>AddStaffPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Employee\AddUserController.cs" />
+    <Compile Include="View\AddStaff\AddStaffController.cs" />
     <Compile Include="View\EditProfile\EditProfilePage.xaml.cs">
       <DependentUpon>EditProfilePage.xaml</DependentUpon>
     </Compile>
@@ -250,7 +250,6 @@
   <ItemGroup />
   <ItemGroup>
     <Resource Include="Assets\camera.png" />
-    <Content Include="Assets\camera.svg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="View\Auth\D - Login – 2%402x.png" />
