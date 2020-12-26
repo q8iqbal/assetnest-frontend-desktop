@@ -41,6 +41,9 @@ namespace assetnest_wpf.View.Profile
             if (_response.getHttpResponseMessage().Content != null)
             {
                 String status = _response.getHttpResponseMessage().ReasonPhrase;
+                StorageUtil.Instance.user = null;
+                StorageUtil.Instance.company = null;
+                StorageUtil.Instance.token = null;
                 getView().callMethod("navigateToLogin");
             }
         }
