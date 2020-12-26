@@ -8,17 +8,16 @@ using Velacro.Basic;
 using Newtonsoft.Json.Linq;
 using assetnest_wpf.Utils;
 
-namespace assetnest_wpf.View.Employee
+namespace assetnest_wpf.View.AddStaff
 {
-    public class AddUserController : MyController
+    public class AddStaffController : MyController
     {
-        public AddUserController(IMyView _myView) : base(_myView) { }
+        public AddStaffController(IMyView _myView) : base(_myView) { }
 
-        public async void save(
-            string _name,
-            string _email,
-            string _role)
+        public async void save(string _name, string _email, string _role)
         {
+            getView().callMethod("startLoading");
+
             var client = ApiUtil.Instance.vClient;
             var request = new ApiRequestBuilder();
             JObject userValue = new JObject();
@@ -37,21 +36,45 @@ namespace assetnest_wpf.View.Employee
             string token = StorageUtil.Instance.token;
             client.setAuthorizationToken(token);
             client.setOnSuccessRequest(setAddUserStatus);
-            var response = await client.sendRequest(request.getApiRequestBundle());
+            client.setOnFailedRequest(setAddUserStatus);
+            
+            try 
+            { 
+                var response = await client.sendRequest(request.getApiRequestBundle());
+            }
+            catch (Exception e)
+            {
+                getView().callMethod("endLoading");
+                getView().callMethod("showErrorMessage", "Failed to add new staff. " + e.Message);
+            }
         }
 
         private async void setAddUserStatus(HttpResponseBundle _response)
         {
+            getView().callMethod("endLoading");
             if (_response.getHttpResponseMessage().Content != null)
             {
                 string status = _response.getHttpResponseMessage().ReasonPhrase;
                 string response = await _response.getHttpResponseMessage().Content.ReadAsStringAsync();
                 getView().callMethod("setAddUserStatus", status);
                 Trace.WriteLine(response);
+                if (_response.getHttpResponseMessage().IsSuccessStatusCode)
+                {
+                    JObject userDataJson = null;
+                    if (_response.getJObject() != null)
+                    {
+                        userDataJson = (JObject)_response.getJObject()["data"];
+                    }
+                    if (userDataJson != null)
+                    {
+                        int staffId = (int)userDataJson["id"];
+
+                        getView().callMethod("navigateToStaffPage", staffId);
+                    }
+
+                }
             }
         }
-
-
     }
 }
 

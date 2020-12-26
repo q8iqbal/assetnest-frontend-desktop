@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,7 +24,6 @@ using assetnest_wpf.Utils.Validations;
 using f = System.Windows.Forms;
 using RestSharp;
 using assetnest_wpf.Model;
-using assetnest_wpf.View.Employee;
 using assetnest_wpf.View.Dashboard;
 
 namespace assetnest_wpf.View.Auth

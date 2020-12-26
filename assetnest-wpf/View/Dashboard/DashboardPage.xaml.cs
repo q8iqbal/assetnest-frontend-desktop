@@ -1,20 +1,13 @@
 ﻿using assetnest_wpf.View.ListUser;
+using assetnest_wpf.Model;
+using assetnest_wpf.Utils;
+
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 using Velacro.UIElements.Basic;
 using Velacro.UIElements.TextBlock;
 
@@ -28,15 +21,19 @@ namespace assetnest_wpf.View.Dashboard
 
     public partial class DashboardPage : MyPage
     {
-        private IMyTextBlock totalTxtBlock;
+        private IMyTextBlock companyNameTxtBlock;
+        private IMyTextBlock companyAddressTxtBlock;
+        private IMyTextBlock companyDescriptionTxtBlock;
+        private IMyTextBlock companyPhoneTxtBlock;
+        private Image companyImageImg;
         private IMyTextBlock adminTxtBlock;
         private IMyTextBlock employeeTxtBlock;
+        private IMyTextBlock totalTxtBlock;
         private BuilderTextBlock txtBlockBuilder;
 
         public DashboardPage()
         {
             InitializeComponent();
-            this.KeepAlive = true;
             setController(new DashboardController(this));
             initUIBuilders();
             initUIElements();
@@ -50,6 +47,11 @@ namespace assetnest_wpf.View.Dashboard
 
         private void initUIElements()
         {
+            companyNameTxtBlock = txtBlockBuilder.activate(this, "companyname_txt");
+            companyAddressTxtBlock = txtBlockBuilder.activate(this, "companyaddress_txt");
+            companyDescriptionTxtBlock = txtBlockBuilder.activate(this, "companydescription_txt");
+            companyPhoneTxtBlock = txtBlockBuilder.activate(this, "companyphone_txt");
+            companyImageImg = this.FindName("companyimage_img") as Image;
             totalTxtBlock = txtBlockBuilder.activate(this, "totalValue_txt");
             adminTxtBlock = txtBlockBuilder.activate(this, "adminValue_txt");
             employeeTxtBlock = txtBlockBuilder.activate(this, "employeeValue_txt");
@@ -57,9 +59,26 @@ namespace assetnest_wpf.View.Dashboard
 
         private void initDashboard()
         {
+            getController().callMethod("getCompany");
             getController().callMethod("getUserTotal", "admin");
             getController().callMethod("getUserTotal", "user");
             getController().callMethod("getTotal");
+        }
+
+        public void setCompany(Company company)
+        {
+            companyNameTxtBlock.setText(company.name);
+            companyAddressTxtBlock.setText(company.address);
+            companyPhoneTxtBlock.setText(company.phone);
+            if (company.description != null)
+            {
+                companyDescriptionTxtBlock.setText(company.description);
+            }
+            if (company.image != null)
+            {
+                companyImageImg.Source 
+                    = new BitmapImage(new Uri(Constants.BASE_URL + company.image));
+            }
         }
 
         public void setAdminTotal(int adminTotal)

@@ -30,6 +30,7 @@ namespace assetnest_wpf.Utils
 
         public void setToken(String token)
         {
+            client.RemoveDefaultParameter("Authorization");
             client.AddDefaultHeader("Authorization", string.Format("Bearer {0}", token));
         }
 
