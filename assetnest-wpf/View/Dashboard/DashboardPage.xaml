@@ -6,31 +6,32 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
+      Background="#F9F9F9"
       Title="DashboardPage">
 
     <basic:MyGrid>
-        <Rectangle Fill="WhiteSmoke" HorizontalAlignment="Left" Height="207" Margin="10,60,0,0" VerticalAlignment="Top" Width="759"/>
-        <Image Margin="34,136,550,237" Source="/assetnest-wpf;component/Mask Group 3.png" Stretch="Fill"/>
-        <TextBlock Text="PT. Royal Bumi Putra" FontFamily="Montserrat-Bold" FontSize="30" HorizontalAlignment="Left" Margin="269,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Rectangle Fill="#FFFFFF" HorizontalAlignment="Left" Height="207" Margin="10,60,0,0" VerticalAlignment="Top" Width="759"/>
+        <Image x:Name="companyimage_img" Margin="34,136,550,237" Source="/assetnest-wpf;component/Mask Group 3.png" Stretch="Fill"/>
+        <TextBlock x:Name="companyname_txt" Text="PT. Royal Bumi Putra" FontFamily="Montserrat-Bold" FontSize="30" HorizontalAlignment="Left" Margin="269,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBlock Text="Company Description :" FontFamily="Montserrat-Bold" FontSize="15" HorizontalAlignment="Left" Margin="269,158,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <TextBlock Text="Perusahaan yg bergerak di bidang lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas dapibus ex elit, a semper nisi aliquam lacinia. Cras at massa a nunc pretium accumsan." FontFamily="Montserrat" FontSize="10" HorizontalAlignment="Left" Margin="269,181,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204"/>
+        <TextBlock x:Name="companydescription_txt" Text="No description has been added for this company yet." FontFamily="Montserrat" FontSize="10" HorizontalAlignment="Left" Margin="269,181,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204"/>
         <TextBlock Text="Address" FontFamily="Montserrat-Bold" FontSize="15" HorizontalAlignment="Left" Margin="518,158,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <TextBlock Text="Jl. Sabaody No. 12, Dunia Baru" FontFamily="Montserrat" FontSize="15" HorizontalAlignment="Left" Margin="518,181,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock x:Name="companyaddress_txt" Text="Jl. Sabaody No. 12, Dunia Baru" FontFamily="Montserrat" FontSize="15" HorizontalAlignment="Left" Margin="518,181,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBlock Text="Phone" FontFamily="Montserrat-Bold" FontSize="15" HorizontalAlignment="Left" Margin="518,204,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <TextBlock Text="(0354) 883 438" FontFamily="Montserrat" FontSize="15" HorizontalAlignment="Left" Margin="518,224,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock x:Name="companyphone_txt" Text="(0354) 883 438" FontFamily="Montserrat" FontSize="15" HorizontalAlignment="Left" Margin="518,224,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBlock x:Name="slogan_txt" Text="Fixed Assets Management System Powered by" FontSize="18" HorizontalAlignment="Left" Margin="309,406,0,0" VerticalAlignment="Top"/>
         <TextBlock x:Name="assetnest_txt" Text="AssetNest" Foreground="#FF7B4B" FontFamily="Poppins-Regular" FontSize="18" HorizontalAlignment="Left" Margin="688,409,0,0" VerticalAlignment="Top"/>
-        <Rectangle Fill="WhiteSmoke" HorizontalAlignment="Left" Height="99" Margin="9,291,0,0" VerticalAlignment="Top" Width="241" RadiusY="15" RadiusX="15" />
+        <Rectangle Fill="#FFFFFF" HorizontalAlignment="Left" Height="99" Margin="9,291,0,0" VerticalAlignment="Top" Width="241" RadiusY="15" RadiusX="15" />
         
-        <Rectangle Fill="WhiteSmoke" HorizontalAlignment="Left" Height="99" Margin="272,291,0,0" VerticalAlignment="Top" Width="241" RadiusY="15" RadiusX="15"/>
-        <Rectangle Fill="WhiteSmoke" HorizontalAlignment="Left" Height="99" Margin="535,291,0,0" VerticalAlignment="Top" Width="241" RadiusY="15" RadiusX="15"/>
+        <Rectangle Fill="#FFFFFF" HorizontalAlignment="Left" Height="99" Margin="272,291,0,0" VerticalAlignment="Top" Width="241" RadiusY="15" RadiusX="15"/>
+        <Rectangle Fill="#FFFFFF" HorizontalAlignment="Left" Height="99" Margin="535,291,0,0" VerticalAlignment="Top" Width="241" RadiusY="15" RadiusX="15"/>
         <TextBlock x:Name="assetnest2_txt" Text="AssetNest" Foreground="#FF7B4B" FontFamily="Poppins-Medium" FontSize="18" HorizontalAlignment="Left" Margin="688,409,0,0" VerticalAlignment="Top"/>
         <Image Margin="195,300,570,115" Source="/assetnest-wpf;component/option.png" Stretch="Fill"/>
         <Image Margin="732,300,33,115" Source="/assetnest-wpf;component/option.png" Stretch="Fill"/>
         <Image Margin="455,300,310,115" Source="/assetnest-wpf;component/option.png" Stretch="Fill"/>
-        <TextBlock x:Name="totalValue_txt" Text="totalValue_txt" Foreground="#FF7B4B" FontFamily="Poppins-Medium" FontSize="35" HorizontalAlignment="Left" Margin="155,343,0,0" VerticalAlignment="Top"/>
-        <TextBlock x:Name="adminValue_txt" Text="adminvalue_txt" Foreground="#FF7B4B" FontFamily="Poppins-Medium" FontSize="35" HorizontalAlignment="Left" Margin="433,340,0,0" VerticalAlignment="Top"/>
-        <TextBlock x:Name="employeeValue_txt" Text="employeeValue_txt" Foreground="#FF7B4B" FontFamily="Poppins-Medium" FontSize="35" HorizontalAlignment="Left" Margin="684,340,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="totalValue_txt" Text="0" Foreground="#FF7B4B" FontFamily="Poppins-Medium" FontSize="35" HorizontalAlignment="Left" Margin="155,343,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="adminValue_txt" Text="0" Foreground="#FF7B4B" FontFamily="Poppins-Medium" FontSize="35" HorizontalAlignment="Left" Margin="433,340,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="employeeValue_txt" Text="0" Foreground="#FF7B4B" FontFamily="Poppins-Medium" FontSize="35" HorizontalAlignment="Left" Margin="684,340,0,0" VerticalAlignment="Top"/>
         <TextBlock x:Name="totalStaff_txt" Text="Total Staffs" FontSize="25" HorizontalAlignment="Left" Margin="34,311,0,0" VerticalAlignment="Top"/>
         <TextBlock x:Name="admins_txt" Text="Admins" FontSize="25" HorizontalAlignment="Left" Margin="297,311,0,0" VerticalAlignment="Top"/>
         <TextBlock x:Name="employees_txt" Text="Employees" FontSize="25" HorizontalAlignment="Left" Margin="556,311,0,0" VerticalAlignment="Top"/>

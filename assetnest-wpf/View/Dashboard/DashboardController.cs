@@ -9,6 +9,7 @@ using Velacro.Api;
 using Velacro.Basic;
 using Newtonsoft.Json.Linq;
 using assetnest_wpf.Utils;
+using assetnest_wpf.Model;
 
 namespace assetnest_wpf.View.Dashboard
 {
@@ -19,11 +20,16 @@ namespace assetnest_wpf.View.Dashboard
 
         }
 
-        public object ApiConstant { get; private set; }
+        public void getCompany()
+        {
+            Company company = StorageUtil.Instance.company;
+
+            getView().callMethod("setCompany", company);
+        }
 
         public async void getUserTotal(string role)
         {
-            var client = ApiUtil.Instance.vClient;
+            var client = new ApiClient(Constants.BASE_URL);
             var requestBuilder = new ApiRequestBuilder();
             var request = requestBuilder
                 .buildHttpRequest()
@@ -46,7 +52,7 @@ namespace assetnest_wpf.View.Dashboard
 
         public async void getTotal()
         {
-            var client = ApiUtil.Instance.vClient;
+            var client = new ApiClient(Constants.BASE_URL);
             var requestBuilder = new ApiRequestBuilder();
             var request = requestBuilder
                 .buildHttpRequest()
@@ -62,7 +68,6 @@ namespace assetnest_wpf.View.Dashboard
         {
             if (_response.getHttpResponseMessage().Content != null)
             {
-                Trace.WriteLine("Response dari server " + _response.getHttpResponseMessage().ToString());
                 int userTotal = (int)((JObject)_response.getJObject()["data"])["total"];
                 getView().callMethod("setUserTotal", userTotal);
             }
@@ -72,7 +77,6 @@ namespace assetnest_wpf.View.Dashboard
         {
             if (_response.getHttpResponseMessage().Content != null)
             {
-                Trace.WriteLine("Response dari server " + _response.getHttpResponseMessage().ToString());
                 int adminTotal = (int)((JObject)_response.getJObject()["data"])["total"];
                 getView().callMethod("setAdminTotal", adminTotal);
             }
@@ -81,7 +85,6 @@ namespace assetnest_wpf.View.Dashboard
         {
             if (_response.getHttpResponseMessage().Content != null)
             {
-                Trace.WriteLine("Response dari server " + _response.getHttpResponseMessage().ToString());
                 int total = (int)((JObject)_response.getJObject()["data"])["total"];
                 getView().callMethod("setTotal", total);
             }
