@@ -33,7 +33,6 @@ namespace assetnest_wpf.View.Profile
             client.setAuthorizationToken(token);
             client.setOnSuccessRequest(navigateViewLogout);
             var response = await client.sendRequest(request.getApiRequestBundle());
-            Trace.WriteLine(await response.getHttpResponseMessage().Content.ReadAsStringAsync());
         }
 
         public void navigateViewLogout(HttpResponseBundle _response)
