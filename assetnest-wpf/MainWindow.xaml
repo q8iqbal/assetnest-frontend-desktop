@@ -15,5 +15,5 @@
         TextElement.FontSize="14"
         FontFamily="{materialDesign:MaterialDesignFont}"
         >
-    <Frame x:Name="mainFrame" Content="Frame" Margin="0"/>
+    <Frame x:Name="mainFrame" Content="Frame" Margin="0" NavigationUIVisibility="Hidden"/>
 </basic1:MyWindow>

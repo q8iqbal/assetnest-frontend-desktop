@@ -8,6 +8,7 @@ using System.Windows.Media.Imaging;
 using assetnest_wpf.View.Auth;
 using assetnest_wpf.Utils;
 using assetnest_wpf.Model;
+using assetnest_wpf.View.EditProfile;
 
 namespace assetnest_wpf.View.Profile
 {
@@ -80,6 +81,11 @@ namespace assetnest_wpf.View.Profile
             {
                 ((MainWindow)MyWindow.GetWindow(this)).mainFrame.Navigate(new AuthPage());
             });
+        }
+
+        private void btnEditClick(object sender, System.Windows.RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new EditProfilePage());
         }
     }
 }

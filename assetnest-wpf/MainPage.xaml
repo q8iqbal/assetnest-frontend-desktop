@@ -10,9 +10,10 @@
 
     <Grid>
         <DockPanel>
-            <Menu x:Name="menu_top" DockPanel.Dock="Top" Height="18">
-                <MenuItem x:Name="menuHome" Header="_Home" Height="18" Click="menuHome_Click"/>
-                <MenuItem x:Name="menuProfile" Header="_Profile" Height="18" Click="menuProfile_Click"/>
+            <Menu x:Name="menu_top" DockPanel.Dock="Top" Height="27" Background="#FF7B4B">
+                <MenuItem x:Name="menuHome" Foreground="White" Header="_Home" Height="26" Click="menuHome_Click" FontWeight="Bold"/>
+                <MenuItem x:Name="menuStaff" Header="_Staffs" Height="26" Click="menuStaff_Click" FontWeight="Bold" Foreground="White" />
+                <MenuItem x:Name="menuProfile" Header="_Profile" Height="27" Click="menuProfile_Click" Foreground="White" FontWeight="Bold"/>
             </Menu>
             <StackPanel></StackPanel>
             <Frame x:Name="secondFrame" Content="Frame" Margin="0"/>

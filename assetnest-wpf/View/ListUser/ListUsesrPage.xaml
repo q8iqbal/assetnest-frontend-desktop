@@ -8,31 +8,19 @@
       Title="ListUserPage" Height="462">
 
     <Grid Margin="0,0,0,51">
-        <Button x:Name="btnAddStaff" Content="Add a new staff" HorizontalAlignment="Center" Padding="5" Margin="639,11,24,0" VerticalAlignment="Top" Background="#ff7b4b" FontFamily="Poppins" Foreground="White" Width="137" Click="btnAddStaff_Click">
-            <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="5"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-        <TextBox x:Name="tbSearch" KeyDown="tbSearch_KeyDown" HorizontalAlignment="Center" Height="23" Margin="436,16,180,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="184">
-            <TextBox.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="5"/>
-                </Style>
-            </TextBox.Resources>
-        </TextBox>
+        <Button x:Name="btnAddStaff" Content="Add a new staff" HorizontalAlignment="Left" Margin="620,11,0,0" VerticalAlignment="Top" Background="#ff7b4b" FontFamily="Poppins" Foreground="White" Width="144" Click="btnAddStaff_Click"/>
+        <TextBox x:Name="tbSearch" KeyDown="tbSearch_KeyDown" HorizontalAlignment="Left" Height="32" Margin="436,11,180,0" VerticalAlignment="Top" Width="184"/>
         <Button x:Name="btnAllStaff" Content="All staff" HorizontalAlignment="Center" Margin="24,15,679,0" VerticalAlignment="Top" Background="Transparent" FontFamily="Poppins" BorderThickness="0" Click="btnAllStaff_Click" Width="97"/>
-        <Button x:Name="btnStaffAdmin" Content="Admin" HorizontalAlignment="Center" Margin="139,15,569,0" VerticalAlignment="Top" Background="Transparent" FontFamily="Poppins" BorderThickness="0" Click="btnStaffAdmin_Click" Width="92"/>
+        <Button x:Name="btnStaffAdmin" Content="Admin" HorizontalAlignment="Center" Margin="121,15,587,0" VerticalAlignment="Top" Background="Transparent" FontFamily="Poppins" BorderThickness="0" Click="btnStaffAdmin_Click" Width="92"/>
         <Button x:Name="btnStaffEmployee" Content="Employee" HorizontalAlignment="Center" Margin="215,15,454,0" VerticalAlignment="Top" Background="Transparent" FontFamily="Poppins" BorderThickness="0" Click="btnStaffEmployee_Click" Width="131"/>
         <ScrollViewer Margin="0,46,0,73">
             <StackPanel Margin="20 0">
                 <ItemsControl x:Name="ListViewUsers" ItemsSource="{Binding users}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Border Margin="10" Width="110" Height="170">
+                            <Border Margin="10" Width="125" Height="170">
                                 <StackPanel x:Name="itemUser" MouseDown="itemUser_MouseDown">
-                                    <TextBlock x:Name="tbRole" Margin="5" Text="{Binding role}" FontSize="17" FontFamily="Franklin Gothic Medium"/>
+                                    <TextBlock x:Name="tbRole" HorizontalAlignment="Center" Text="{Binding role}" FontSize="17" FontFamily="Franklin Gothic Medium"/>
                                     <Grid Grid.Column="0">
                                         <Ellipse Name ="ecUser" Height="120" Width="120">
                                             <Ellipse.Fill>
@@ -40,7 +28,7 @@
                                             </Ellipse.Fill>
                                         </Ellipse>
                                     </Grid>
-                                    <TextBlock x:Name="tbName" Margin="5 0" Text="{Binding name}" FontSize="15"/>
+                                    <TextBlock x:Name="tbName" HorizontalAlignment="Center" Text="{Binding name}" FontSize="15"/>
                                 </StackPanel>
                             </Border>
                         </DataTemplate>
@@ -53,7 +41,7 @@
                 </ItemsControl>
             </StackPanel>
         </ScrollViewer>
-        <Button x:Name="btnNext" Content="Next" Click="btnNext_Click" HorizontalAlignment="Left" Margin="701,381,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="btnPrev" Content="Previous" Click="btnPrev_Click" HorizontalAlignment="Left" Margin="605,381,0,-2" VerticalAlignment="Top" Width="91"/>
+        <Button x:Name="btnNext" Content="Next" Click="btnNext_Click" HorizontalAlignment="Left" Margin="689,381,0,-2" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnPrev" Content="Previous" Click="btnPrev_Click" HorizontalAlignment="Left" Margin="575,381,0,-2" VerticalAlignment="Top" Width="91"/>
     </Grid>
 </basic:MyPage>
