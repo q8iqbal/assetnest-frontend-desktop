@@ -64,6 +64,14 @@ namespace assetnest_wpf.View.ListUser
                 {
                     datum.image = Constants.BASE_URL + datum.image;
                 }
+
+                if (datum.role == "admin") {
+                    datum.role = "Admin";
+                }
+                else
+                {
+                    datum.role = "Employee";
+                }
             }
             this.Dispatcher.Invoke(() =>
             {

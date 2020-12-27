@@ -101,9 +101,9 @@
             FontSize="20"
             Content="Cancel" 
             HorizontalAlignment="Left" 
-            Margin="385,276,0,0" 
+            Margin="365,277,0,0" 
             VerticalAlignment="Top" 
-            Width="Auto" Height="40"/>
+            Width="Auto" Height="40" RenderTransformOrigin="0.735,0.448"/>
         <ComboBox 
             Name="role_cb"
             SelectedValuePath="Content"

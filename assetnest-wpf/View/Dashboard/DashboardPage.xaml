@@ -26,9 +26,6 @@
         <Rectangle Fill="#FFFFFF" HorizontalAlignment="Left" Height="99" Margin="276,265,0,0" VerticalAlignment="Top" Width="241" RadiusY="15" RadiusX="15"/>
         <Rectangle Fill="#FFFFFF" HorizontalAlignment="Left" Height="99" Margin="539,265,0,0" VerticalAlignment="Top" Width="241" RadiusY="15" RadiusX="15"/>
         <TextBlock x:Name="assetnest2_txt" Text="AssetNest" Foreground="#FF7B4B" FontFamily="Poppins-Medium" FontSize="18" HorizontalAlignment="Left" Margin="691,411,0,0" VerticalAlignment="Top"/>
-        <Image Margin="199,274,566,141" Source="/assetnest-wpf;component/option.png" Stretch="Fill"/>
-        <Image Margin="736,274,29,141" Source="/assetnest-wpf;component/option.png" Stretch="Fill"/>
-        <Image Margin="459,274,306,141" Source="/assetnest-wpf;component/option.png" Stretch="Fill"/>
         <TextBlock x:Name="totalValue_txt" Text="0" Foreground="#FF7B4B" FontFamily="Poppins-Medium" FontSize="35" HorizontalAlignment="Left" Margin="159,317,0,0" VerticalAlignment="Top"/>
         <TextBlock x:Name="adminValue_txt" Text="0" Foreground="#FF7B4B" FontFamily="Poppins-Medium" FontSize="35" HorizontalAlignment="Left" Margin="437,314,0,0" VerticalAlignment="Top"/>
         <TextBlock x:Name="employeeValue_txt" Text="0" Foreground="#FF7B4B" FontFamily="Poppins-Medium" FontSize="35" HorizontalAlignment="Left" Margin="688,314,0,0" VerticalAlignment="Top"/>
