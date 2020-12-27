@@ -1,4 +1,5 @@
 ﻿using assetnest_wpf.View.Dashboard;
+using assetnest_wpf.View.ListUser;
 using assetnest_wpf.View.Profile;
 using System;
 using System.Collections.Generic;
@@ -36,6 +37,11 @@ namespace assetnest_wpf
         private void menuProfile_Click(object sender, RoutedEventArgs e)
         {
             secondFrame.Navigate(new ProfilePage());
+        }
+
+        private void menuStaff_Click(object sender, RoutedEventArgs e)
+        {
+            secondFrame.Navigate(new ListUserPage(""));
         }
     }
 }
