@@ -35,7 +35,7 @@
                 Source="../../Assets/pencil.png" 
                 Width="20" />
         </Button>
-        <Ellipse HorizontalAlignment="Left" Height="137" Margin="45,150,0,0" VerticalAlignment="Top" Width="137">
+        <Ellipse HorizontalAlignment="Left" Height="165" Margin="31,136,0,0" VerticalAlignment="Top" Width="165">
             <Ellipse.Fill>
                 <ImageBrush x:Name="user_img" ImageSource="/assetnest-wpf;component/Assets/profile.png" Stretch="UniformToFill"/>
             </Ellipse.Fill>
