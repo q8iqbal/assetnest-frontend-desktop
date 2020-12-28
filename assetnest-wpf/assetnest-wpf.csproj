@@ -275,9 +275,6 @@
     <Resource Include="View\Profile\profile.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Mask Group 3.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="option.png" />
   </ItemGroup>
   <ItemGroup>

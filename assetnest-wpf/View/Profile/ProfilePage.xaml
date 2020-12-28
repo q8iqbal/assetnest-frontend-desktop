@@ -9,8 +9,7 @@
       Title="ProfilePage" Background="#F9F9F9">
 
     <Grid>
-        <Rectangle x:Name="profileList" Fill="#FFFFFF" HorizontalAlignment="Left" Height="166" Margin="220,136,0,0" VerticalAlignment="Top" Width="537" RadiusY="15" RadiusX="15"/>
-        <Image x:Name="user_img" Source="profile.png" HorizontalAlignment="Left" Height="137" Margin="45,136,0,0" VerticalAlignment="Top" Width="137"/>
+        <Rectangle x:Name="profileList" Fill="WhiteSmoke" HorizontalAlignment="Left" Height="166" Margin="220,136,0,0" VerticalAlignment="Top" Width="537" RadiusY="15" RadiusX="15"/>
 
         <TextBlock x:Name="roleText" Foreground="#FF7B4B" FontFamily="Poppins-Medium" FontSize="38" HorizontalAlignment="Left" Margin="65,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="117"/>
         <TextBlock Text="|" Foreground="Black" FontFamily="Poppins-Medium" FontSize="38" HorizontalAlignment="Left" Margin="187,46,0,0" VerticalAlignment="Top"/>
@@ -36,5 +35,10 @@
                 Source="../../Assets/pencil.png" 
                 Width="20" />
         </Button>
+        <Ellipse HorizontalAlignment="Left" Height="137" Margin="45,150,0,0" VerticalAlignment="Top" Width="137">
+            <Ellipse.Fill>
+                <ImageBrush x:Name="user_img" ImageSource="/assetnest-wpf;component/Assets/profile.png" Stretch="UniformToFill"/>
+            </Ellipse.Fill>
+        </Ellipse>
     </Grid>
 </basic:MyPage>

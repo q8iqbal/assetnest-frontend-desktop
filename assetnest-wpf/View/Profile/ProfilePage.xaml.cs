@@ -9,6 +9,7 @@ using assetnest_wpf.View.Auth;
 using assetnest_wpf.Utils;
 using assetnest_wpf.Model;
 using assetnest_wpf.View.EditProfile;
+using System.Windows.Media;
 
 namespace assetnest_wpf.View.Profile
 {
@@ -20,7 +21,7 @@ namespace assetnest_wpf.View.Profile
         private IMyTextBlock roleValueTxtBlock;
         private IMyTextBlock emailTxtBlock;
         private IMyButton buttonLogout;
-        private Image image;
+        private ImageBrush image;
         private BuilderTextBlock txtBlockBuilder;
         private BuilderButton buttonBuilder;
         public ProfilePage()
@@ -43,7 +44,7 @@ namespace assetnest_wpf.View.Profile
                 emailTxtBlock.setText(profiles.email);
 
                 if(profiles.image != null)
-                    image.Source = new BitmapImage(new Uri(Constants.BASE_URL + profiles.image));
+                    image.ImageSource = new BitmapImage(new Uri(Constants.BASE_URL + profiles.image));
             });
         }
 
@@ -51,7 +52,7 @@ namespace assetnest_wpf.View.Profile
         {
             txtBlockBuilder = new BuilderTextBlock();
             buttonBuilder = new BuilderButton();
-            image = new Image();
+            image = new ImageBrush();
         }
 
         private void initUIElements()
@@ -61,7 +62,7 @@ namespace assetnest_wpf.View.Profile
             nameValueTxtBlock = txtBlockBuilder.activate(this, "nameValueText");
             roleValueTxtBlock = txtBlockBuilder.activate(this, "roleValueText");
             emailTxtBlock = txtBlockBuilder.activate(this, "emailValueText");
-            image = this.FindName("user_img") as Image;
+            image = this.FindName("user_img") as ImageBrush;
             buttonLogout = this.buttonBuilder.activate(this, "btn_logout").addOnClick(this, "onLogoutClick");
         }
 
