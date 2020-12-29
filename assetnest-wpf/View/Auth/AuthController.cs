@@ -58,7 +58,6 @@ namespace assetnest_wpf.View.Auth
 
             if(!string.IsNullOrWhiteSpace(uImage))
             {
-                Console.WriteLine("tes");
                 var req = new RestRequest("users/image", Method.POST);
                 req.AddFile("image",uImage);
                 var resp = await this.client.ExecuteAsync(req);
@@ -73,7 +72,9 @@ namespace assetnest_wpf.View.Auth
                 var resp = await this.client.ExecuteAsync(req);
                 JObject obj = JObject.Parse(resp.Content);
                 company.image = obj["data"]["path"].ToString();
+                
             }
+
             object body = (new {
                 user = new {
                     name = user.name,
@@ -85,9 +86,11 @@ namespace assetnest_wpf.View.Auth
                     name = company.name,
                     address = company.address,
                     phone = company.phone,
+                    description = company.description,
                     image = company.image != null ? company.image : null
                 } 
             });
+
             request.AddJsonBody(body);
             var client = ApiUtil.Instance.client;
             var response = await client.ExecuteAsync(request);   
