@@ -36,20 +36,14 @@ namespace assetnest_wpf.View.ListUser
         {
             if (_response.getHttpResponseMessage().Content != null)
             {
-                String status = _response.getHttpResponseMessage().ReasonPhrase;
-                getView().callMethod("showList", _response.getParsedObject<Root>().data);
-
-                //testList();
-                //Console.WriteLine(_response.getParsedObject<Root>().data.data);
-                //Console.WriteLine(_response.getJObject().ToString());
-                //getView().callMethod("setProfile", _response.getParsedObject<RootModelProfile>().data);
-            }
-        }
-        private void testList(List<Datum> data)
-        {
-            foreach (var datum in data)
-            {
-                Console.WriteLine(datum.name);
+                //String status = _response.getHttpResponseMessage().ReasonPhrase;
+                String totalData = _response.getJObject()["data"]["total"].ToString();
+                Console.WriteLine("inilo = " + totalData);
+                Data data = new Data();
+                if (!totalData.Equals("0")) {
+                    data = _response.getParsedObject<Root>().data;
+                }
+                getView().callMethod("showList", data);
             }
         }
     }

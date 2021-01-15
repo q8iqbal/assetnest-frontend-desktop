@@ -11,7 +11,7 @@
 
     <basic:MyGrid>
         <Rectangle Fill="#FFFFFF" HorizontalAlignment="Left" Height="207" Margin="14,34,0,0" VerticalAlignment="Top" Width="759" MouseDown="btnAllStaff_Click"/>
-        <Image x:Name="companyimage_img" Margin="38,53,546,334" Source="/assetnest-wpf;component/Assets/company.png" Stretch="Fill"/>
+        <Image x:Name="companyimage_img" Margin="38,53,546,0" Source="/assetnest-wpf;component/Assets/company.png" Height="179" VerticalAlignment="Top"/>
         <TextBlock x:Name="companyname_txt" Text="Your Company Name" FontFamily="Montserrat-Bold" FontSize="30" HorizontalAlignment="Left" Margin="273,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBlock Text="Company Description :" FontFamily="Montserrat-Bold" FontSize="15" HorizontalAlignment="Left" Margin="273,132,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBlock x:Name="companydescription_txt" Text="No description has been added for this company yet." FontFamily="Montserrat" FontSize="10" HorizontalAlignment="Left" Margin="273,155,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204"/>

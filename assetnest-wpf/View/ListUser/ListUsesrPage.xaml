@@ -10,7 +10,7 @@
 
     <Grid Margin="0,0,0,51">
         <Button x:Name="btnAddStaff" Content="Add a new staff" HorizontalAlignment="Left" Margin="620,11,0,0" VerticalAlignment="Top" Background="#ff7b4b" FontFamily="Poppins" Foreground="White" Width="144" Click="btnAddStaff_Click"/>
-        <TextBox x:Name="tbSearch" m:HintAssist.Hint="Search Staff" KeyDown="tbSearch_KeyDown" HorizontalAlignment="Left" Height="32" Margin="436,11,180,0" VerticalAlignment="Top" Width="184"/>
+        <TextBox x:Name="tbSearch" m:HintAssist.Hint="Search Staff" KeyUp="tbSearch_KeyDown" HorizontalAlignment="Left" Height="32" Margin="436,11,180,0" VerticalAlignment="Top" Width="184"/>
         <Button x:Name="btnAllStaff" Content="All staff" HorizontalAlignment="Center" Margin="24,15,679,0" VerticalAlignment="Top" Background="Transparent" FontFamily="Poppins" BorderThickness="0" Click="btnAllStaff_Click" Width="97"/>
         <Button x:Name="btnStaffAdmin" Content="Admin" HorizontalAlignment="Center" Margin="121,15,587,0" VerticalAlignment="Top" Background="Transparent" FontFamily="Poppins" BorderThickness="0" Click="btnStaffAdmin_Click" Width="92"/>
         <Button x:Name="btnStaffEmployee" Content="Employee" HorizontalAlignment="Center" Margin="215,15,454,0" VerticalAlignment="Top" Background="Transparent" FontFamily="Poppins" BorderThickness="0" Click="btnStaffEmployee_Click" Width="131"/>
