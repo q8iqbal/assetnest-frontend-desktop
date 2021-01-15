@@ -6,7 +6,7 @@
       xmlns:m="http://materialdesigninxaml.net/winfx/xaml/themes"
       x:Class="assetnest_wpf.View.ListUser.ListUserPage" 
       mc:Ignorable="d" d:DesignWidth="800"
-      Title="ListUserPage" Height="462" Background="#F9F9F9">
+      Title="ListUserPage" Height="550" Background="#F9F9F9">
 
     <Grid Margin="0,0,0,51">
         <Button x:Name="btnAddStaff" Content="Add a new staff" HorizontalAlignment="Left" Margin="620,11,0,0" VerticalAlignment="Top" Background="#ff7b4b" FontFamily="Poppins" Foreground="White" Width="144" Click="btnAddStaff_Click"/>
@@ -14,7 +14,7 @@
         <Button x:Name="btnAllStaff" Content="All staff" HorizontalAlignment="Center" Margin="24,15,679,0" VerticalAlignment="Top" Background="Transparent" FontFamily="Poppins" BorderThickness="0" Click="btnAllStaff_Click" Width="97"/>
         <Button x:Name="btnStaffAdmin" Content="Admin" HorizontalAlignment="Center" Margin="121,15,587,0" VerticalAlignment="Top" Background="Transparent" FontFamily="Poppins" BorderThickness="0" Click="btnStaffAdmin_Click" Width="92"/>
         <Button x:Name="btnStaffEmployee" Content="Employee" HorizontalAlignment="Center" Margin="215,15,454,0" VerticalAlignment="Top" Background="Transparent" FontFamily="Poppins" BorderThickness="0" Click="btnStaffEmployee_Click" Width="131"/>
-        <ScrollViewer Margin="0,46,0,73">
+        <ScrollViewer Margin="0,52,0,67">
             <StackPanel Margin="20 0">
                 <ItemsControl x:Name="ListViewUsers" ItemsSource="{Binding users}">
                     <ItemsControl.ItemTemplate>
@@ -42,7 +42,7 @@
                 </ItemsControl>
             </StackPanel>
         </ScrollViewer>
-        <Button x:Name="btnNext" Content="Next" Click="btnNext_Click" HorizontalAlignment="Left" Margin="689,381,0,-2" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="btnPrev" Content="Previous" Click="btnPrev_Click" HorizontalAlignment="Left" Margin="575,381,0,-2" VerticalAlignment="Top" Width="91"/>
+        <Button x:Name="btnNext" Content="Next" Click="btnNext_Click" HorizontalAlignment="Left" Margin="689,441,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnPrev" Content="Previous" Click="btnPrev_Click" HorizontalAlignment="Left" Margin="575,441,0,0" VerticalAlignment="Top" Width="91"/>
     </Grid>
 </basic:MyPage>

@@ -26,6 +26,7 @@ namespace assetnest_wpf
         public MainPage()
         {
             InitializeComponent();
+            Application.Current.MainWindow.Height = 550;
             secondFrame.Navigate(new DashboardPage());
         }
 
