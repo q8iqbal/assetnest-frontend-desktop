@@ -36,8 +36,16 @@ namespace assetnest_wpf.View.ListUser
         {
             if (_response.getHttpResponseMessage().Content != null)
             {
-                String status = _response.getHttpResponseMessage().ReasonPhrase;
-                getView().callMethod("showList", _response.getParsedObject<Root>().data);
+                //String status = _response.getHttpResponseMessage().ReasonPhrase;
+                //Newtonsoft.Json.Linq.JToken data = _response.getJObject()["data"];
+                //List<Datum> datum =(string) data["data"].ToList<Datum>();
+                String totalData = _response.getJObject()["data"]["total"].ToString();
+                Console.WriteLine("inilo = " + totalData);
+                Data data = new Data();
+                if (!totalData.Equals("0")) {
+                    data = _response.getParsedObject<Root>().data;
+                }
+                getView().callMethod("showList", data);
 
                 //testList();
                 //Console.WriteLine(_response.getParsedObject<Root>().data.data);

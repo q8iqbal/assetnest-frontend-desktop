@@ -52,32 +52,35 @@ namespace assetnest_wpf.View.ListUser
 
         }
         public void showList(Data data)
-        {
-            List<Datum> list = data.data;
-            maxPage = data.last_page;
-            foreach(Datum datum in list) {
-                if (datum.image == null)
-                {
-                    datum.image = "../../Assets/profile.png";
-                }
-                else
-                {
-                    datum.image = Constants.BASE_URL + datum.image;
-                }
+        {   
+            List<Datum> list = new List<Datum>();
+            if (data.data != null) { 
+                list = data.data;
+                maxPage = data.last_page;
+                foreach (Datum datum in list) {
+                    if (datum.image == null)
+                    {
+                        datum.image = "../../Assets/profile.png";
+                    }
+                    else
+                    {
+                        datum.image = Constants.BASE_URL + datum.image;
+                    }
 
-                if (datum.role == "admin") {
-                    datum.role = "Admin";
-                }
-                else
-                {
-                    datum.role = "Employee";
+                    if (datum.role == "admin") {
+                        datum.role = "Admin";
+                    }
+                    else
+                    {
+                        datum.role = "Employee";
+                    }
                 }
             }
             this.Dispatcher.Invoke(() =>
             {
                 ListViewUsers.ItemsSource = list;
             });
-
+            
         }
         private void btnNext_Click(object sender, RoutedEventArgs e)
         {
