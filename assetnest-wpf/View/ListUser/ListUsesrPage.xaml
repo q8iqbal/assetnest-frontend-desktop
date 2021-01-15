@@ -42,7 +42,7 @@
                 </ItemsControl>
             </StackPanel>
         </ScrollViewer>
-        <Button x:Name="btnNext" Content="Next" Click="btnNext_Click" HorizontalAlignment="Left" Margin="689,441,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="btnPrev" Content="Previous" Click="btnPrev_Click" HorizontalAlignment="Left" Margin="575,441,0,0" VerticalAlignment="Top" Width="91"/>
+        <Button x:Name="btnNext" Content="Next" Click="btnNext_Click" HorizontalAlignment="Left" Margin="689,441,0,0" VerticalAlignment="Top" Width="75" Foreground="White"/>
+        <Button x:Name="btnPrev" Content="Previous" Click="btnPrev_Click" HorizontalAlignment="Left" Margin="575,441,0,0" VerticalAlignment="Top" Width="91" Foreground="White"/>
     </Grid>
 </basic:MyPage>

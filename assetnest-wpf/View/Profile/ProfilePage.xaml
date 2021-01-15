@@ -11,9 +11,9 @@
     <Grid>
         <Rectangle x:Name="profileList" Fill="White" HorizontalAlignment="Left" Height="166" Margin="220,136,0,0" VerticalAlignment="Top" Width="537" RadiusY="15" RadiusX="15"/>
 
-        <TextBlock x:Name="roleText" Foreground="#FF7B4B" FontFamily="Poppins-Medium" FontSize="38" HorizontalAlignment="Left" Margin="65,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="117"/>
+        <TextBlock x:Name="roleText" Foreground="#FF7B4B" FontFamily="Poppins-Medium" FontSize="38" HorizontalAlignment="Left" Margin="65,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="117" Text="Role"/>
         <TextBlock Text="|" Foreground="Black" FontFamily="Poppins-Medium" FontSize="38" HorizontalAlignment="Left" Margin="187,46,0,0" VerticalAlignment="Top"/>
-        <TextBlock x:Name="nameText" Foreground="Black" FontFamily="Poppins-Medium" FontSize="38" HorizontalAlignment="Left" Margin="201,44,0,0" VerticalAlignment="Top" Width="331"/>
+        <TextBlock x:Name="nameText" Foreground="Black" FontFamily="Poppins-Medium" FontSize="38" HorizontalAlignment="Left" Margin="201,44,0,0" VerticalAlignment="Top" Width="331" Text="Full Name"/>
 
         <TextBlock Text="Full Name" FontFamily="Montserrat-Medium" FontSize="20" HorizontalAlignment="Left" Margin="237,150,0,0" VerticalAlignment="Top"/>
         <TextBlock x:Name="nameValueText" FontFamily="Montserrat-Medium" FontSize="20" HorizontalAlignment="Left" Margin="427,150,0,0" VerticalAlignment="Top" Width="249"/>
@@ -35,7 +35,7 @@
                 Source="../../Assets/pencil.png" 
                 Width="20" />
         </Button>
-        <Ellipse HorizontalAlignment="Left" Height="165" Margin="31,136,0,0" VerticalAlignment="Top" Width="165">
+        <Ellipse HorizontalAlignment="Left" Height="150" Margin="31,136,0,0" VerticalAlignment="Top" Width="150">
             <Ellipse.Fill>
                 <ImageBrush x:Name="user_img" ImageSource="/assetnest-wpf;component/Assets/profile.png" Stretch="UniformToFill"/>
             </Ellipse.Fill>

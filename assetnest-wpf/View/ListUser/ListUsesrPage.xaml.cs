@@ -90,6 +90,8 @@ namespace assetnest_wpf.View.ListUser
                 currentQueryPage = page + currentPage;
                 currentQuery = currentQueryPage + currentQueryFilter;
                 getController().callMethod("getUser", currentQuery);
+            } else {
+                MessageBox.Show("This is the last page");
             }
         }
 
@@ -101,6 +103,8 @@ namespace assetnest_wpf.View.ListUser
                 currentQueryPage = page + currentPage;
                 currentQuery = currentQueryPage + currentQueryFilter;
                 getController().callMethod("getUser", currentQuery);
+            } else {
+                MessageBox.Show("This is the first page");
             }
         }
 
