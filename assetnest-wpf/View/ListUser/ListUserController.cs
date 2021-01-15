@@ -37,8 +37,6 @@ namespace assetnest_wpf.View.ListUser
             if (_response.getHttpResponseMessage().Content != null)
             {
                 //String status = _response.getHttpResponseMessage().ReasonPhrase;
-                //Newtonsoft.Json.Linq.JToken data = _response.getJObject()["data"];
-                //List<Datum> datum =(string) data["data"].ToList<Datum>();
                 String totalData = _response.getJObject()["data"]["total"].ToString();
                 Console.WriteLine("inilo = " + totalData);
                 Data data = new Data();
@@ -46,18 +44,6 @@ namespace assetnest_wpf.View.ListUser
                     data = _response.getParsedObject<Root>().data;
                 }
                 getView().callMethod("showList", data);
-
-                //testList();
-                //Console.WriteLine(_response.getParsedObject<Root>().data.data);
-                //Console.WriteLine(_response.getJObject().ToString());
-                //getView().callMethod("setProfile", _response.getParsedObject<RootModelProfile>().data);
-            }
-        }
-        private void testList(List<Datum> data)
-        {
-            foreach (var datum in data)
-            {
-                Console.WriteLine(datum.name);
             }
         }
     }
