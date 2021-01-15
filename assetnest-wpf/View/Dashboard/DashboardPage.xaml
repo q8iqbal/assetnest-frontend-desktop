@@ -27,9 +27,9 @@
 
         <Rectangle Fill="#FFFFFF" HorizontalAlignment="Left" Height="99" Margin="268,265,0,0" VerticalAlignment="Top" Width="241" RadiusY="15" RadiusX="15"/>
         <Rectangle Fill="#FFFFFF" HorizontalAlignment="Left" Height="99" Margin="531,265,0,0" VerticalAlignment="Top" Width="241" RadiusY="15" RadiusX="15"/>
-        <TextBlock x:Name="totalValue_txt" Text="0" Foreground="#FF7B4B" FontFamily="Poppins" FontSize="35" HorizontalAlignment="Left" Margin="206,316,0,0" VerticalAlignment="Top" TextAlignment="Right"/>
-        <TextBlock x:Name="adminValue_txt" Text="0" Foreground="#FF7B4B" FontFamily="Poppins" FontSize="35" HorizontalAlignment="Left" Margin="471,313,0,0" VerticalAlignment="Top" TextAlignment="Right"/>
-        <TextBlock x:Name="employeeValue_txt" Text="0" Foreground="#FF7B4B" FontFamily="Poppins" FontSize="35" HorizontalAlignment="Left" Margin="736,313,0,0" VerticalAlignment="Top" TextAlignment="Right"/>
+        <TextBlock x:Name="totalValue_txt" Text="0" Foreground="#FF7B4B" FontFamily="Poppins" FontSize="35" HorizontalAlignment="Left" Margin="201,316,0,0" VerticalAlignment="Top" TextAlignment="Right"/>
+        <TextBlock x:Name="adminValue_txt" Text="0" Foreground="#FF7B4B" FontFamily="Poppins" FontSize="35" HorizontalAlignment="Left" Margin="466,313,0,0" VerticalAlignment="Top" TextAlignment="Right"/>
+        <TextBlock x:Name="employeeValue_txt" Text="0" Foreground="#FF7B4B" FontFamily="Poppins" FontSize="35" HorizontalAlignment="Left" Margin="731,313,0,0" VerticalAlignment="Top" TextAlignment="Right"/>
         <TextBlock x:Name="totalStaff_txt" Text="Total Staffs" FontSize="25" HorizontalAlignment="Left" Margin="28,280,0,0" VerticalAlignment="Top" FontFamily="Poppins"/>
         <TextBlock x:Name="admins_txt" Text="Admins" FontSize="25" HorizontalAlignment="Left" Margin="291,280,0,0" VerticalAlignment="Top" FontFamily="Poppins"/>
         <TextBlock x:Name="employees_txt" Text="Employees" FontSize="25" HorizontalAlignment="Left" Margin="550,280,0,0" VerticalAlignment="Top" FontFamily="Poppins"/>

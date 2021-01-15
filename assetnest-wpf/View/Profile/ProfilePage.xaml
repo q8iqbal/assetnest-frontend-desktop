@@ -56,7 +56,7 @@
 
             <Ellipse HorizontalAlignment="Left" Height="150" Margin="0,50,0,0" VerticalAlignment="Top" Width="150">
                 <Ellipse.Fill>
-                    <ImageBrush x:Name="user_img" ImageSource="/assetnest-wpf;component/Assets/profile.png" Stretch="UniformToFill"/>
+                    <ImageBrush x:Name="user_img" ImageSource="/AssetNest;component/Assets/profile.png" Stretch="UniformToFill"/>
                 </Ellipse.Fill>
             </Ellipse>
             <TextBlock x:Name="slogan_txt" FontSize="15" HorizontalAlignment="Left" Margin="314,429,0,-240" VerticalAlignment="Top" FontFamily="Poppins Light">

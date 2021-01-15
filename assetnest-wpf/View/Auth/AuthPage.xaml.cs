@@ -163,8 +163,15 @@ namespace assetnest_wpf.View.Auth
         public void onSuccessLogin()
         {
             //ProfilePage page = new ProfilePage();
-            NavigationService.Navigate(new MainPage());
-            this.showMessage(StorageUtil.Instance.company.name);
+            if (StorageUtil.Instance.user.role.Equals("owner"))
+            {
+                NavigationService.Navigate(new MainPage());
+                this.showMessage(StorageUtil.Instance.company.name);
+            }
+            else { 
+                this.showMessage("You must be the owner to your company to login via dekstop app");
+            }
+
         }
 
         public void onSuccessRegister()

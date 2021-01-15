@@ -11,7 +11,7 @@
       xmlns:validate="clr-namespace:assetnest_wpf.Utils.Validations"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="AuthPage">
+      Title="AuthPage" HorizontalAlignment="Center" VerticalAlignment="Center">
     <Page.Background>
         <ImageBrush ImageSource="D - Login – 2@2x.png"/>
     </Page.Background>
@@ -333,6 +333,6 @@
             x:Name="snackbar"
             MessageQueue="{materialDesign:MessageQueue}"
             />
-        <Button Content="About Us" HorizontalAlignment="Left" Margin="364,403,0,0" VerticalAlignment="Top" Width="75" Background="{x:Null}" BorderBrush="{x:Null}" Height="24" Padding="0" Foreground="#FFFF7B4B" Click="btn_about_us"/>
+        <Button Content="About Us" HorizontalAlignment="Left" Margin="364,383,0,0" VerticalAlignment="Top" Width="75" Background="{x:Null}" BorderBrush="{x:Null}" Height="24" Padding="0" Foreground="#FFFF7B4B" Click="btn_about_us" FontFamily="Montserrat" FontSize="12"/>
     </Grid>
 </Page>
