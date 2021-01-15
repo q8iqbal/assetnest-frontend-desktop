@@ -5,48 +5,43 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:assetnest_wpf"
         mc:Ignorable="d"
-        Title="AboutWindow" Height="653.03" Width="800">
-    <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="363,10,0,0" TextWrapping="Wrap" Text="About Us" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="363,31,0,0" TextWrapping="Wrap" Text="Developer Team" VerticalAlignment="Top"/>
-        <Image HorizontalAlignment="Left" Height="100" Margin="10,47,0,0" VerticalAlignment="Top" Width="100" Source="Assets/about/profile/chandra.png"/>
-        <Image HorizontalAlignment="Left" Height="100" Margin="147,47,0,0" VerticalAlignment="Top" Width="100" Source="Assets/about/profile/danang.png"/>
-        <Image HorizontalAlignment="Left" Height="100" Margin="293,79,0,0" VerticalAlignment="Top" Width="100" Source="Assets/about/profile/goldy.png"/>
-        <Image HorizontalAlignment="Left" Height="100" Margin="425,65,0,0" VerticalAlignment="Top" Width="100" Source="Assets/about/profile/iqbal.png"/>
-        <Image HorizontalAlignment="Left" Height="100" Margin="530,79,0,0" VerticalAlignment="Top" Width="100" Source="Assets/about/profile/nawa.png"/>
-        <Image HorizontalAlignment="Left" Height="100" Margin="682,79,0,0" VerticalAlignment="Top" Width="100" Source="Assets/about/profile/risma.png"/>
-        <TextBlock HorizontalAlignment="Left" Margin="363,205,0,0" TextWrapping="Wrap" Text="Sponsored By" VerticalAlignment="Top"/>
-        <Image HorizontalAlignment="Left" Height="38" Margin="40,243,0,0" VerticalAlignment="Top" Width="100" Source="Assets/about/sponsor/logo-virtuahive-300dpi.png"/>
-        <Image HorizontalAlignment="Left" Height="36" Margin="185,275,0,0" VerticalAlignment="Top" Width="100" Source="Assets/about/sponsor/logo-rasyidtechnologies-300dpi.png"/>
-        <Image HorizontalAlignment="Left" Height="100" Margin="425,231,0,0" VerticalAlignment="Top" Width="100" Source="Assets/about/sponsor/PTI - Logo NEW (HQ).png"/>
-        <Image HorizontalAlignment="Left" Height="23" Margin="626,275,0,0" VerticalAlignment="Top" Width="100" Source="Assets/about/sponsor/logo-maulidangames-landscape-300dpi.png"/>
-        <TextBlock HorizontalAlignment="Left" Margin="363,336,0,0" TextWrapping="Wrap" Text="Supported By" VerticalAlignment="Top"/>
-        <Image HorizontalAlignment="Left" Height="100" Margin="40,367,0,0" VerticalAlignment="Top" Width="100" Source="Assets/about/sponsor/logo - sinergi dimensi informatika.png"/>
-        <Image HorizontalAlignment="Left" Height="39" Margin="197,367,0,0" VerticalAlignment="Top" Width="100" Source="Assets/about/sponsor/logo-rasyidinstitute-300dpi.png"/>
-        <Image HorizontalAlignment="Left" Height="39" Margin="337,406,0,0" VerticalAlignment="Top" Width="100" Source="Assets/about/sponsor/trustmedis.png"/>
-        <Image HorizontalAlignment="Left" Height="41" Margin="530,382,0,0" VerticalAlignment="Top" Width="100" Source="Assets/about/sponsor/logo profilku - for light bg.png"/>
-        <Image HorizontalAlignment="Left" Height="100" Margin="658,367,0,0" VerticalAlignment="Top" Width="100" Source="Assets/about/sponsor/Alterra-Logo---Full-Colour-2000x2000.png"/>
-        <TextBlock HorizontalAlignment="Left" Margin="70,472,0,0" TextWrapping="Wrap" Text="Supervisors and Mentors" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="70,493,0,-174" TextWrapping="Wrap" VerticalAlignment="Top">
-            Umi Sa'adah <LineBreak/>
-            Desy Intan Permatasari <LineBreak/>
-            Andhik Ampuh Yunanto <LineBreak/>
-            Maulidan Bagus Afridian Rasyid <LineBreak/>
-            Willy Achmat Fauzi <LineBreak/>
-            Verent Flourencia Irene <LineBreak/>
-            Mayshella Ainun Wakhidah <LineBreak/>
-            Andika Ahmad Ramadhan <LineBreak/>
-            Fandi Ahmad <LineBreak/>
-            Ardian Kristya Pratama <LineBreak/>
-            Angga Pradipta Kurnia Putra <LineBreak/>
-            Muhammad Alif Pradipta ADP <LineBreak/>
-            Rafly Arief Kanza <LineBreak/>
-            Ahmad Jarir At Thobari <LineBreak/>
-            Ajie Dibyo Respati <LineBreak/>
-            Achmad Zulkarnain <LineBreak/>
-            Arie Affianto <LineBreak/>
-            Tegar Imansyah <LineBreak/>
-        </TextBlock>
+        Title="AboutWindow" Height="675.53" Width="827">
+    <Grid Margin="0,0,2,0">
+        <TextBlock Margin="0,10,0,0" TextWrapping="Wrap" Text="About Us" Foreground="#FFFF7B4B" FontFamily="Poppins SemiBold" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,44,0,0" TextWrapping="Wrap" Text="Developer Team" VerticalAlignment="Top" FontFamily="Poppins"/>
+        <Grid Margin="0,79,0,411" HorizontalAlignment="Center">
+            <Image HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Source="Assets/about/profile/chandra.png"/>
+            <Image HorizontalAlignment="Left" Height="100" Margin="120,0,0,0" VerticalAlignment="Top" Width="100" Source="Assets/about/profile/danang.png"/>
+            <Image HorizontalAlignment="Left" Height="100" Margin="240,0,0,0" VerticalAlignment="Top" Width="100" Source="Assets/about/profile/goldy.png"/>
+            <Image HorizontalAlignment="Left" Height="100" Margin="360,0,0,0" VerticalAlignment="Top" Width="100" Source="Assets/about/profile/iqbal.png"/>
+            <Image HorizontalAlignment="Left" Height="100" Margin="480,0,0,0" VerticalAlignment="Top" Width="100" Source="Assets/about/profile/nawa.png"/>
+            <Image HorizontalAlignment="Left" Height="100" Margin="600,0,0,0" VerticalAlignment="Top" Width="100" Source="Assets/about/profile/risma.png"/>
+            <TextBlock HorizontalAlignment="Left" Margin="120,106,0,0" TextWrapping="Wrap" Text="Danang" VerticalAlignment="Top" TextAlignment="Center" Width="100" FontFamily="Poppins Light"/>
+            <TextBlock HorizontalAlignment="Left" Margin="240,106,0,0" TextWrapping="Wrap" Text="Goldy" VerticalAlignment="Top" TextAlignment="Center" Width="100" FontFamily="Poppins Light"/>
+            <TextBlock HorizontalAlignment="Left" Margin="480,106,0,0" TextWrapping="Wrap" Text="Nawa" VerticalAlignment="Top" TextAlignment="Center" Width="100" FontFamily="Poppins Light"/>
+            <TextBlock HorizontalAlignment="Left" Margin="600,106,0,0" TextWrapping="Wrap" Text="Risma" VerticalAlignment="Top" TextAlignment="Center" Width="100" FontFamily="Poppins Light"/>
+            <TextBlock HorizontalAlignment="Left" Margin="360,106,0,0" TextWrapping="Wrap" Text="Iqbal" VerticalAlignment="Top" TextAlignment="Center" Width="100" FontFamily="Poppins Light"/>
+            <TextBlock HorizontalAlignment="Left" Margin="0,106,0,0" TextWrapping="Wrap" Text="Chandra" VerticalAlignment="Top" Width="100" TextAlignment="Center" FontFamily="Poppins Light"/>
+        </Grid>
+        <TextBlock HorizontalAlignment="Center" Margin="355,230,355,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Poppins"><Run Text="Sponsored By"/></TextBlock>
+        <Image HorizontalAlignment="Left" Height="47" VerticalAlignment="Top" Width="186" Source="Assets/about/sponsor/logo-virtuahive-300dpi.png" Margin="46,268,0,0"/>
+        <Image HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Source="Assets/about/sponsor/logo-rasyidtechnologies-300dpi.png" Width="156" Margin="274,268,0,0"/>
+        <Image HorizontalAlignment="Left" Height="68" VerticalAlignment="Top" Width="82" Source="Assets/about/sponsor/PTI - Logo NEW (HQ).png" Margin="466,257,0,0"/>
+        <Image HorizontalAlignment="Left" Height="36" VerticalAlignment="Top" Width="180" Source="Assets/about/sponsor/logo-maulidangames-landscape-300dpi.png" Margin="590,279,0,0"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,349,0,0" TextWrapping="Wrap" Text="Supported By" VerticalAlignment="Top" FontFamily="Poppins"/>
+        <Image HorizontalAlignment="Left" Height="64" Margin="56,370,0,0" VerticalAlignment="Top" Width="77" Source="Assets/about/sponsor/logo - sinergi dimensi informatika.png"/>
+        <Image HorizontalAlignment="Left" Height="45" Margin="173,387,0,0" VerticalAlignment="Top" Width="111" Source="Assets/about/sponsor/logo-rasyidinstitute-300dpi.png" RenderTransformOrigin="-0.19,0.897"/>
+        <Image HorizontalAlignment="Left" Height="53" Margin="321,387,0,0" VerticalAlignment="Top" Width="142" Source="Assets/about/sponsor/trustmedis.png"/>
+        <Image HorizontalAlignment="Left" Height="47" Margin="494,393,0,0" VerticalAlignment="Top" Width="110" Source="Assets/about/sponsor/logo profilku - for light bg.png"/>
+        <Image HorizontalAlignment="Left" Height="115" Margin="650,349,0,0" VerticalAlignment="Top" Width="111" Source="Assets/about/sponsor/Alterra-Logo---Full-Colour-2000x2000.png"/>
+        <TextBlock HorizontalAlignment="Center" Margin="322,471,322,0" TextWrapping="Wrap" Text="Supervisors and Mentors" VerticalAlignment="Top" FontFamily="Poppins"/>
+        <Grid Margin="38,507,38,25" HorizontalAlignment="Center">
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Poppins Light"><Run Text="Umi Sa'adah"/><LineBreak/><Run Text="Desy Intan Permatasari"/><LineBreak/><Run Text="Andhik Ampuh Yunanto"/><LineBreak/><Run Text="Maulidan Bagus Afridian Rasyid"/><LineBreak/><Run Text="Willy Achmat Fauzi"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="213,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Poppins Light"><Run Text="Verent Flourencia Irene"/><LineBreak/><Run Text="Mayshella Ainun Wakhidah"/><LineBreak/><Run Text="Andika Ahmad Ramadhan"/><LineBreak/><Run Text="Fandi Ahmad"/><LineBreak/><Run Text="Ardian Kristya Pratama"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="401,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Poppins Light"><Run Text="Angga Pradipta Kurnia Putra"/><LineBreak/><Run Text="Muhammad Alif Pradipta ADP"/><LineBreak/><Run Text="Rafly Arief Kanza"/><LineBreak/><Run Text="Ahmad Jarir At Thobari"/><LineBreak/><Run Text="Ajie Dibyo Respati"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="601,0,-1,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Poppins Light"><Run Text="Achmad Zulkarnain"/><LineBreak/><Run Text="Arie Affianto"/><LineBreak/><Run Text="Tegar Imansyah"/></TextBlock>
+
+        </Grid>
 
     </Grid>
 </Window>
