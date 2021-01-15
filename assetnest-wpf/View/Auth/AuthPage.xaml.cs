@@ -294,5 +294,11 @@ namespace assetnest_wpf.View.Auth
                 cImage = temp.FileName;
             }
         }
+
+        private void btn_about_us(object sender, RoutedEventArgs e)
+        {
+            AboutWindow aw = new AboutWindow();
+            aw.Show();
+        }
     }
 }

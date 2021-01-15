@@ -333,5 +333,6 @@
             x:Name="snackbar"
             MessageQueue="{materialDesign:MessageQueue}"
             />
+        <Button Content="About Us" HorizontalAlignment="Left" Margin="364,403,0,0" VerticalAlignment="Top" Width="75" Background="{x:Null}" BorderBrush="{x:Null}" Height="24" Padding="0" Foreground="#FFFF7B4B" Click="btn_about_us"/>
     </Grid>
 </Page>
