@@ -24,21 +24,19 @@
                      Content="&lt;Role&gt;" 
                      BorderBrush="#3E4243"
                      BorderThickness="0 0 1.5 0"
-                     FontSize="20"  
-                     FontWeight="Bold"
+                     FontSize="20"
                      Foreground="#FF7B4B"
                      Padding="0 0 10 0"
-                     VerticalAlignment="Center" />
+                     VerticalAlignment="Center" FontFamily="Poppins Medium" />
                 <Label 
                      Name="staffname_label"
                      Content="&lt;Full Name&gt;" 
                      BorderBrush="#3E4243"
                      BorderThickness="1.5 0 0 0" 
-                     FontSize="20"  
-                     FontWeight="Bold"
+                     FontSize="20"
                      Foreground="#3E4243"
                      Padding="10 0 0 0"
-                     VerticalAlignment="Center" />
+                     VerticalAlignment="Center" FontFamily="Poppins Medium" />
             </StackPanel>
 
             <Grid Margin="0 20" Grid.Row="1">
@@ -46,7 +44,7 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-            
+
                 <Grid Grid.Column="0">
                     <Ellipse
                          Margin="10 0 20 0" 
@@ -78,71 +76,67 @@
                             Opacity="0.2"
                             ShadowDepth="1" />
                     </Border.Effect>
-                
+
                     <Grid Grid.Column="1">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="1*" />
                         </Grid.ColumnDefinitions>
-                    
+
                         <Grid Grid.Column="0" Margin="25 15">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="0.75*"/>
                                 <ColumnDefinition Width="1.25*" />
                             </Grid.ColumnDefinitions>
-                        
+
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*" />
                                 <RowDefinition Height="*" />
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
-                            
+
                             <Label
                                 Grid.Column="0" Grid.Row="0"
                                 Content="_Full Name"
-                                FontWeight="Bold"
                                 Foreground="#FF3E4243"
                                 Margin="0 0 0 5"
                                 Padding="0"
                                 Target="{Binding ElementName=fullname_textbox}"
-                                VerticalAlignment="Center" />
+                                VerticalAlignment="Center" FontFamily="Montserrat Medium" />
 
                             <TextBox 
                                 Grid.Row="0" Grid.Column="1"
                                 Name="fullname_textbox"
                                 Background="Transparent"
                                 BorderThickness="0 0 0 0" 
-                                FontWeight="Bold" 
                                 Foreground="#FF3E4243"
                                 Margin="0 0 0 5"
                                 Padding="0" 
                                 Text=""
                                 VerticalAlignment="Center"
                                 materialDesign:HintAssist.Hint="Full Name"
-                                materialDesign:HintAssist.HintOpacity="0.3"/>
-                            
+                                materialDesign:HintAssist.HintOpacity="0.3" FontFamily="Montserrat"/>
+
                             <Label
                                 Grid.Row="1" Grid.Column="0"
-                                Content="_Role" 
-                                FontWeight="Bold"
+                                Content="_Role"
                                 Foreground="#FF3E4243"
                                 Margin="0 0 0 5"
                                 Padding="0"
                                 Target="{Binding ElementName=role_combobox}"
-                                VerticalAlignment="Center" />
+                                VerticalAlignment="Center" FontFamily="Montserrat Medium" />
 
                             <TextBox 
                                 Grid.Column="1" Grid.Row="1" 
                                 Name="role_textbox"
                                 Background="Transparent"
                                 BorderBrush="Transparent"
-                                Focusable="False"
-                                FontWeight="Bold" 
+                                Focusable="False" 
                                 Foreground="#FF3E4243"
                                 IsReadOnly="True"
                                 Padding="0" 
                                 Text=""
-                                VerticalAlignment="Center"/>
+                                VerticalAlignment="Center" FontFamily="Montserrat"/>
 
                             <ComboBox 
                                  Grid.Column="1" Grid.Row="1"
@@ -160,28 +154,26 @@
                                 <ComboBoxItem 
                                     Background="Transparent">Admin</ComboBoxItem>
                             </ComboBox>
-                            
+
                             <Label
                                 Grid.Row="2" Grid.Column="0"
                                 Content="_Email" 
-                                FontWeight="Bold" 
                                 Foreground="#FF3E4243"
                                 Padding="0"
                                 Target="{Binding ElementName=email_textbox}"
-                                VerticalAlignment="Center" />
-                            
+                                VerticalAlignment="Center" FontFamily="Montserrat Medium" />
+
                             <TextBox 
                                 Grid.Column="1" Grid.Row="2" 
                                 Name="email_textbox"
                                 Background="Transparent"
                                 BorderBrush="Transparent"
-                                Focusable="False"
-                                FontWeight="Bold" 
+                                Focusable="False" 
                                 Foreground="#FF3E4243"
                                 IsReadOnly="True"
                                 Padding="0" 
                                 Text=""
-                                VerticalAlignment="Center"/>
+                                VerticalAlignment="Center" FontFamily="Montserrat"/>
                         </Grid>
                         <Grid Grid.Column="1" Margin="0 0 10 10">
                             <StackPanel 
@@ -234,9 +226,9 @@
                                         Background="{x:Null}"
                                         Click="deleteButton_Click"
                                         Content="Delete" 
-                                        FontWeight="Bold"
+                                        FontWeight="Normal"
                                         Foreground="#FFFFFF" 
-                                        Width="80"/>
+                                        Width="80" FontFamily="Poppins SemiBold"/>
                                 </Border>
                                 <Border 
                                      Background="#78F184" 
@@ -248,9 +240,9 @@
                                         Background="{x:Null}" 
                                         Click="editButton_Click"
                                         Content="Edit" 
-                                        FontWeight="Bold"
+                                        FontWeight="Normal"
                                         Foreground="#FFFFFF"
-                                        Width="80"/>
+                                        Width="80" FontFamily="Poppins SemiBold"/>
                                 </Border>
                             </StackPanel>
                         </Grid>
@@ -262,16 +254,10 @@
                      HorizontalAlignment="Right" 
                      Orientation="Horizontal" 
                      VerticalAlignment="Bottom">
-                    <TextBlock 
-                        Text="Fixed Assets Management System Powered by " 
-                        FontWeight="Bold" 
-                        FontSize="14"
-                        Foreground="#3E4243" />
-                    <TextBlock 
-                        Text="AssetNest" 
-                        FontWeight="Bold"
-                        FontSize="14"
-                        Foreground="#FF7B4B" />
+                    <TextBlock x:Name="slogan_txt" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Poppins Light">
+            Fixed Assets Management System Powered by
+            <TextBlock FontFamily="Poppins">Asset</TextBlock><TextBlock FontFamily="Poppins" Foreground="#FF7B4B">Nest</TextBlock>
+        </TextBlock>
                 </StackPanel>
             </Grid>
             <ProgressBar 

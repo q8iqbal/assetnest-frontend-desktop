@@ -4,41 +4,65 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      mc:Ignorable="d" 
-      d:DesignHeight="550" d:DesignWidth="800"
+      mc:Ignorable="d"
       Title="ProfilePage" Background="#F9F9F9">
+    <Border Padding="20" Height="525
+            " Width="780">
+        <Grid Margin="0,0,-20,273">
+            <TextBlock x:Name="roleText" Foreground="#FF7B4B" FontFamily="Poppins Medium" FontSize="20" HorizontalAlignment="Left" Margin="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74" Text="Owner"/>
+            <TextBlock Text="|" Foreground="Black" FontFamily="Poppins-Medium" FontSize="30" HorizontalAlignment="Left" Margin="70,0,0,0" VerticalAlignment="Top" Height="28" TextAlignment="Center"/>
+            <TextBlock x:Name="nameText" Foreground="Black" FontFamily="Poppins Medium" FontSize="20" HorizontalAlignment="Left" Margin="82,0,0,0" VerticalAlignment="Top" Width="331" Text="Full Name"/>
 
-    <Grid>
-        <Rectangle x:Name="profileList" Fill="White" HorizontalAlignment="Left" Height="166" Margin="220,136,0,0" VerticalAlignment="Top" Width="537" RadiusY="15" RadiusX="15"/>
+            <Border 
+                    Background="#FFFFFF" 
+                    CornerRadius="10" Margin="180,50,24,12">
+                <Border.Effect>
+                    <DropShadowEffect
+                            BlurRadius="10"
+                            Opacity="0.2"
+                            ShadowDepth="1" />
+                </Border.Effect>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="441*"/>
+                        <ColumnDefinition Width="140*"/>
+                    </Grid.ColumnDefinitions>
 
-        <TextBlock x:Name="roleText" Foreground="#FF7B4B" FontFamily="Poppins-Medium" FontSize="38" HorizontalAlignment="Left" Margin="65,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="117" Text="Role"/>
-        <TextBlock Text="|" Foreground="Black" FontFamily="Poppins-Medium" FontSize="38" HorizontalAlignment="Left" Margin="187,46,0,0" VerticalAlignment="Top"/>
-        <TextBlock x:Name="nameText" Foreground="Black" FontFamily="Poppins-Medium" FontSize="38" HorizontalAlignment="Left" Margin="201,44,0,0" VerticalAlignment="Top" Width="331" Text="Full Name"/>
 
-        <TextBlock Text="Full Name" FontFamily="Montserrat-Medium" FontSize="20" HorizontalAlignment="Left" Margin="237,150,0,0" VerticalAlignment="Top"/>
-        <TextBlock x:Name="nameValueText" FontFamily="Montserrat-Medium" FontSize="20" HorizontalAlignment="Left" Margin="427,150,0,0" VerticalAlignment="Top" Width="249"/>
+                    <TextBlock Text="Full Name" FontFamily="Montserrat Medium" HorizontalAlignment="Left" Margin="17,20,0,0" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="nameValueText" FontFamily="Montserrat" HorizontalAlignment="Left" Margin="136,20,0,0" VerticalAlignment="Top" Width="248" Text="Full Name"/>
 
-        <TextBlock x:Name="role_txt" Text="Role" FontFamily="Montserrat-Medium" FontSize="20" HorizontalAlignment="Left" Margin="237,181,0,0" VerticalAlignment="Top" Width="137"/>
-        <TextBlock x:Name="roleValueText" FontFamily="Montserrat-Medium" FontSize="20" HorizontalAlignment="Left" Margin="427,181,0,0" VerticalAlignment="Top" Width="159"/>
+                    <TextBlock x:Name="role_txt" Text="Role" FontFamily="Montserrat Medium" HorizontalAlignment="Left" Margin="17,51,0,0" VerticalAlignment="Top" Width="136"/>
+                    <TextBlock x:Name="roleValueText" FontFamily="Montserrat" HorizontalAlignment="Left" Margin="136,51,0,0" VerticalAlignment="Top" Width="158" Text="Role"/>
 
-        <TextBlock x:Name="email_txt" Text="Email" FontFamily="Montserrat-Medium" FontSize="20" HorizontalAlignment="Left" Margin="237,212,0,0" VerticalAlignment="Top"/>
-        <TextBlock x:Name="emailValueText" FontFamily="Montserrat-Medium" FontSize="20" HorizontalAlignment="Left" Margin="427,216,0,0" VerticalAlignment="Top" Width="249"/>
+                    <TextBlock x:Name="email_txt" Text="Email" FontFamily="Montserrat Medium" HorizontalAlignment="Left" Margin="17,82,0,0" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="emailValueText" FontFamily="Montserrat" HorizontalAlignment="Left" Margin="136,86,0,0" VerticalAlignment="Top" Width="248" Text="email@mail.com"/>
+                    <Border 
+                        Background="#FF7B4B" 
+                        CornerRadius="7" 
+                        Margin="0,0,10,10" Width="100" Height="32" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Column="1">
+                        <Button x:Name="btn_logout" BorderThickness="0" Background="{x:Null}" FontFamily="Poppins Medium" Content="Logout" Foreground="White" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Width="100" FontSize="16" Height="32"/>
+                    </Border>
+                    <Button x:Name="btnEdit" Click="btnEditClick" 
+                 Background="{x:Null}" BorderBrush="{x:Null}"
+                 HorizontalAlignment="Left" VerticalAlignment="Top" 
+                 Margin="104,10,0,0" Padding="0" Width="25" Height="25" RenderTransformOrigin="0.5,0.5" Grid.Column="1">
+                        <Image 
+                    Source="../../Assets/pencil.png" 
+                    Width="20" />
+                    </Button>
+                </Grid>
+            </Border>
 
-        <TextBlock x:Name="slogan_txt" Text="Fixed Assets Management System Powered by" FontSize="18" HorizontalAlignment="Left" Margin="309,406,0,0" VerticalAlignment="Top"/>
-        <TextBlock x:Name="assetnest_txt" Text="AssetNest" Foreground="#FF7B4B" FontFamily="Poppins-Regular" FontSize="18" HorizontalAlignment="Left" Margin="688,409,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btn_logout" Background="#F85E5E" FontFamily="Poppins-Medium" Content="Logout" Foreground="White" HorizontalAlignment="Left" Margin="634,262,0,0" VerticalAlignment="Top" Width="101" FontSize="18"/>
-        <Button x:Name="btnEdit" Click="btnEditClick" 
-             Background="{x:Null}" BorderBrush="{x:Null}"
-             HorizontalAlignment="Left" VerticalAlignment="Top" 
-             Margin="715,155,0,0" Padding="0" Width="Auto" Height="Auto">
-            <Image 
-                Source="../../Assets/pencil.png" 
-                Width="20" />
-        </Button>
-        <Ellipse HorizontalAlignment="Left" Height="150" Margin="31,136,0,0" VerticalAlignment="Top" Width="150">
-            <Ellipse.Fill>
-                <ImageBrush x:Name="user_img" ImageSource="/assetnest-wpf;component/Assets/profile.png" Stretch="UniformToFill"/>
-            </Ellipse.Fill>
-        </Ellipse>
-    </Grid>
+            <Ellipse HorizontalAlignment="Left" Height="150" Margin="0,50,0,0" VerticalAlignment="Top" Width="150">
+                <Ellipse.Fill>
+                    <ImageBrush x:Name="user_img" ImageSource="/assetnest-wpf;component/Assets/profile.png" Stretch="UniformToFill"/>
+                </Ellipse.Fill>
+            </Ellipse>
+            <TextBlock x:Name="slogan_txt" FontSize="15" HorizontalAlignment="Left" Margin="314,429,0,-240" VerticalAlignment="Top" FontFamily="Poppins Light">
+            Fixed Assets Management System Powered by
+            <TextBlock FontFamily="Poppins">Asset</TextBlock><TextBlock FontFamily="Poppins" Foreground="#FF7B4B">Nest</TextBlock>
+            </TextBlock>
+        </Grid>
+    </Border>
 </basic:MyPage>

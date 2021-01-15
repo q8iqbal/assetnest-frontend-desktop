@@ -6,20 +6,30 @@
       xmlns:m="http://materialdesigninxaml.net/winfx/xaml/themes"
       x:Class="assetnest_wpf.View.ListUser.ListUserPage" 
       mc:Ignorable="d" d:DesignWidth="800"
-      Title="ListUserPage" Height="550" Background="#F9F9F9">
+      Title="ListUserPage" Background="#F9F9F9">
 
-    <Grid Margin="0,0,0,51">
-        <Button x:Name="btnAddStaff" Content="Add a new staff" HorizontalAlignment="Left" Margin="620,11,0,0" VerticalAlignment="Top" Background="#ff7b4b" FontFamily="Poppins" Foreground="White" Width="144" Click="btnAddStaff_Click"/>
-        <TextBox x:Name="tbSearch" m:HintAssist.Hint="Search Staff" KeyUp="tbSearch_KeyDown" HorizontalAlignment="Left" Height="32" Margin="436,11,180,0" VerticalAlignment="Top" Width="184"/>
+    <Grid>
+        <Button x:Name="btnAddStaff" Content="Add a new staff" HorizontalAlignment="Left" Margin="620,12,0,0" VerticalAlignment="Top" Background="#ff7b4b" FontFamily="Poppins" Foreground="White" Width="144" Click="btnAddStaff_Click" Height="31"/>
+        <Grid Margin="0,11,197,0" HorizontalAlignment="Right" VerticalAlignment="Top" Height="32">
+            <Border CornerRadius="5" BorderThickness="1"  Background="White" HorizontalAlignment="Center" VerticalAlignment="Center" Height="32" Margin="8,0,-8,0" >
+                <Border.Effect>
+                    <DropShadowEffect
+                            BlurRadius="10"
+                            Opacity="0.2"
+                            ShadowDepth="1" />
+                </Border.Effect>
+                <TextBox x:Name="tbSearch" BorderBrush="Transparent" m:HintAssist.Hint="Search Staff" KeyUp="tbSearch_KeyDown" HorizontalAlignment="Center" Height="22" VerticalAlignment="Center" Width="184" Margin="5,9,31,11" FontFamily="Montserrat Medium"/>
+            </Border>
+        </Grid>
         <Button x:Name="btnAllStaff" Content="All staff" HorizontalAlignment="Center" Margin="24,15,679,0" VerticalAlignment="Top" Background="Transparent" FontFamily="Poppins" BorderThickness="0" Click="btnAllStaff_Click" Width="97"/>
         <Button x:Name="btnStaffAdmin" Content="Admin" HorizontalAlignment="Center" Margin="121,15,587,0" VerticalAlignment="Top" Background="Transparent" FontFamily="Poppins" BorderThickness="0" Click="btnStaffAdmin_Click" Width="92"/>
         <Button x:Name="btnStaffEmployee" Content="Employee" HorizontalAlignment="Center" Margin="215,15,454,0" VerticalAlignment="Top" Background="Transparent" FontFamily="Poppins" BorderThickness="0" Click="btnStaffEmployee_Click" Width="131"/>
-        <ScrollViewer Margin="0,52,0,67">
+        <ScrollViewer Margin="0,52,0,37">
             <StackPanel Margin="20 0">
                 <ItemsControl x:Name="ListViewUsers" ItemsSource="{Binding users}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Border Margin="10" Width="125" Height="170">
+                            <Border Margin="10.20" Width="125" Height="170">
                                 <StackPanel x:Name="itemUser" MouseDown="itemUser_MouseDown">
                                     <TextBlock x:Name="tbRole" HorizontalAlignment="Center" Text="{Binding role}" FontSize="17" FontFamily="Franklin Gothic Medium"/>
                                     <Grid Grid.Column="0">

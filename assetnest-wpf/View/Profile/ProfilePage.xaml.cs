@@ -36,6 +36,7 @@ namespace assetnest_wpf.View.Profile
 
         public void setProfile(User profiles)
         {
+            profiles.role = "Owner";
             this.Dispatcher.Invoke(() => {
                 roleTxtBlock.setText(profiles.role);
                 nameTxtBlock.setText(profiles.name);
