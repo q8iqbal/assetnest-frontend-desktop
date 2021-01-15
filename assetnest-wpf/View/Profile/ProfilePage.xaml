@@ -9,7 +9,7 @@
       Title="ProfilePage" Background="#F9F9F9">
 
     <Grid>
-        <Rectangle x:Name="profileList" Fill="WhiteSmoke" HorizontalAlignment="Left" Height="166" Margin="220,136,0,0" VerticalAlignment="Top" Width="537" RadiusY="15" RadiusX="15"/>
+        <Rectangle x:Name="profileList" Fill="White" HorizontalAlignment="Left" Height="166" Margin="220,136,0,0" VerticalAlignment="Top" Width="537" RadiusY="15" RadiusX="15"/>
 
         <TextBlock x:Name="roleText" Foreground="#FF7B4B" FontFamily="Poppins-Medium" FontSize="38" HorizontalAlignment="Left" Margin="65,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="117"/>
         <TextBlock Text="|" Foreground="Black" FontFamily="Poppins-Medium" FontSize="38" HorizontalAlignment="Left" Margin="187,46,0,0" VerticalAlignment="Top"/>

@@ -1,0 +1,52 @@
+﻿<Window x:Class="assetnest_wpf.AboutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:assetnest_wpf"
+        mc:Ignorable="d"
+        Title="AboutWindow" Height="653.03" Width="800">
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="363,10,0,0" TextWrapping="Wrap" Text="About Us" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="363,31,0,0" TextWrapping="Wrap" Text="Developer Team" VerticalAlignment="Top"/>
+        <Image HorizontalAlignment="Left" Height="100" Margin="10,47,0,0" VerticalAlignment="Top" Width="100" Source="Assets/about/profile/chandra.png"/>
+        <Image HorizontalAlignment="Left" Height="100" Margin="147,47,0,0" VerticalAlignment="Top" Width="100" Source="Assets/about/profile/danang.png"/>
+        <Image HorizontalAlignment="Left" Height="100" Margin="293,79,0,0" VerticalAlignment="Top" Width="100" Source="Assets/about/profile/goldy.png"/>
+        <Image HorizontalAlignment="Left" Height="100" Margin="425,65,0,0" VerticalAlignment="Top" Width="100" Source="Assets/about/profile/iqbal.png"/>
+        <Image HorizontalAlignment="Left" Height="100" Margin="530,79,0,0" VerticalAlignment="Top" Width="100" Source="Assets/about/profile/nawa.png"/>
+        <Image HorizontalAlignment="Left" Height="100" Margin="682,79,0,0" VerticalAlignment="Top" Width="100" Source="Assets/about/profile/risma.png"/>
+        <TextBlock HorizontalAlignment="Left" Margin="363,205,0,0" TextWrapping="Wrap" Text="Sponsored By" VerticalAlignment="Top"/>
+        <Image HorizontalAlignment="Left" Height="38" Margin="40,243,0,0" VerticalAlignment="Top" Width="100" Source="Assets/about/sponsor/logo-virtuahive-300dpi.png"/>
+        <Image HorizontalAlignment="Left" Height="36" Margin="185,275,0,0" VerticalAlignment="Top" Width="100" Source="Assets/about/sponsor/logo-rasyidtechnologies-300dpi.png"/>
+        <Image HorizontalAlignment="Left" Height="100" Margin="425,231,0,0" VerticalAlignment="Top" Width="100" Source="Assets/about/sponsor/PTI - Logo NEW (HQ).png"/>
+        <Image HorizontalAlignment="Left" Height="23" Margin="626,275,0,0" VerticalAlignment="Top" Width="100" Source="Assets/about/sponsor/logo-maulidangames-landscape-300dpi.png"/>
+        <TextBlock HorizontalAlignment="Left" Margin="363,336,0,0" TextWrapping="Wrap" Text="Supported By" VerticalAlignment="Top"/>
+        <Image HorizontalAlignment="Left" Height="100" Margin="40,367,0,0" VerticalAlignment="Top" Width="100" Source="Assets/about/sponsor/logo - sinergi dimensi informatika.png"/>
+        <Image HorizontalAlignment="Left" Height="39" Margin="197,367,0,0" VerticalAlignment="Top" Width="100" Source="Assets/about/sponsor/logo-rasyidinstitute-300dpi.png"/>
+        <Image HorizontalAlignment="Left" Height="39" Margin="337,406,0,0" VerticalAlignment="Top" Width="100" Source="Assets/about/sponsor/trustmedis.png"/>
+        <Image HorizontalAlignment="Left" Height="41" Margin="530,382,0,0" VerticalAlignment="Top" Width="100" Source="Assets/about/sponsor/logo profilku - for light bg.png"/>
+        <Image HorizontalAlignment="Left" Height="100" Margin="658,367,0,0" VerticalAlignment="Top" Width="100" Source="Assets/about/sponsor/Alterra-Logo---Full-Colour-2000x2000.png"/>
+        <TextBlock HorizontalAlignment="Left" Margin="70,472,0,0" TextWrapping="Wrap" Text="Supervisors and Mentors" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="70,493,0,-174" TextWrapping="Wrap" VerticalAlignment="Top">
+            Umi Sa'adah <LineBreak/>
+            Desy Intan Permatasari <LineBreak/>
+            Andhik Ampuh Yunanto <LineBreak/>
+            Maulidan Bagus Afridian Rasyid <LineBreak/>
+            Willy Achmat Fauzi <LineBreak/>
+            Verent Flourencia Irene <LineBreak/>
+            Mayshella Ainun Wakhidah <LineBreak/>
+            Andika Ahmad Ramadhan <LineBreak/>
+            Fandi Ahmad <LineBreak/>
+            Ardian Kristya Pratama <LineBreak/>
+            Angga Pradipta Kurnia Putra <LineBreak/>
+            Muhammad Alif Pradipta ADP <LineBreak/>
+            Rafly Arief Kanza <LineBreak/>
+            Ahmad Jarir At Thobari <LineBreak/>
+            Ajie Dibyo Respati <LineBreak/>
+            Achmad Zulkarnain <LineBreak/>
+            Arie Affianto <LineBreak/>
+            Tegar Imansyah <LineBreak/>
+        </TextBlock>
+
+    </Grid>
+</Window>
